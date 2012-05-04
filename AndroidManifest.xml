@@ -3,18 +3,26 @@
       package="com.cheeseapp"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name" >
 
-        <activity android:name=".CheeseList">
+    <uses-sdk android:minSdkVersion="9"
+              android:targetSdkVersion="9"
+    />
+    <application
+            android:label="@string/app_name"
+            android:icon="@drawable/swiss"
+            >
+
+        <activity android:name=".Activity.CheeseList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".Home">
+        <activity android:name=".Activity.Home">
 
         </activity>
+        <activity android:name=".Activity.CheeseInfo"/>
 
     </application>
 </manifest> 
