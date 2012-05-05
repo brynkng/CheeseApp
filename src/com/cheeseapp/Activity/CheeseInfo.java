@@ -22,18 +22,22 @@ public class CheeseInfo extends Activity {
     private CheeseTypeDbAdapter mCheeseTypeDb;
     private NoteDbAdapter mNoteDb;
     private long cheeseId;
+    private Bundle savedInstanceState;
 
     private PopupWindow popup;
     private EditText EditNoteView;
     private static final int DELETE_NOTE_KEY = 1;
+    private static final String NOTE_KEY = "note_key";
+    private static final String CHEESE_ID_KEY = "cheese_id";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_info);
-
+        this.savedInstanceState = savedInstanceState;
+        
         _initializeDatabases();
 
-        cheeseId = this._getCheeseId(savedInstanceState);
+        cheeseId = _getCheeseId(savedInstanceState);
         Cursor CheeseCursor =  this.mCheeseDb.getCheese(cheeseId);
         startManagingCursor(CheeseCursor);
 
@@ -65,6 +69,51 @@ public class CheeseInfo extends Activity {
         this.mCheeseTypeDb.close();
         this.mNoteDb.close();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (popup != null) {
+            popup.dismiss();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        _displayNotes();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable(CHEESE_ID_KEY, cheeseId);
+        if (EditNoteView != null) {
+            String noteText = EditNoteView.getText().toString();
+            if (!noteText.isEmpty()) {
+                outState.putSerializable(NOTE_KEY, noteText);
+            }
+        }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, DELETE_NOTE_KEY, 0, R.string.delete_note);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case DELETE_NOTE_KEY:
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                this.mNoteDb.deleteNote(info.id);
+                _displayNotes();
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 
     private void _setupCheeseDescription(Cursor cheeseCursor) {
@@ -103,12 +152,11 @@ public class CheeseInfo extends Activity {
     }
 
     private long _getCheeseId(Bundle savedInstanceState) {
-        String cheeseIdKey = getString(R.string.key_cheese_id);
-        Long cheeseId = (savedInstanceState == null) ? null : (Long) savedInstanceState.getSerializable(cheeseIdKey);
+        Long cheeseId = (savedInstanceState == null) ? null : (Long) savedInstanceState.getSerializable(CHEESE_ID_KEY);
 
         if (cheeseId == null) {
             Bundle extras = getIntent().getExtras();
-            cheeseId = extras.getLong(cheeseIdKey);
+            cheeseId = extras.getLong(CHEESE_ID_KEY);
         }
 
         return cheeseId;
@@ -126,11 +174,20 @@ public class CheeseInfo extends Activity {
         });
     }
 
+    private boolean _inTheMiddleOfEditingANote() {
+        if (savedInstanceState != null) {
+            String note = (String)savedInstanceState.getSerializable(NOTE_KEY);
+            return note != null;
+        } else {
+            return false;
+        }
+    }
+
     private void _initiatePopupWindow() {
         try {
             LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             //Inflate the view from a predefined XML layout
-            View layout = inflater.inflate(
+            final View layout = inflater.inflate(
                 R.layout.note_popup,
                 (ViewGroup) findViewById(R.id.notePopup)
             );
@@ -142,7 +199,13 @@ public class CheeseInfo extends Activity {
 
             popup = new PopupWindow(layout, width, height, true);
             popup.setAnimationStyle(R.style.Animation_Popup);
-            popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+            //Delay launching popup until the end of the UI cycle to avoid a BadTokenException
+            findViewById(R.id.cheeseInfoLayout).post(new Runnable() {
+                public void run() {
+                    popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+                }
+            });
 
             Button cancelButton = (Button) layout.findViewById(R.id.cancelNotePopupButton);
             cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -152,6 +215,11 @@ public class CheeseInfo extends Activity {
             });
 
             EditNoteView = (EditText) layout.findViewById(R.id.editNoteText);
+            if (_inTheMiddleOfEditingANote()) {
+                String note = (String)savedInstanceState.getSerializable(NOTE_KEY);
+                EditNoteView.setText(note);
+            }
+            
             Button saveButton = (Button) layout.findViewById(R.id.saveNoteButton);
             saveButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -188,23 +256,9 @@ public class CheeseInfo extends Activity {
         NoteListView.setAdapter(NoteListAdapter);
 
         registerForContextMenu(NoteListView);
-    }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, DELETE_NOTE_KEY, 0, R.string.delete_note);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case DELETE_NOTE_KEY:
-                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                this.mNoteDb.deleteNote(info.id);
-                _displayNotes();
-                return true;
+        if (_inTheMiddleOfEditingANote()) {
+            _initiatePopupWindow();
         }
-        return super.onContextItemSelected(item);
     }
 }

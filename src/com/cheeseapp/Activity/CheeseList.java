@@ -23,7 +23,7 @@ import com.cheeseapp.Util.Util;
 public class CheeseList extends ListActivity {
 
     private CheeseDbAdapter mCheeseDb;
-    
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_list);
@@ -31,10 +31,6 @@ public class CheeseList extends ListActivity {
         this.mCheeseDb = new CheeseDbAdapter(this);
         this.mCheeseDb.open();
         this.mCheeseDb.prePopulate();
-
-        CheeseTypeDbAdapter favoritesDb = new CheeseTypeDbAdapter(this);
-        favoritesDb.open();
-        favoritesDb.prePopulate();
 
         Cursor cAllCheeses = this.mCheeseDb.getAllCheeses();
         startManagingCursor(cAllCheeses);
@@ -78,7 +74,6 @@ public class CheeseList extends ListActivity {
     protected void onDestroy() {
         super.onDestroy();
         this.mCheeseDb.close();
-        //TODO FILL
     }
 
     private final SimpleCursorAdapter.ViewBinder CheeseListViewBinder = new SimpleCursorAdapter.ViewBinder() {
