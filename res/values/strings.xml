@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">Cheese Bible</string>
 
+    <string name="delete_note">Delete</string>
+
+    <string name="notes_title">Notes</string>
+
     <!-- Bundle keys -->
     <string name="key_cheese_id">cheese_id</string>
 </resources>

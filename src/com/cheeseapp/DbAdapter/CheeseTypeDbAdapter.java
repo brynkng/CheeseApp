@@ -13,7 +13,7 @@ public class CheeseTypeDbAdapter extends DbAdapter{
 
     public static final String TABLE = "cheese_types";
 
-    public static final String KEY_ID = "cheese_type_id";
+    public static final String KEY_ID = "_id";
     public static final String KEY_TYPE = "type";
 
     @Override
@@ -70,7 +70,7 @@ public class CheeseTypeDbAdapter extends DbAdapter{
         sqlBuilder.setTables(
                 "cheese_types " +
                 "JOIN cheese_types_to_cheese " +
-                "USING (cheese_type_id)"
+                "ON (_id = cheese_type_id)"
         );
 
         return sqlBuilder.query(
@@ -83,9 +83,9 @@ public class CheeseTypeDbAdapter extends DbAdapter{
 
     public long addTypeToCheese(long cheeseId, long cheeseTypeId) {
         ContentValues insert = new ContentValues();
-        insert.put(CheeseDbAdapter.KEY_ID, cheeseId);
-        insert.put(KEY_TYPE, cheeseTypeId);
+        insert.put("cheese_id", cheeseId);
+        insert.put("cheese_type_id", cheeseTypeId);
 
-        return this.mDb.insert(TABLE, null, insert);
+        return this.mDb.insert("cheese_types_to_cheese", null, insert);
     }
 }

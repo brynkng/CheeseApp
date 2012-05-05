@@ -66,6 +66,14 @@ abstract public class DbAdapter {
                 + NoteDbAdapter.KEY_NOTE + " text"
                 + ");";
         TABLE_CREATES.add(noteTable);
+
+        //cheese_types_to_cheese
+        String notesToCheeseTable = "CREATE TABLE IF NOT EXISTS " + "notes_to_cheese"
+                + "("
+                + "cheese_id integer,"
+                + "note_id" + " integer"
+                + ");";
+        TABLE_CREATES.add(notesToCheeseTable);
     }
 
     abstract void prePopulate();

@@ -13,7 +13,7 @@ public class NoteDbAdapter extends DbAdapter{
 
     //Cheese Types table
     public static final String TABLE = "notes";
-    public static final String KEY_ID = "note_id";
+    public static final String KEY_ID = "_id";
     public static final String KEY_CHEESE_ID = "cheese_id";
     public static final String KEY_NOTE = "note";
 
@@ -34,7 +34,7 @@ public class NoteDbAdapter extends DbAdapter{
      */
     public long addNote(long cheeseId, String note) {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(CheeseDbAdapter.KEY_ID, cheeseId);
+        initialValues.put(KEY_CHEESE_ID, cheeseId);
         initialValues.put(KEY_NOTE, note);
 
         return this.mDb.insert(TABLE, null, initialValues);
@@ -50,9 +50,8 @@ public class NoteDbAdapter extends DbAdapter{
     
     public Cursor getNotesForCheese(long cheeseId) {
         MySqlLiteBuilder sqlBuilder = new MySqlLiteBuilder();
-        sqlBuilder.setTables(TABLE + " JOIN notes_to_cheese ON (cheeses._id)");
+        sqlBuilder.setTables(TABLE + " JOIN notes_to_cheese ON (_id = note_id)");
 
-        return this.mDb.query(TABLE, new String[] {KEY_ID, KEY_NOTE}, "WHERE ", null, null, null, null);
-
+        return this.mDb.query(TABLE, new String[] {TABLE + "." + KEY_ID, KEY_NOTE}, "cheese_id = ?", new String[] {Long.toString(cheeseId)}, null, null, null);
     }
 }
