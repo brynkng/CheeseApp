@@ -74,6 +74,45 @@ abstract public class DbAdapter {
                 + "note_id" + " integer"
                 + ");";
         TABLE_CREATES.add(notesToCheeseTable);
+
+        //directions
+        String directionTable = "CREATE TABLE IF NOT EXISTS " + DirectionDbAdapter.TABLE
+                + "("
+                + DirectionDbAdapter.KEY_ID + " integer primary key autoincrement,"
+                + DirectionDbAdapter.KEY_RECIPE_ID + " integer,"
+                + DirectionDbAdapter.KEY_DIRECTION + " text,"
+                + DirectionDbAdapter.KEY_DIRECTION_CATEGORY_ID + " integer"
+                + ");";
+        TABLE_CREATES.add(directionTable);
+
+        //recipes
+        String recipeTable = "CREATE TABLE IF NOT EXISTS " + RecipeDbAdapter.TABLE
+                + "("
+                + RecipeDbAdapter.KEY_ID + " integer primary key autoincrement,"
+                + RecipeDbAdapter.KEY_TIME + " integer,"
+                + RecipeDbAdapter.KEY_YIELD + " integer"
+                + ");";
+        TABLE_CREATES.add(recipeTable);
+
+        //ingredients
+        String ingredientsTable = "CREATE TABLE IF NOT EXISTS " + IngredientDbAdapter.TABLE
+                + "("
+                + IngredientDbAdapter.KEY_ID + " integer primary key autoincrement,"
+                + IngredientDbAdapter.KEY_NAME + " text,"
+                + IngredientDbAdapter.KEY_MEASUREMENT_NAME + " text"
+                + ");";
+        TABLE_CREATES.add(ingredientsTable);
+
+        //recipe ingredients
+        String recipeIngredientsTable = "CREATE TABLE IF NOT EXISTS " + IngredientDbAdapter.LINKER_TABLE
+                + "("
+                + IngredientDbAdapter.LINKER_KEY_RECIPE_ID + " integer,"
+                + IngredientDbAdapter.LINKER_KEY_INGREDIENT_ID + " integer,"
+                + IngredientDbAdapter.LINKER_KEY_DIRECTION_ID + " integer,"
+                + IngredientDbAdapter.LINKER_KEY_QUANTITY + " integer"
+                + ");";
+        TABLE_CREATES.add(recipeIngredientsTable);
+
     }
 
     abstract void prePopulate();

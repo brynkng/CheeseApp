@@ -2,28 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
           android:orientation="horizontal"
           android:layout_height="48dp"
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
         >
 
     <ImageView
             android:id="@+id/smallCheeseImg"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
             android:maxHeight="40dp"
             android:maxWidth="40dp"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            />
+            android:src="@drawable/swiss"
     />
     <TextView
             android:id="@+id/cheeseRowName"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:text="Sample Cheese"
             android:textSize="18sp"
             android:textColor="#000000"
-        />
+    />
+    <ImageView
+            android:id="@+id/listFavoriteIcon"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="right"
+    />
 
 </LinearLayout>

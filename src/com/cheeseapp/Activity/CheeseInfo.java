@@ -3,6 +3,7 @@ package com.cheeseapp.Activity;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -42,6 +43,8 @@ public class CheeseInfo extends Activity {
         startManagingCursor(CheeseCursor);
 
         _setupCheesePicture(CheeseCursor);
+        
+        _setupFavoriteStar();
 
         _setupCheeseName(CheeseCursor);
 
@@ -50,6 +53,40 @@ public class CheeseInfo extends Activity {
         _setupCheeseDescription(CheeseCursor);
 
         _setupNotes();
+    }
+
+    private void _setupFavoriteStar() {
+        TextView favoriteTextView = (TextView) findViewById(R.id.favoriteText);
+        favoriteTextView.setOnClickListener(FavoriteStarOnClickListener);
+
+        ImageView favoriteIcon = (ImageView) findViewById(R.id.favoriteStar);
+
+        _displayFavoriteStarIcon(favoriteIcon);
+
+        favoriteIcon.setOnClickListener(FavoriteStarOnClickListener);
+    }
+
+    private View.OnClickListener FavoriteStarOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            ImageView favoriteIcon = (ImageView) findViewById(R.id.favoriteStar);
+
+            mCheeseDb.toggleFavorite(cheeseId);
+            _displayFavoriteStarIcon(favoriteIcon);
+        }
+    };
+
+    private void _displayFavoriteStarIcon(ImageView favoriteStar) {
+        final boolean isFavorite = this.mCheeseDb.isFavorite(cheeseId);
+
+        int starIcon;
+        if (isFavorite) {
+            starIcon = R.drawable.star_on;
+        } else {
+            starIcon = R.drawable.star_off;
+        }
+
+        favoriteStar.setImageResource(starIcon);
     }
 
     private void _initializeDatabases() {
@@ -61,6 +98,18 @@ public class CheeseInfo extends Activity {
 
         this.mNoteDb = new NoteDbAdapter(this);
         this.mNoteDb.open();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            if (popup != null) {
+                EditNoteView.setText("");
+                popup.dismiss();
+            }
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -200,6 +249,9 @@ public class CheeseInfo extends Activity {
             popup = new PopupWindow(layout, width, height, true);
             popup.setAnimationStyle(R.style.Animation_Popup);
 
+            //This is so it can register on key events
+            popup.setBackgroundDrawable(new BitmapDrawable());
+
             //Delay launching popup until the end of the UI cycle to avoid a BadTokenException
             findViewById(R.id.cheeseInfoLayout).post(new Runnable() {
                 public void run() {
@@ -210,6 +262,7 @@ public class CheeseInfo extends Activity {
             Button cancelButton = (Button) layout.findViewById(R.id.cancelNotePopupButton);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+                    EditNoteView.setText("");
                     popup.dismiss();
                 }
             });
@@ -226,6 +279,8 @@ public class CheeseInfo extends Activity {
                     String note = EditNoteView.getText().toString();
                     if (!note.isEmpty()) {
                         mNoteDb.addNote(cheeseId, note);
+                        //Clear text so it doesn't keep trying to pop up the window with the old text
+                        EditNoteView.setText("");
                     }
 
                     _displayNotes();

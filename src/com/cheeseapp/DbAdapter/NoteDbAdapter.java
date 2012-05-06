@@ -44,14 +44,7 @@ public class NoteDbAdapter extends DbAdapter{
         return this.mDb.delete(TABLE, KEY_ID + "=" + noteId, null) > 0;
     }
 
-    public Cursor getNotes(long cheeseId) {
-        return this.mDb.query(TABLE, new String[] {KEY_ID, KEY_NOTE}, null, null, null, null, null);
-    }
-    
     public Cursor getNotesForCheese(long cheeseId) {
-        MySqlLiteBuilder sqlBuilder = new MySqlLiteBuilder();
-        sqlBuilder.setTables(TABLE + " JOIN notes_to_cheese ON (_id = note_id)");
-
         return this.mDb.query(TABLE, new String[] {TABLE + "." + KEY_ID, KEY_NOTE}, "cheese_id = ?", new String[] {Long.toString(cheeseId)}, null, null, null);
     }
 }

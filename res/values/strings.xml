@@ -5,6 +5,8 @@
     <string name="delete_note">Delete</string>
 
     <string name="notes_title">Notes</string>
+    <string name="make_favorite">Favorite</string>
+    <string name="un_favorite">Un-Favorite</string>
 
     <!-- Bundle keys -->
     <string name="key_cheese_id">cheese_id</string>

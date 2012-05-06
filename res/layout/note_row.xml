@@ -12,7 +12,6 @@
             android:text="I am a note!"
             android:textSize="15sp"
             android:textColor="#000000"
-            android:clickable="false"
             />
 
 </LinearLayout>
