@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -24,11 +23,13 @@ public class Recipe extends Activity {
     private CheeseDbAdapter mCheeseDb;
     private RecipeDbAdapter mRecipeDb;
     private IngredientDbAdapter mIngredientDb;
+
     private ViewFlipper mFlipper;
     private long recipeId;
     private Cursor mRecipeCursor;
     private Cursor mCheeseCursor;
     private PopupWindow mPopup;
+    private Double mYield;
     private ArrayList mRecipeViewList;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,9 @@ public class Recipe extends Activity {
         mRecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
         startManagingCursor(mRecipeCursor);
         mRecipeCursor.moveToFirst();
+
         recipeId = mRecipeCursor.getLong(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
+        mYield = _getCheeseYield();
     }
 
     @Override
@@ -90,10 +93,38 @@ public class Recipe extends Activity {
         String time = mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
         timeView.setText(time + " hours");
 
-        //Recipe yield
-        TextView yieldView = (TextView) recipeLayout.findViewById(R.id.yieldText);
-        String yield = _getCheeseYield();
-        yieldView.setText(yield + " pounds");
+        //Yield
+        Spinner YieldSpinner = (Spinner) recipeLayout.findViewById(R.id.recipeYieldSpinner);
+        ArrayAdapter<CharSequence> yieldSpinnerAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.yield_amounts,
+                android.R.layout.simple_spinner_item
+        );
+        yieldSpinnerAdapter.setDropDownViewResource(R.layout.yield_spinner_layout);
+        YieldSpinner.setAdapter(yieldSpinnerAdapter);
+
+        int yieldPosition;
+        if (mYield == .5) {
+            yieldPosition = 0;
+        } else {
+            yieldPosition = (int) Math.round(mYield);
+        }
+        
+        YieldSpinner.setSelection(yieldPosition);
+        YieldSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    mYield = .5;
+                } else {
+                    mYield = Double.parseDouble(Integer.toString(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         //Recipe ingredients
         LinearLayout ingredientList = (LinearLayout) recipeLayout.findViewById(R.id.mainIngredientList);
@@ -112,53 +143,13 @@ public class Recipe extends Activity {
             ingredientCursor.moveToNext();
         }
 
-        //Change yield button
-        Button changeYieldButton = (Button) recipeLayout.findViewById(R.id.changeYieldButton);
-        changeYieldButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _initializeYieldChangePopup();
-            }
-        });
         return recipeLayout;
     }
 
-    private String _getCheeseYield() {
-        return mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
+    private Double _getCheeseYield() {
+        String yield = mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
+        return Double.parseDouble(yield.substring(0, 1));
     }
-
-    private void _initializeYieldChangePopup() {
-        try {
-            LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            //Inflate the view from a predefined XML layout
-            final View popupLayout = inflater.inflate(
-                    R.layout.change_yield_popup,
-                    (ViewGroup) findViewById(R.id.changeYieldPopup)
-            );
-
-            Spinner YieldSpinner = (Spinner) popupLayout.findViewById(R.id.recipeYieldSpinner);
-            String yield = _getCheeseYield();
-            Integer selectionPosition = Integer.parseInt(yield);
-            YieldSpinner.setSelection(selectionPosition);
-            
-            mPopup = new PopupWindow(popupLayout, 275, 175, true);
-            mPopup.setAnimationStyle(R.style.Animation_Popup_Bottom_Right);
-
-            //This is so it can register on key events
-            mPopup.setBackgroundDrawable(new BitmapDrawable());
-
-            //Delay launching mPopup until the end of the UI cycle to avoid a BadTokenException
-            findViewById(R.id.recipeLayout).post(new Runnable() {
-                public void run() {
-                    mPopup.showAtLocation(popupLayout, Gravity.CENTER, 0, 0);
-                }
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
 //    private void _initFlipper() {
 //        mFlipper = new ViewFlipper(this);
