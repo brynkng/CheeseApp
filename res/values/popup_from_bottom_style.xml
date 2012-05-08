@@ -1,5 +1,5 @@
 <resources>
-    <style name="Animation.Popup" parent="android:Animation">
+    <style name="Animation.Popup.Bottom" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/grow_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/shrink_from_top</item>
     </style>

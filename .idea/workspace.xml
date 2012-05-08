@@ -3,7 +3,7 @@
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState>
-        <option name="device" value="3.7in WVGA (Nexus One)" />
+        <option name="device" value="3.2in HVGA (ADP2)" />
         <option name="dockMode" value="" />
         <option name="nightMode" value="notnight" />
         <option name="targetHashString" value="android-10" />
@@ -16,22 +16,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/arrow_left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/arrow_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/inset_border.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/grow_from_bottomright_to_topleft.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/shrink_from_topleft_to_bottomright.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/popup_inset_background.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/change_yield_popup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/popup_from_bottomright_style.xml" />
+      <change type="MOVED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\values\popup_style.xml" afterPath="$PROJECT_DIR$/res/values/popup_from_bottom_style.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" afterPath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/cheese_info.xml" afterPath="$PROJECT_DIR$/res/layout/cheese_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/cheese_list.xml" afterPath="$PROJECT_DIR$/res/layout/cheese_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/cheese_row.xml" afterPath="$PROJECT_DIR$/res/layout/cheese_row.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/note_popup.xml" afterPath="$PROJECT_DIR$/res/layout/note_popup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/popup_background.xml" afterPath="$PROJECT_DIR$/res/drawable/popup_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe.xml" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
     </list>
     <ignored path="Cheese App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,7 +65,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="72" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="140" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -125,18 +122,7 @@
       <file leaf-file-name="Recipe.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="28" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#4547#4582#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheeseDbAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/CheeseDbAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="53" selection-start="2526" selection-end="2526" vertical-scroll-proportion="0.0">
+            <state line="138" column="43" selection-start="5279" selection-end="5279" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,34 +131,61 @@
       <file leaf-file-name="recipe.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="54" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.6062802">
+            <state line="112" column="55" selection-start="5476" selection-end="5476" vertical-scroll-proportion="0.6109091">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cheese_info.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/cheese_info.xml">
+      <file leaf-file-name="change_yield_popup.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/change_yield_popup.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="37" selection-start="2973" selection-end="2973" vertical-scroll-proportion="0.0">
+            <state line="26" column="37" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheeseTypeDbAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/CheeseTypeDbAdapter.java">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="31" selection-start="1948" selection-end="1948" vertical-scroll-proportion="0.0">
+            <state line="12" column="24" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="popup_inset_background.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable/popup_inset_background.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="48" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
+            <state line="16" column="41" selection-start="472" selection-end="478" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="note_popup.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popup_background.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable/popup_background.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="33" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inset_border.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable/inset_border.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="54" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -181,34 +194,7 @@
       <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="0" selection-start="6150" selection-end="6150" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheeseList.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="92" selection-start="4168" selection-end="4168" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Util/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IngredientDbAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1781" selection-end="1781" vertical-scroll-proportion="0.0">
+            <state line="277" column="44" selection-start="9107" selection-end="9107" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -229,22 +215,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/cheese_row.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/NoteDbAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionsDbAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" />
-        <option value="$PROJECT_DIR$/res/drawable/inset_border.xml" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/cheese_info.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
         <option value="$PROJECT_DIR$/res/layout/recipe.xml" />
+        <option value="$PROJECT_DIR$/res/layout/note_popup.xml" />
+        <option value="$PROJECT_DIR$/res/drawable/popup_inset_background.xml" />
+        <option value="$PROJECT_DIR$/res/values/popup_from_right_style.xml" />
+        <option value="$PROJECT_DIR$/res/values/popup_from_bottom_style.xml" />
+        <option value="$PROJECT_DIR$/res/values/popup_from_bottomright_style.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
+        <option value="$PROJECT_DIR$/res/drawable/inset_border.xml" />
+        <option value="$PROJECT_DIR$/res/drawable/popup_background.xml" />
+        <option value="$PROJECT_DIR$/res/layout/change_yield_popup.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
       </list>
     </option>
   </component>
@@ -419,6 +405,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -701,6 +735,10 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -867,8 +905,10 @@
       <recent name="com.cheeseapp.DbAdapters" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\drawable" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\anim" />
+      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\values" />
+      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\drawable" />
+      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\layout" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.On Phone">
@@ -1142,7 +1182,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1161,8 +1201,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870968" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1563458" sideWeight="0.6830103" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2152054" sideWeight="0.6830103" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31698975" sideWeight="0.4954016" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33523375" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31698975" sideWeight="0.4954016" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30900797" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1492" height="836" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1205,7 +1245,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ingredient and recipe backend&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="First view for recipe in view flipper." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1222,6 +1262,7 @@
     <MESSAGE value="Added cheese note system" />
     <MESSAGE value="Fixed errors on changing cheese info activity state." />
     <MESSAGE value="Added ingredient and recipe backend&#10;" />
+    <MESSAGE value="First view for recipe in view flipper." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1231,65 +1272,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="37" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/popup_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="76" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="47" selection-start="3443" selection-end="3443" vertical-scroll-proportion="0.01868132">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/inset_border.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="101" selection-start="914" selection-end="914" vertical-scroll-proportion="0.6164835">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="18" selection-start="823" selection-end="823" vertical-scroll-proportion="0.5043956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/CheeseTypeDbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="31" selection-start="1948" selection-end="1948" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/cheese_info.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="37" selection-start="2973" selection-end="2973" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="48" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="0" selection-start="1781" selection-end="1781" vertical-scroll-proportion="0.0">
@@ -1297,9 +1279,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+    <entry file="jar://C:/android/android-2.3.3_r1-sources.jar!/frameworks/base/core/java/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="0" selection-start="6150" selection-end="6150" vertical-scroll-proportion="0.0">
+        <state line="614" column="13" selection-start="26258" selection-end="26258" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1311,32 +1293,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/CheeseDbAdapter.java">
+    <entry file="file://$PROJECT_DIR$/res/anim/shrink_from_topleft_to_bottomright.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="53" selection-start="2526" selection-end="2526" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Util/Util.java">
+    <entry file="file://$PROJECT_DIR$/res/values/popup_from_bottom_style.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0">
+        <state line="1" column="39" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/popup_from_bottomright_style.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="41" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/inset_border.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="54" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/popup_inset_background.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="41" selection-start="472" selection-end="478" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/popup_background.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="33" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/change_yield_popup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="37" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="277" column="44" selection-start="9107" selection-end="9107" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-10/android.jar!/java/lang/Integer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="36" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="28" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#4547#4582#0" expanded="false" />
-          </folding>
+        <state line="138" column="43" selection-start="5279" selection-end="5279" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="54" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.6062802">
+        <state line="112" column="55" selection-start="5476" selection-end="5476" vertical-scroll-proportion="0.6109091">
           <folding />
         </state>
       </provider>

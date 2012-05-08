@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Cheese Bible</string>
+    <string name="app_name">Cheese Making Bible</string>
 
     <string name="delete_note">Delete</string>
 
     <string name="notes_title">Notes</string>
     <string name="make_favorite">Favorite</string>
     <string name="un_favorite">Un-Favorite</string>
+
+
+    <!--Recipe-->
+    <string-array name="yield_amounts">
+        <item>    ½ pound </item>
+        <item>    1  pound </item>
+        <item>    2 pounds </item>
+        <item>    3 pounds </item>
+        <item>    4 pounds </item>
+        <item>    5 pounds </item>
+        <item>    6 pounds </item>
+        <item>    7 pounds </item>
+        <item>    8 pounds </item>
+        <item>    9 pounds </item>
+        <item>    10 pounds </item>
+    </string-array>
 
     <!-- Bundle keys -->
     <string name="key_cheese_id">cheese_id</string>

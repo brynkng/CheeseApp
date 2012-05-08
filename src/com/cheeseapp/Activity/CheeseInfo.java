@@ -265,7 +265,7 @@ public class CheeseInfo extends Activity {
             int height = display.getHeight() - popupMargin * 2;
 
             mPopup = new PopupWindow(layout, width, height, true);
-            mPopup.setAnimationStyle(R.style.Animation_Popup);
+            mPopup.setAnimationStyle(R.style.Animation_Popup_Bottom);
 
             //This is so it can register on key events
             mPopup.setBackgroundDrawable(new BitmapDrawable());
@@ -290,7 +290,7 @@ public class CheeseInfo extends Activity {
                 String note = (String)savedInstanceState.getSerializable(NOTE_KEY);
                 EditNoteView.setText(note);
             }
-            
+
             Button saveButton = (Button) layout.findViewById(R.id.saveNoteButton);
             saveButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {

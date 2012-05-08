@@ -2,20 +2,17 @@ package com.cheeseapp.Activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import com.cheeseapp.DbAdapter.*;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
  * User: Bryan King
@@ -29,8 +26,9 @@ public class Recipe extends Activity {
     private IngredientDbAdapter mIngredientDb;
     private ViewFlipper mFlipper;
     private long recipeId;
-    private Cursor recipeCursor;
-    private Cursor cheeseCursor;
+    private Cursor mRecipeCursor;
+    private Cursor mCheeseCursor;
+    private PopupWindow mPopup;
     private ArrayList mRecipeViewList;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -41,17 +39,13 @@ public class Recipe extends Activity {
 
 
         mCheeseId = _getCheeseId(savedInstanceState);
-        cheeseCursor =  mCheeseDb.getCheese(mCheeseId);
-        startManagingCursor(cheeseCursor);
+        mCheeseCursor =  mCheeseDb.getCheese(mCheeseId);
+        startManagingCursor(mCheeseCursor);
 
-        recipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
-        startManagingCursor(recipeCursor);
-        recipeCursor.moveToFirst();
-        recipeId = recipeCursor.getLong(recipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
-
-//        _setupCheesePicture(CheeseCursor);
-//
-//        _setupCheeseName(CheeseCursor);
+        mRecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
+        startManagingCursor(mRecipeCursor);
+        mRecipeCursor.moveToFirst();
+        recipeId = mRecipeCursor.getLong(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
     }
 
     @Override
@@ -63,28 +57,42 @@ public class Recipe extends Activity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //TODO COMPLETE
+    }
+
     private void _initializeFlipper() {
         mFlipper = new ViewFlipper(this);
+        View recipeLayoutView = _getHomeRecipeLayoutView();
+        
+        mFlipper.addView(recipeLayoutView);
+
+        setContentView(mFlipper);
+    }
+
+    private View _getHomeRecipeLayoutView() {
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View recipeLayout = inflater.inflate(R.layout.recipe, (ViewGroup) findViewById(R.id.recipeHome));
+        View recipeLayout = inflater.inflate(R.layout.recipe, (ViewGroup) findViewById(R.id.recipeLayout));
 
         //Cheese picture
         ImageView cheeseImg = (ImageView) recipeLayout.findViewById(R.id.recipeCheeseImg);
-        cheeseImg.setImageResource(Util.getImageResourceFromCursor(this, cheeseCursor, 1));
-        
+        cheeseImg.setImageResource(Util.getImageResourceFromCursor(this, mCheeseCursor, 1));
+
         //Cheese name
         TextView cheeseNameView = (TextView) recipeLayout.findViewById(R.id.recipeCheeseName);
-        String cheeseName = cheeseCursor.getString(cheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
+        String cheeseName = mCheeseCursor.getString(mCheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
         cheeseNameView.setText(cheeseName);
-        
+
         //Recipe time
         TextView timeView = (TextView) recipeLayout.findViewById(R.id.timeText);
-        String time = recipeCursor.getString(recipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
+        String time = mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
         timeView.setText(time + " hours");
 
         //Recipe yield
         TextView yieldView = (TextView) recipeLayout.findViewById(R.id.yieldText);
-        String yield = recipeCursor.getString(recipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
+        String yield = _getCheeseYield();
         yieldView.setText(yield + " pounds");
 
         //Recipe ingredients
@@ -109,13 +117,46 @@ public class Recipe extends Activity {
         changeYieldButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                _initializeYieldChangePopup();
             }
         });
-        
-        mFlipper.addView(recipeLayout);
+        return recipeLayout;
+    }
 
-        setContentView(mFlipper);
+    private String _getCheeseYield() {
+        return mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
+    }
+
+    private void _initializeYieldChangePopup() {
+        try {
+            LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //Inflate the view from a predefined XML layout
+            final View popupLayout = inflater.inflate(
+                    R.layout.change_yield_popup,
+                    (ViewGroup) findViewById(R.id.changeYieldPopup)
+            );
+
+            Spinner YieldSpinner = (Spinner) popupLayout.findViewById(R.id.recipeYieldSpinner);
+            String yield = _getCheeseYield();
+            Integer selectionPosition = Integer.parseInt(yield);
+            YieldSpinner.setSelection(selectionPosition);
+            
+            mPopup = new PopupWindow(popupLayout, 275, 175, true);
+            mPopup.setAnimationStyle(R.style.Animation_Popup_Bottom_Right);
+
+            //This is so it can register on key events
+            mPopup.setBackgroundDrawable(new BitmapDrawable());
+
+            //Delay launching mPopup until the end of the UI cycle to avoid a BadTokenException
+            findViewById(R.id.recipeLayout).post(new Runnable() {
+                public void run() {
+                    mPopup.showAtLocation(popupLayout, Gravity.CENTER, 0, 0);
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -209,17 +250,17 @@ public class Recipe extends Activity {
         super.onDestroy();
     }
 
-//    private void _setupCheesePicture(Cursor cheeseCursor) {
+//    private void _setupCheesePicture(Cursor mCheeseCursor) {
 //        int firstColumn = 1;
-//        int picResource = Util.getImageResourceFromCursor(this, cheeseCursor, firstColumn);
+//        int picResource = Util.getImageResourceFromCursor(this, mCheeseCursor, firstColumn);
 //
 //        ImageView imageView = (ImageView) findViewById(R.id.largeRecipeCheeseImg);
 //        imageView.setImageResource(picResource);
 //    }
 
-//    private void _setupCheeseName(Cursor cheeseCursor) {
+//    private void _setupCheeseName(Cursor mCheeseCursor) {
 //        TextView CheeseName = (TextView) findViewById(R.id.cheeseRecipeName);
-//        CheeseName.setText(cheeseCursor.getString(cheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME)));
+//        CheeseName.setText(mCheeseCursor.getString(mCheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME)));
 //    }
 
     private long _getCheeseId(Bundle savedInstanceState) {
