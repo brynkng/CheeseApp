@@ -27,11 +27,15 @@ public class RecipeDbAdapter extends DbAdapter{
     }
 
     public Cursor getRecipeForCheese(long cheeseId) {
-        return this.mDb.query(
+        Cursor cursor =  this.mDb.query(
                 TABLE,
                 new String[] {KEY_ID, KEY_TIME, KEY_YIELD},
                 KEY_CHEESE_ID + " = ?",
                 new String[] {Long.toString(cheeseId)}, null, null, null
         );
+
+        cursor.moveToFirst();
+
+        return cursor;
     }
 }

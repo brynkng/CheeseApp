@@ -25,12 +25,13 @@ public class Recipe extends Activity {
     private IngredientDbAdapter mIngredientDb;
 
     private ViewFlipper mFlipper;
-    private long recipeId;
-    private Cursor mRecipeCursor;
-    private Cursor mCheeseCursor;
+    private long mRecipeId;
     private PopupWindow mPopup;
     private Double mYield;
     private ArrayList mRecipeViewList;
+    private int mCheeseImgResource;
+    private String mCheeseName;
+    private String mTime;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +39,55 @@ public class Recipe extends Activity {
         mRecipeDb.prePopulate();
         mIngredientDb.prePopulate();
 
-
         mCheeseId = _getCheeseId(savedInstanceState);
-        mCheeseCursor =  mCheeseDb.getCheese(mCheeseId);
-        startManagingCursor(mCheeseCursor);
+        Cursor CheeseCursor = mCheeseDb.getCheese(mCheeseId);
+        mCheeseImgResource = _getCheeseImageResource(savedInstanceState, CheeseCursor);
+        mCheeseName = _getCheeseName(savedInstanceState, CheeseCursor);
 
-        mRecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
-        startManagingCursor(mRecipeCursor);
-        mRecipeCursor.moveToFirst();
+        Cursor RecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
+        mRecipeId = _getRecipeId(savedInstanceState, RecipeCursor);
+        mTime = _getTime(savedInstanceState, RecipeCursor);
+        mYield = _getCheeseYield(savedInstanceState, RecipeCursor);
+    }
 
-        recipeId = mRecipeCursor.getLong(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
-        mYield = _getCheeseYield();
+    private String _getTime(Bundle savedInstanceState, Cursor RecipeCursor) {
+        String time = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
+
+        if (time == null) {
+            time = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
+        }
+
+        return time;
+    }
+
+    private String _getCheeseName(Bundle savedInstanceState, Cursor CheeseCursor) {
+        String cheeseName = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
+        
+        if (cheeseName == null) {
+            cheeseName = CheeseCursor.getString(CheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
+        }
+
+        return cheeseName;
+    }
+
+    private long _getRecipeId(Bundle savedInstanceState, Cursor RecipeCursor) {
+        Long recipeId = (savedInstanceState == null) ? null :  (Long) savedInstanceState.getSerializable("recipe_id");
+        
+        if (recipeId == null) {
+            recipeId = RecipeCursor.getLong(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
+        }
+
+        return recipeId;
+    }
+
+    private int _getCheeseImageResource(Bundle savedInstanceState, Cursor CheeseCursor) {
+        Integer cheeseImgResource = (savedInstanceState == null) ? null :  (Integer) savedInstanceState.getSerializable("cheese_img_resource");
+
+        if (cheeseImgResource == null) {
+            cheeseImgResource = Util.getImageResourceFromCursor(this, CheeseCursor, 1);
+        }
+        
+        return cheeseImgResource;
     }
 
     @Override
@@ -63,7 +102,12 @@ public class Recipe extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //TODO COMPLETE
+        outState.putLong("cheese_id", mCheeseId);
+        outState.putLong("recipe_id", mRecipeId);
+        outState.putString("cheese_name", mCheeseName);
+        outState.putString("time", mTime);
+        outState.putInt("cheese_img_resource", mCheeseImgResource);
+        outState.putDouble("yield", mYield);
     }
 
     private void _initializeFlipper() {
@@ -81,17 +125,15 @@ public class Recipe extends Activity {
 
         //Cheese picture
         ImageView cheeseImg = (ImageView) recipeLayout.findViewById(R.id.recipeCheeseImg);
-        cheeseImg.setImageResource(Util.getImageResourceFromCursor(this, mCheeseCursor, 1));
+        cheeseImg.setImageResource(mCheeseImgResource);
 
         //Cheese name
         TextView cheeseNameView = (TextView) recipeLayout.findViewById(R.id.recipeCheeseName);
-        String cheeseName = mCheeseCursor.getString(mCheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
-        cheeseNameView.setText(cheeseName);
+        cheeseNameView.setText(mCheeseName);
 
         //Recipe time
         TextView timeView = (TextView) recipeLayout.findViewById(R.id.timeText);
-        String time = mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
-        timeView.setText(time + " hours");
+        timeView.setText(mTime + " hours");
 
         //Yield
         Spinner YieldSpinner = (Spinner) recipeLayout.findViewById(R.id.recipeYieldSpinner);
@@ -128,7 +170,7 @@ public class Recipe extends Activity {
 
         //Recipe ingredients
         LinearLayout ingredientList = (LinearLayout) recipeLayout.findViewById(R.id.mainIngredientList);
-        Cursor ingredientCursor = mIngredientDb.getIngredientsForRecipe(recipeId);
+        Cursor ingredientCursor = mIngredientDb.getIngredientsForRecipe(mRecipeId);
         ingredientCursor.moveToFirst();
         while (!ingredientCursor.isAfterLast()) {
             TextView ingredientView = new TextView(this);
@@ -146,9 +188,14 @@ public class Recipe extends Activity {
         return recipeLayout;
     }
 
-    private Double _getCheeseYield() {
-        String yield = mRecipeCursor.getString(mRecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
-        return Double.parseDouble(yield.substring(0, 1));
+    private Double _getCheeseYield(Bundle savedInstanceState, Cursor RecipeCursor) {
+        Double yield = (savedInstanceState == null) ? null :  (Double) savedInstanceState.getSerializable("yield");
+        
+        if (yield == null) {
+            String yieldDouble = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
+            yield = Double.parseDouble(yieldDouble.substring(0, 1));
+        }
+        return yield;
     }
 
 //    private void _initFlipper() {
