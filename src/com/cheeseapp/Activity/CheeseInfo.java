@@ -2,6 +2,7 @@ package com.cheeseapp.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -22,37 +23,54 @@ public class CheeseInfo extends Activity {
     private CheeseDbAdapter mCheeseDb;
     private CheeseTypeDbAdapter mCheeseTypeDb;
     private NoteDbAdapter mNoteDb;
-    private long cheeseId;
+    private long mCheeseId;
     private Bundle savedInstanceState;
 
-    private PopupWindow popup;
+    private PopupWindow mPopup;
     private EditText EditNoteView;
     private static final int DELETE_NOTE_KEY = 1;
     private static final String NOTE_KEY = "note_key";
-    private static final String CHEESE_ID_KEY = "cheese_id";
+
+    public static final String CHEESE_ID_KEY = "cheese_id";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_info);
         this.savedInstanceState = savedInstanceState;
-        
-        _initializeDatabases();
 
-        cheeseId = _getCheeseId(savedInstanceState);
-        Cursor CheeseCursor =  this.mCheeseDb.getCheese(cheeseId);
+        _initializeDatabases();
+        mCheeseTypeDb.prePopulate();
+
+        mCheeseId = _getCheeseId(savedInstanceState);
+        Cursor CheeseCursor =  this.mCheeseDb.getCheese(mCheeseId);
         startManagingCursor(CheeseCursor);
 
         _setupCheesePicture(CheeseCursor);
-        
-        _setupFavoriteStar();
 
         _setupCheeseName(CheeseCursor);
 
         _setupCheeseTypes();
 
+        _setupFavoriteStar();
+
+        _setupMakeItButton();
+
         _setupCheeseDescription(CheeseCursor);
 
         _setupNotes();
+    }
+
+    private void _setupMakeItButton() {
+        Button makeItButton = (Button) findViewById(R.id.makeItButton);
+        makeItButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Recipe.class);
+                intent.putExtra(CHEESE_ID_KEY, mCheeseId);
+
+                startActivity(intent);
+            }
+        });
     }
 
     private void _setupFavoriteStar() {
@@ -71,13 +89,13 @@ public class CheeseInfo extends Activity {
         public void onClick(View view) {
             ImageView favoriteIcon = (ImageView) findViewById(R.id.favoriteStar);
 
-            mCheeseDb.toggleFavorite(cheeseId);
+            mCheeseDb.toggleFavorite(mCheeseId);
             _displayFavoriteStarIcon(favoriteIcon);
         }
     };
 
     private void _displayFavoriteStarIcon(ImageView favoriteStar) {
-        final boolean isFavorite = this.mCheeseDb.isFavorite(cheeseId);
+        final boolean isFavorite = this.mCheeseDb.isFavorite(mCheeseId);
 
         int starIcon;
         if (isFavorite) {
@@ -103,9 +121,9 @@ public class CheeseInfo extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            if (popup != null) {
+            if (mPopup != null) {
                 EditNoteView.setText("");
-                popup.dismiss();
+                mPopup.dismiss();
             }
         }
 
@@ -123,8 +141,8 @@ public class CheeseInfo extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (popup != null) {
-            popup.dismiss();
+        if (mPopup != null) {
+            mPopup.dismiss();
         }
     }
 
@@ -138,7 +156,7 @@ public class CheeseInfo extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putSerializable(CHEESE_ID_KEY, cheeseId);
+        outState.putSerializable(CHEESE_ID_KEY, mCheeseId);
         if (EditNoteView != null) {
             String noteText = EditNoteView.getText().toString();
             if (!noteText.isEmpty()) {
@@ -176,12 +194,12 @@ public class CheeseInfo extends Activity {
     }
 
     private void _setupCheeseTypes() {
-        Cursor TypeCursor = this.mCheeseTypeDb.getCheeseTypesForCheese(cheeseId);
+        Cursor TypeCursor = this.mCheeseTypeDb.getCheeseTypesForCheese(mCheeseId);
         startManagingCursor(TypeCursor);
 
         String allCheeseTypes = "";
         TypeCursor.moveToFirst();
-        for (int i = 0; i < TypeCursor.getCount(); i++) {
+        while (!TypeCursor.isAfterLast()) {
             String cheeseType = TypeCursor.getString(TypeCursor.getColumnIndexOrThrow(CheeseTypeDbAdapter.KEY_TYPE));
             String formattedCheeseType = cheeseType + "\n";
             allCheeseTypes += formattedCheeseType;
@@ -196,7 +214,7 @@ public class CheeseInfo extends Activity {
         int firstColumn = 1;
         int picResource = Util.getImageResourceFromCursor(this, cheeseCursor, firstColumn);
 
-        ImageView imageView = (ImageView) findViewById(R.id.largeCheeseImg);
+        ImageView imageView = (ImageView) findViewById(R.id.largeInfoCheeseImg);
         imageView.setImageResource(picResource);
     }
 
@@ -246,16 +264,16 @@ public class CheeseInfo extends Activity {
             int width = display.getWidth() - popupMargin;
             int height = display.getHeight() - popupMargin * 2;
 
-            popup = new PopupWindow(layout, width, height, true);
-            popup.setAnimationStyle(R.style.Animation_Popup);
+            mPopup = new PopupWindow(layout, width, height, true);
+            mPopup.setAnimationStyle(R.style.Animation_Popup);
 
             //This is so it can register on key events
-            popup.setBackgroundDrawable(new BitmapDrawable());
+            mPopup.setBackgroundDrawable(new BitmapDrawable());
 
-            //Delay launching popup until the end of the UI cycle to avoid a BadTokenException
+            //Delay launching mPopup until the end of the UI cycle to avoid a BadTokenException
             findViewById(R.id.cheeseInfoLayout).post(new Runnable() {
                 public void run() {
-                    popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+                    mPopup.showAtLocation(layout, Gravity.CENTER, 0, 0);
                 }
             });
 
@@ -263,7 +281,7 @@ public class CheeseInfo extends Activity {
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     EditNoteView.setText("");
-                    popup.dismiss();
+                    mPopup.dismiss();
                 }
             });
 
@@ -278,13 +296,13 @@ public class CheeseInfo extends Activity {
                 public void onClick(View view) {
                     String note = EditNoteView.getText().toString();
                     if (!note.isEmpty()) {
-                        mNoteDb.addNote(cheeseId, note);
+                        mNoteDb.addNote(mCheeseId, note);
                         //Clear text so it doesn't keep trying to pop up the window with the old text
                         EditNoteView.setText("");
                     }
 
                     _displayNotes();
-                    popup.dismiss();
+                    mPopup.dismiss();
                 }
             });
 
@@ -294,7 +312,7 @@ public class CheeseInfo extends Activity {
     }
 
     private void _displayNotes() {
-        Cursor myNotes = this.mNoteDb.getNotesForCheese(cheeseId);
+        Cursor myNotes = this.mNoteDb.getNotesForCheese(mCheeseId);
         startManagingCursor(myNotes);
 
         String[] from = new String[] {NoteDbAdapter.KEY_NOTE};

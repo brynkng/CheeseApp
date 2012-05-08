@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/recipeHome"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="#FFFFFF">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5sp"
+                        android:layout_marginBottom="5sp">
+                    <ImageView
+                            android:id="@+id/recipeCheeseImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="125sp"
+                            android:maxWidth="125sp"
+                            android:layout_margin="4sp"
+                            android:src="@drawable/swiss"
+                            />
+                    <TextView
+                            android:id="@+id/recipeCheeseName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5sp"
+                            android:layout_gravity="center"
+                            android:textSize="35sp"
+                            android:textColor="#000000"
+                            android:text="Cheddar"
+                            />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10sp"
+                        >
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="fill"
+                                    android:textSize="18sp"
+                                    android:text="Approximate Time: "
+                                    android:textColor="#000000"
+                                    />
+                            <TextView
+                                    android:id="@+id/timeText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:textStyle="bold"
+                                    android:textSize="23sp"
+                                    android:text="5 hours"
+                                    android:textColor="#000000"
+                                    />
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:textSize="18sp"
+                                    android:text="Yield: "
+                                    android:textColor="#000000"
+                                    />
+                            <TextView
+                                    android:id="@+id/yieldText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:textStyle="bold"
+                                    android:textSize="23sp"
+                                    android:text="2 pounds"
+                                    android:textColor="#000000"
+                                    />
+
+                        </TableRow>
+
+                    </TableLayout>
+                    <Button
+                            android:id="@+id/changeYieldButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="Change Yield"
+                            />
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="10sp"
+                        android:paddingLeft="10sp"
+                        android:paddingTop="5sp"
+                        android:paddingRight="5sp"
+                        android:paddingBottom="5sp"
+                        android:background="@drawable/inset_border">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5sp"
+                            android:textSize="20sp"
+                            android:text="Ingredients:"
+                            android:textColor="#000000"
+                            />
+                    <LinearLayout
+                            android:id="@+id/mainIngredientList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10sp"
+                            />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5sp"
+                            android:layout_marginTop="5sp"
+                            android:gravity="bottom">
+                        <ImageView
+                                android:id="@+id/recipeCheeseImg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/arrow_left"
+                                />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2sp"
+                                android:layout_marginRight="10sp"
+                                android:layout_marginLeft="10sp"
+                                android:text="Swipe to start"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                />
+
+                        <ImageView
+                                android:id="@+id/recipeCheeseImg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/arrow_right"
+                                />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </ViewFlipper>
+    </ScrollView>
+</LinearLayout>

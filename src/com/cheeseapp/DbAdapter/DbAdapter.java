@@ -90,6 +90,7 @@ abstract public class DbAdapter {
                 + "("
                 + RecipeDbAdapter.KEY_ID + " integer primary key autoincrement,"
                 + RecipeDbAdapter.KEY_TIME + " integer,"
+                + RecipeDbAdapter.KEY_CHEESE_ID + " integer,"
                 + RecipeDbAdapter.KEY_YIELD + " integer"
                 + ");";
         TABLE_CREATES.add(recipeTable);

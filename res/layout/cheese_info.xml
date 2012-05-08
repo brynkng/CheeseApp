@@ -1,120 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cheeseInfoLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF"
->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-    >
-
-        <ImageView
-            android:id="@+id/largeCheeseImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:maxHeight="125dp"
-            android:maxWidth="125dp"
-            android:layout_margin="4dp"
-            android:src="@drawable/swiss"
-        />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-        >
-            <TextView
-                android:id="@+id/cheeseInfoName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textColor="#000000"
-                android:text="Cheese Name"
-            />
-
-            <TextView
-                android:id="@+id/cheeseTypes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="19sp"
-                android:textColor="#000000"
-                android:layout_marginLeft="10dp"
-                android:text="Types"
-            />
-
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/favoriteText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:clickable="true"
-            android:text="Favorite?"
-        />
-        <ImageView
-            android:id="@+id/favoriteStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:adjustViewBounds="true"
-            android:maxHeight="32dp"
-            android:maxWidth="32dp"
-            android:src="@drawable/star_on"
-        />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_margin="8dp"
-        android:textColor="#000000"
-        android:text="I am a description! I am a description! I am a description! I am a description! I am a description!"
-    />
-    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cheeseInfoLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:gravity="bottom">
-        <TextView
+        android:background="#FFFFFF"
+        >
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/notes_title"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:textColor="#000000"
-            android:background="@drawable/bottom_line"
+            android:orientation="horizontal"
+            >
+
+        <ImageView
+                android:id="@+id/largeInfoCheeseImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxHeight="125dp"
+                android:maxWidth="125dp"
+                android:layout_margin="4dp"
+                android:src="@drawable/swiss"
+                />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+            <TextView
+                    android:id="@+id/cheeseInfoName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textSize="30sp"
+                    android:textColor="#000000"
+                    android:text="Gouda"
+                    />
+
+            <TextView
+                    android:id="@+id/cheeseTypes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:text="Types"
+                    />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/favoriteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text="Favorite?"
+                />
+        <ImageView
+                android:id="@+id/favoriteStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:adjustViewBounds="true"
+                android:maxHeight="32dp"
+                android:maxWidth="32dp"
+                android:src="@drawable/star_on"
+                />
+    </LinearLayout>
+    <Button
+        android:id="@+id/makeItButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:width="200dp"
+        android:text="Make it!"
+        android:textSize="20dp"
+        android:textStyle="bold"
         />
+    <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_margin="8dp"
+            android:textColor="#000000"
+            android:text="I am a description! I am a description! I am a description! I am a description! I am a description!"
+            />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:gravity="bottom">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/notes_title"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:background="@drawable/bottom_line"
+                />
 
         <ListView
-            android:id="@+id/note_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:cacheColorHint="#00000000"
-            android:divider="#FFDDDDDD"
-            android:dividerHeight="1dp"
-        />
+                android:id="@+id/note_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:divider="#FFDDDDDD"
+                android:dividerHeight="1dp"
+                />
         <Button
-            android:id="@+id/addNoteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Add Note"
-        />
+                android:id="@+id/addNoteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Add Note"
+                />
     </LinearLayout>
 
 </LinearLayout>

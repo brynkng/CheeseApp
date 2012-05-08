@@ -24,7 +24,15 @@ public class IngredientDbAdapter extends DbAdapter{
     @Override
     public void prePopulate() {
         this.mDb.execSQL("delete from " + TABLE);
-        this.mDb.execSQL("INSERT INTO directions (time, yield) values (7, 2)");
+        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
+        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Whole Milk', 'Gallon')");
+        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Mesophilic Starter Culture', 'Packet')");
+        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Rennet', 'tsp')");
+
+        this.mDb.execSQL("delete from " + LINKER_TABLE);
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (1, 1, 1, 2)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (2, 1, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
     }
 
     public IngredientDbAdapter(Context ctx) {

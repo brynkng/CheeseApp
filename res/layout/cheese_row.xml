@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-          android:orientation="horizontal"
-          android:layout_height="48dp"
-          android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:layout_height="48dp"
+              android:layout_width="match_parent"
         >
 
     <ImageView
@@ -15,7 +15,7 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:src="@drawable/swiss"
-    />
+            />
     <TextView
             android:id="@+id/cheeseRowName"
             android:layout_height="wrap_content"
@@ -25,13 +25,13 @@
             android:text="Sample Cheese"
             android:textSize="18sp"
             android:textColor="#000000"
-    />
+            />
     <ImageView
             android:id="@+id/listFavoriteIcon"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:gravity="right"
-    />
+            />
 
 </LinearLayout>
