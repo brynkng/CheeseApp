@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="exception" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="Android Exception" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState>
@@ -7,18 +18,25 @@
         <option name="dockMode" value="" />
         <option name="nightMode" value="notnight" />
         <option name="targetHashString" value="android-10" />
-        <option name="theme" value="Theme.Light" />
+        <option name="theme" value="Theme" />
       </GlobalState>
     </option>
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Android Exception" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/cloning_1_7_8.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CheeseApp.iml" afterPath="$PROJECT_DIR$/CheeseApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" afterPath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe.xml" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
     </list>
     <ignored path="Cheese App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,7 +73,20 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="137" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="328" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="222" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -109,13 +140,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Recipe.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Recipe.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="45" selection-start="2732" selection-end="2732" vertical-scroll-proportion="0.36743215">
+            <state line="146" column="17" selection-start="4940" selection-end="4940" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1003#1012#0" expanded="true" />
+                <element signature="e#1083#1092#0" expanded="true" />
+                <element signature="e#1868#1874#0" expanded="true" />
+                <element signature="e#6726#6756#1" expanded="true" />
+                <element signature="e#7670#7686#0" expanded="true" />
+                <element signature="e#8247#8256#0" expanded="true" />
+                <element signature="e#8373#8389#0" expanded="true" />
+                <element signature="e#8462#8492#1" expanded="true" />
+                <element signature="e#11740#11770#1" expanded="true" />
+                <element signature="e#12066#12096#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="note_popup.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="188" column="40" selection-start="5694" selection-end="5694" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="note_row.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/note_row.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="102" column="42" selection-start="3901" selection-end="3901" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -129,10 +206,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recipe.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="recipe.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="40" selection-start="4742" selection-end="4742" vertical-scroll-proportion="0.0">
+            <state line="11" column="15" selection-start="440" selection-end="440" vertical-scroll-proportion="0.2261185">
               <folding />
             </state>
           </provider>
@@ -165,42 +242,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="note_popup.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="popup_background.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable/popup_background.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="33" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inset_border.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable/inset_border.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="54" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="44" selection-start="9107" selection-end="9107" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -209,14 +250,12 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
     <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/note_popup.xml" />
         <option value="$PROJECT_DIR$/res/drawable/popup_inset_background.xml" />
         <option value="$PROJECT_DIR$/res/values/popup_from_right_style.xml" />
@@ -228,10 +267,11 @@
         <option value="$PROJECT_DIR$/res/layout/change_yield_popup.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/spinner_layout.xml" />
-        <option value="$PROJECT_DIR$/res/layout/recipe.xml" />
         <option value="$PROJECT_DIR$/res/layout/yield_spinner_layout.xml" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
+        <option value="$PROJECT_DIR$/res/layout/recipe.xml" />
       </list>
     </option>
   </component>
@@ -311,6 +351,20 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CheeseApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,162 +376,6 @@
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="widget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -518,54 +416,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DbAdapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -638,42 +488,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="anim" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -798,94 +612,16 @@
         </subPane>
         <subPane subId="All" />
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="ExportedApkPath" value="C:\Users\Bryan\Dropbox\development\android\CheeseApp\CheeseApp.apk" />
-    <property name="options.lastSelected" value="editing.templates" />
+    <property name="options.lastSelected" value="reference.projectsettings.compiler.excludes" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="ExportedModule" value="CheeseApp" />
@@ -1203,29 +939,31 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21643163" sideWeight="0.67730904" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21643163" sideWeight="0.67808217" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954017" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39794755" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39794755" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31698975" sideWeight="0.50030655" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329859" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870968" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1563458" sideWeight="0.6830103" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2035561" sideWeight="0.60205245" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.322691" sideWeight="0.4954016" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30330673" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1563458" sideWeight="0.67730904" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2035561" sideWeight="0.67808217" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3219178" sideWeight="0.4954016" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1492" height="836" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30330673" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1261,8 +999,11 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved the UI for yield modifier" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="First save point on view flipper&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1282,6 +1023,8 @@
     <MESSAGE value="First view for recipe in view flipper." />
     <MESSAGE value="Working Change Yield popup." />
     <MESSAGE value="Improved the UI for yield modifier" />
+    <MESSAGE value="Now all dependencies in Recipe are cached in saveStateInstance" />
+    <MESSAGE value="First save point on view flipper&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1291,46 +1034,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="92" selection-start="4168" selection-end="4168" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/shrink_from_topleft_to_bottomright.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/popup_from_bottom_style.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="39" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/popup_from_bottomright_style.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="41" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-10/android.jar!/java/lang/Integer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="36" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/inset_border.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="54" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="44" selection-start="9107" selection-end="9107" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/popup_background.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="33" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" />
@@ -1338,16 +1041,62 @@
     </entry>
     <entry file="jar://C:/android/android-2.3.3_r1-sources.jar!/frameworks/base/core/java/android/widget/ArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="389" column="55" selection-start="13147" selection-end="13147" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="389" column="55" selection-start="13147" selection-end="13147" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-10/android.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="11" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-10/android.jar!/java/util/Map.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="21" selection-start="742" selection-end="742" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/cloning-1.7.8.jar!/com/rits/cloning/Cloner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="17" selection-start="2938" selection-end="2938" vertical-scroll-proportion="-6.2" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="90" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="188" column="40" selection-start="5694" selection-end="5694" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/note_row.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="42" selection-start="3901" selection-end="3901" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="22" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/yield_spinner_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="30" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="24" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/popup_inset_background.xml">
@@ -1355,33 +1104,29 @@
         <state line="16" column="41" selection-start="472" selection-end="478" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="40" selection-start="4742" selection-end="4742" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/yield_spinner_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="30" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="22" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="45" selection-start="2732" selection-end="2732" vertical-scroll-proportion="0.36743215">
+        <state line="146" column="17" selection-start="4940" selection-end="4940" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1003#1012#0" expanded="true" />
+            <element signature="e#1083#1092#0" expanded="true" />
+            <element signature="e#1868#1874#0" expanded="true" />
+            <element signature="e#6726#6756#1" expanded="true" />
+            <element signature="e#7670#7686#0" expanded="true" />
+            <element signature="e#8247#8256#0" expanded="true" />
+            <element signature="e#8373#8389#0" expanded="true" />
+            <element signature="e#8462#8492#1" expanded="true" />
+            <element signature="e#11740#11770#1" expanded="true" />
+            <element signature="e#12066#12096#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="15" selection-start="440" selection-end="440" vertical-scroll-proportion="0.2261185">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1402,7 +1147,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android (CheeseApp)|Android</last-edited>
+          <last-edited>Android</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1425,7 +1170,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android 2.3.3 Platform</last-edited>
+          <last-edited>1.6</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1461,6 +1206,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>cloning-1.7.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

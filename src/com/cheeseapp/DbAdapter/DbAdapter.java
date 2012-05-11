@@ -100,7 +100,7 @@ abstract public class DbAdapter {
                 + "("
                 + IngredientDbAdapter.KEY_ID + " integer primary key autoincrement,"
                 + IngredientDbAdapter.KEY_NAME + " text,"
-                + IngredientDbAdapter.KEY_MEASUREMENT_NAME + " text"
+                + IngredientDbAdapter.KEY_UNIT + " text"
                 + ");";
         TABLE_CREATES.add(ingredientsTable);
 

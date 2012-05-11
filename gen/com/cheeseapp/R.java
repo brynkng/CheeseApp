@@ -49,19 +49,21 @@ public final class R {
         public static final int favoriteText=0x7f080004;
         public static final int largeInfoCheeseImg=0x7f080001;
         public static final int listFavoriteIcon=0x7f08000c;
-        public static final int mainIngredientList=0x7f080017;
+        public static final int mainIngredientList=0x7f080019;
         public static final int makeItButton=0x7f080006;
         public static final int notePopup=0x7f08000d;
         public static final int note_list=0x7f080008;
         public static final int note_row=0x7f080011;
-        public static final int recipeCheeseImg=0x7f080013;
-        public static final int recipeCheeseName=0x7f080014;
+        public static final int recipeCheeseImg=0x7f080014;
+        public static final int recipeCheeseName=0x7f080015;
         public static final int recipeLayout=0x7f080012;
-        public static final int recipeYieldSpinner=0x7f080016;
-        public static final int recipeYieldSpinnerLayout=0x7f080018;
+        public static final int recipeViewFlipper=0x7f080013;
+        public static final int recipeWarningTextLayout=0x7f080018;
+        public static final int recipeYieldSpinner=0x7f080017;
+        public static final int recipeYieldSpinnerLayout=0x7f08001a;
         public static final int saveNoteButton=0x7f080010;
         public static final int smallCheeseImg=0x7f08000a;
-        public static final int timeText=0x7f080015;
+        public static final int timeText=0x7f080016;
     }
     public static final class layout {
         public static final int cheese_info=0x7f030000;

@@ -11,7 +11,7 @@ import com.cheeseapp.DbAdapter.*;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * User: Bryan King
@@ -23,15 +23,20 @@ public class Recipe extends Activity {
     private CheeseDbAdapter mCheeseDb;
     private RecipeDbAdapter mRecipeDb;
     private IngredientDbAdapter mIngredientDb;
+    private Cursor mRecipeCursor;
+    private Cursor mCheeseCursor;
 
     private ViewFlipper mFlipper;
     private long mRecipeId;
     private PopupWindow mPopup;
+    private Double mOriginalYield;
     private Double mYield;
-    private ArrayList mRecipeViewList;
+    private ArrayList<View> mRecipeViewList;
     private int mCheeseImgResource;
     private String mCheeseName;
     private String mTime;
+    private ArrayList<HashMap> mIngredients = new ArrayList<HashMap>();
+    private ArrayList<HashMap> mOriginalIngredients = new ArrayList<HashMap>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,54 +45,78 @@ public class Recipe extends Activity {
         mIngredientDb.prePopulate();
 
         mCheeseId = _getCheeseId(savedInstanceState);
-        Cursor CheeseCursor = mCheeseDb.getCheese(mCheeseId);
-        mCheeseImgResource = _getCheeseImageResource(savedInstanceState, CheeseCursor);
-        mCheeseName = _getCheeseName(savedInstanceState, CheeseCursor);
+        mCheeseImgResource = _getCheeseImageResource(savedInstanceState);
+        mCheeseName = _getCheeseName(savedInstanceState);
 
-        Cursor RecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
-        mRecipeId = _getRecipeId(savedInstanceState, RecipeCursor);
-        mTime = _getTime(savedInstanceState, RecipeCursor);
-        mYield = _getCheeseYield(savedInstanceState, RecipeCursor);
+        mRecipeId = _getRecipeId(savedInstanceState);
+        mTime = _getTime(savedInstanceState);
+        mYield = _getCheeseYield(savedInstanceState);
+        mIngredients = _getIngredients(savedInstanceState);
+        
+        mRecipeViewList = _getRecipeViewList();
     }
 
-    private String _getTime(Bundle savedInstanceState, Cursor RecipeCursor) {
-        String time = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
+    private ArrayList<View> _getRecipeViewList() {
+        ArrayList<View> recipeViewList = new ArrayList<View>();
+        LinearLayout recipeViewLayout = new LinearLayout(this);
+        TextView recipeText = new TextView(this);
+        recipeText.setText("This is a recipe! Hello Bean.");
+        recipeViewLayout.addView(recipeText);
+        recipeViewList.add(recipeViewLayout);
+
+        return recipeViewList;
+    }
+
+    private String _getTime(Bundle savedInstanceState) {
+        String time = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("time");
 
         if (time == null) {
+            Cursor RecipeCursor = _getRecipeCursor();
             time = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
         }
 
         return time;
     }
 
-    private String _getCheeseName(Bundle savedInstanceState, Cursor CheeseCursor) {
+    private String _getCheeseName(Bundle savedInstanceState) {
         String cheeseName = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
         
         if (cheeseName == null) {
+            Cursor CheeseCursor = _getCheeseCursor();
             cheeseName = CheeseCursor.getString(CheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
         }
 
         return cheeseName;
     }
 
-    private long _getRecipeId(Bundle savedInstanceState, Cursor RecipeCursor) {
+    private long _getRecipeId(Bundle savedInstanceState) {
         Long recipeId = (savedInstanceState == null) ? null :  (Long) savedInstanceState.getSerializable("recipe_id");
         
         if (recipeId == null) {
+            Cursor RecipeCursor = _getRecipeCursor();
             recipeId = RecipeCursor.getLong(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
         }
 
         return recipeId;
     }
 
-    private int _getCheeseImageResource(Bundle savedInstanceState, Cursor CheeseCursor) {
+    private int _getCheeseImageResource(Bundle savedInstanceState) {
         Integer cheeseImgResource = (savedInstanceState == null) ? null :  (Integer) savedInstanceState.getSerializable("cheese_img_resource");
 
         if (cheeseImgResource == null) {
+            Cursor CheeseCursor = _getCheeseCursor();
             cheeseImgResource = Util.getImageResourceFromCursor(this, CheeseCursor, 1);
         }
         
         return cheeseImgResource;
+    }
+
+    private Cursor _getCheeseCursor() {
+        if (mCheeseCursor == null) {
+            mCheeseCursor = mCheeseDb.getCheese(mCheeseId);
+        }
+
+        return mCheeseCursor;
     }
 
     @Override
@@ -108,13 +137,37 @@ public class Recipe extends Activity {
         outState.putString("time", mTime);
         outState.putInt("cheese_img_resource", mCheeseImgResource);
         outState.putDouble("yield", mYield);
+        outState.putSerializable("ingredients", mIngredients);
     }
 
     private void _initializeFlipper() {
-        mFlipper = new ViewFlipper(this);
+        mFlipper = (ViewFlipper) findViewById(R.id.recipeViewFlipper);
         View recipeLayoutView = _getHomeRecipeLayoutView();
+
+        (Button) button = findViewById(R.id.button);
+        recipeLayoutView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mFlipper.startFlipping();
+                        mFlipper.showNext();
+                    }
+                }
+        );
         
         mFlipper.addView(recipeLayoutView);
+
+        for (View recipeView : mRecipeViewList) {
+            mFlipper.addView(recipeView);
+        }
+
+        mFlipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFlipper.startFlipping();
+                mFlipper.showNext();
+            }
+        });
 
         setContentView(mFlipper);
     }
@@ -136,6 +189,97 @@ public class Recipe extends Activity {
         timeView.setText(mTime + " hours");
 
         //Yield
+        _setupYieldSpinner(recipeLayout);
+
+        //Recipe ingredients
+        _setupRecipeIngredients(recipeLayout);
+
+        return recipeLayout;
+    }
+
+    private ArrayList<HashMap> _getIngredients(Bundle savedInstanceState) {
+        @SuppressWarnings("unchecked")
+        ArrayList<HashMap> ingredients = (savedInstanceState == null) ? null :  (ArrayList<HashMap>) savedInstanceState.getSerializable("ingredients");
+        
+        if (ingredients == null) {
+            ingredients = new ArrayList<HashMap>();
+            Cursor ingredientCursor = mIngredientDb.getIngredientsForRecipe(mRecipeId);
+            ingredientCursor.moveToFirst();
+            while (!ingredientCursor.isAfterLast()) {
+                String ingredientName = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_NAME));
+                String quantity = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.LINKER_KEY_QUANTITY));
+                String unit = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_UNIT));
+
+                HashMap<String, String> ingredientParts = new HashMap<String, String>();
+                ingredientParts.put("name", ingredientName);
+                ingredientParts.put("quantity", quantity);
+                ingredientParts.put("unit", unit);
+
+                ingredients.add(ingredientParts);
+
+                ingredientCursor.moveToNext();
+            }
+
+            mOriginalIngredients = _getClonedArrayListHashMap(ingredients);
+        }
+
+        return ingredients;
+    }
+
+    private ArrayList<HashMap> _getClonedArrayListHashMap(ArrayList<HashMap> ingredients) {
+        ArrayList<HashMap> clonedArrayList = new ArrayList<HashMap>();
+
+        for (HashMap ingredient : ingredients) {
+            HashMap<String, String> newIngredient = new HashMap<String, String>();
+            for (Object o : ingredient.entrySet()) {
+                @SuppressWarnings("unchecked")
+                HashMap.Entry<String, String> ingredientPart = (HashMap.Entry<String, String>) o;
+                newIngredient.put(ingredientPart.getKey(), ingredientPart.getValue());
+            }
+            
+            clonedArrayList.add(newIngredient);
+        }
+
+        return clonedArrayList;
+    }
+
+    private void _setupRecipeIngredients(View recipeLayout) {
+        LinearLayout ingredientList = (LinearLayout) recipeLayout.findViewById(R.id.mainIngredientList);
+
+        LinearLayout warningTextLayout = (LinearLayout) recipeLayout.findViewById(R.id.recipeWarningTextLayout);
+        if (!mYield.equals(mOriginalYield)) {
+            TextView warningText = new TextView(this);
+            warningText.setTextColor(Color.parseColor("#ff0000"));
+            warningText.setTextSize(16);
+            warningText.setText("Warning - Modified ingredient quantities are approximated");
+
+            warningTextLayout.addView(warningText);
+        } else {
+            warningTextLayout.removeAllViews();
+        }
+
+        if (ingredientList.getChildCount() > 0) {
+            ingredientList.removeAllViews();
+        }
+
+        for (HashMap ingredient : mIngredients) {
+            TextView ingredientView = new TextView(this);
+            Double quantity = Double.parseDouble((String) ingredient.get("quantity"));
+            String unit = (String) ingredient.get("unit");
+            String name = (String) ingredient.get("name");
+
+            if (quantity > 1) {
+                unit = unit + "s";
+            }
+
+            ingredientView.setText("• " + quantity + " " + unit + " " + name);
+            ingredientView.setTextColor(Color.BLACK);
+            ingredientView.setTextSize(18);
+            ingredientList.addView(ingredientView);
+        }
+    }
+
+    private void _setupYieldSpinner(final View recipeLayout) {
         Spinner YieldSpinner = (Spinner) recipeLayout.findViewById(R.id.recipeYieldSpinner);
         ArrayAdapter<CharSequence> yieldSpinnerAdapter = ArrayAdapter.createFromResource(
                 this,
@@ -151,7 +295,7 @@ public class Recipe extends Activity {
         } else {
             yieldPosition = (int) Math.round(mYield);
         }
-        
+
         YieldSpinner.setSelection(yieldPosition);
         YieldSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -161,41 +305,51 @@ public class Recipe extends Activity {
                 } else {
                     mYield = Double.parseDouble(Integer.toString(position));
                 }
+
+                _recalculateIngredientQuantities(recipeLayout);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-        //Recipe ingredients
-        LinearLayout ingredientList = (LinearLayout) recipeLayout.findViewById(R.id.mainIngredientList);
-        Cursor ingredientCursor = mIngredientDb.getIngredientsForRecipe(mRecipeId);
-        ingredientCursor.moveToFirst();
-        while (!ingredientCursor.isAfterLast()) {
-            TextView ingredientView = new TextView(this);
-            String ingredientName = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_NAME));
-            String quantity = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.LINKER_KEY_QUANTITY));
-            String measurementName = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_MEASUREMENT_NAME));
-            ingredientView.setText("• " + quantity + " " + measurementName + " " + ingredientName);
-            ingredientView.setTextColor(Color.BLACK);
-            ingredientView.setTextSize(18);
-            ingredientList.addView(ingredientView);
-
-            ingredientCursor.moveToNext();
-        }
-
-        return recipeLayout;
     }
 
-    private Double _getCheeseYield(Bundle savedInstanceState, Cursor RecipeCursor) {
+    private void _recalculateIngredientQuantities(View recipeLayout) {
+
+        for (int i=0; i < mOriginalIngredients.size(); i++) {
+            @SuppressWarnings("unchecked")
+            HashMap<String, String> ingredient = (HashMap<String, String>) mOriginalIngredients.get(i);
+            
+            Double quantity = Double.parseDouble(ingredient.get("quantity"));
+            String newQuantity = String.valueOf((mYield / mOriginalYield) * quantity);
+
+            @SuppressWarnings("unchecked")
+            HashMap<String, String> updatedIngredient = mIngredients.get(i);
+            updatedIngredient.put("quantity", newQuantity);
+        }
+        
+        _setupRecipeIngredients(recipeLayout);
+    }
+
+    private Double _getCheeseYield(Bundle savedInstanceState) {
         Double yield = (savedInstanceState == null) ? null :  (Double) savedInstanceState.getSerializable("yield");
         
         if (yield == null) {
+            Cursor RecipeCursor = _getRecipeCursor();
             String yieldDouble = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
             yield = Double.parseDouble(yieldDouble.substring(0, 1));
+            mOriginalYield = yield;
         }
         return yield;
+    }
+
+    private Cursor _getRecipeCursor() {
+        if (mRecipeCursor == null) {
+            mRecipeCursor = mRecipeDb.getRecipeForCheese(mCheeseId);
+        }
+        
+        return mRecipeCursor;
     }
 
 //    private void _initFlipper() {

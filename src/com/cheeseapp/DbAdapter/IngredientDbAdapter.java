@@ -13,7 +13,7 @@ public class IngredientDbAdapter extends DbAdapter{
     public static final String TABLE = "ingredients";
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
-    public static final String KEY_MEASUREMENT_NAME = "measurement_name";
+    public static final String KEY_UNIT = "unit";
 
     public static final String LINKER_TABLE = "recipe_ingredients";
     public static final String LINKER_KEY_QUANTITY = "quantity";
@@ -25,9 +25,9 @@ public class IngredientDbAdapter extends DbAdapter{
     public void prePopulate() {
         this.mDb.execSQL("delete from " + TABLE);
         this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Whole Milk', 'Gallon')");
-        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Mesophilic Starter Culture', 'Packet')");
-        this.mDb.execSQL("INSERT INTO ingredients (name, measurement_name) values ('Rennet', 'tsp')");
+        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Whole Milk', 'Gallon')");
+        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Mesophilic Starter Culture', 'Packet')");
+        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Rennet', 'teaspoon')");
 
         this.mDb.execSQL("delete from " + LINKER_TABLE);
         this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (1, 1, 1, 2)");
@@ -45,7 +45,7 @@ public class IngredientDbAdapter extends DbAdapter{
 
         return sqlLiteBuilder.query(
                 mDb,
-                new String[] {KEY_ID, KEY_NAME, LINKER_KEY_QUANTITY, KEY_MEASUREMENT_NAME},
+                new String[] {KEY_ID, KEY_NAME, LINKER_KEY_QUANTITY, KEY_UNIT},
                 LINKER_KEY_RECIPE_ID + " = ?",
                 new String[] {Long.toString(recipeId)}
         );
@@ -57,7 +57,7 @@ public class IngredientDbAdapter extends DbAdapter{
 
         return sqlLiteBuilder.query(
                 mDb,
-                new String[] {KEY_ID, KEY_NAME, LINKER_KEY_QUANTITY, KEY_MEASUREMENT_NAME},
+                new String[] {KEY_ID, KEY_NAME, LINKER_KEY_QUANTITY, KEY_UNIT},
                 LINKER_KEY_DIRECTION_ID + " = ? ",
                 new String[] {Long.toString(directionId)}
         );
