@@ -28,7 +28,6 @@ public class Recipe extends Activity {
 
     private ViewFlipper mFlipper;
     private long mRecipeId;
-    private PopupWindow mPopup;
     private Double mOriginalYield;
     private Double mYield;
     private ArrayList<View> mRecipeViewList;
@@ -37,10 +36,14 @@ public class Recipe extends Activity {
     private String mTime;
     private ArrayList<HashMap> mIngredients = new ArrayList<HashMap>();
     private ArrayList<HashMap> mOriginalIngredients = new ArrayList<HashMap>();
+    private float lastX;
+    private float lastY;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         _initializeDatabases();
+        setContentView(R.layout.recipe);
+
         mRecipeDb.prePopulate();
         mIngredientDb.prePopulate();
 
@@ -52,8 +55,17 @@ public class Recipe extends Activity {
         mTime = _getTime(savedInstanceState);
         mYield = _getCheeseYield(savedInstanceState);
         mIngredients = _getIngredients(savedInstanceState);
-        
+
         mRecipeViewList = _getRecipeViewList();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mFlipper == null) {
+            _initializeFlipper();
+        }
     }
 
     private ArrayList<View> _getRecipeViewList() {
@@ -80,7 +92,7 @@ public class Recipe extends Activity {
 
     private String _getCheeseName(Bundle savedInstanceState) {
         String cheeseName = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
-        
+
         if (cheeseName == null) {
             Cursor CheeseCursor = _getCheeseCursor();
             cheeseName = CheeseCursor.getString(CheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
@@ -91,7 +103,7 @@ public class Recipe extends Activity {
 
     private long _getRecipeId(Bundle savedInstanceState) {
         Long recipeId = (savedInstanceState == null) ? null :  (Long) savedInstanceState.getSerializable("recipe_id");
-        
+
         if (recipeId == null) {
             Cursor RecipeCursor = _getRecipeCursor();
             recipeId = RecipeCursor.getLong(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_ID));
@@ -107,7 +119,7 @@ public class Recipe extends Activity {
             Cursor CheeseCursor = _getCheeseCursor();
             cheeseImgResource = Util.getImageResourceFromCursor(this, CheeseCursor, 1);
         }
-        
+
         return cheeseImgResource;
     }
 
@@ -117,15 +129,6 @@ public class Recipe extends Activity {
         }
 
         return mCheeseCursor;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        
-        if (mFlipper == null) {
-            _initializeFlipper();
-        }
     }
 
     @Override
@@ -142,39 +145,99 @@ public class Recipe extends Activity {
 
     private void _initializeFlipper() {
         mFlipper = (ViewFlipper) findViewById(R.id.recipeViewFlipper);
+
         View recipeLayoutView = _getHomeRecipeLayoutView();
 
-        (Button) button = findViewById(R.id.button);
-        recipeLayoutView.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mFlipper.startFlipping();
-                        mFlipper.showNext();
-                    }
-                }
-        );
-        
+//        ScrollView scrollView = (ScrollView) recipeLayoutView.findViewById(R.id.recipeScrollLayout);
+//        scrollView.setOnTouchListener(flipperViewsOnTouchListener);
+
+        recipeLayoutView.setOnTouchListener(flipperViewsOnTouchListener);
+
         mFlipper.addView(recipeLayoutView);
 
         for (View recipeView : mRecipeViewList) {
+            recipeView.setOnTouchListener(flipperViewsOnTouchListener);
             mFlipper.addView(recipeView);
         }
 
         mFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFlipper.startFlipping();
                 mFlipper.showNext();
             }
         });
 
-        setContentView(mFlipper);
     }
+
+    /**
+     * This bad boy makes the views flip side to side, or up and down when its a scroll view. It takes in the
+     * x and y coordinates and determines if its going left or right, or up and down and acts accordingly.
+     *
+     * Returning false tells it to continue with the parent functions (like a scroll view going up and down), and
+     * halts the remainder of the touch events.
+     *
+     * Returning true tells it we like what's happening and want to continue to intercept these touch events so we can
+     * keep processing them.
+     */
+    public View.OnTouchListener flipperViewsOnTouchListener = new View.OnTouchListener() {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent touchEvent) {
+
+            switch (touchEvent.getAction()) {
+
+                case MotionEvent.ACTION_DOWN:
+                {
+                    lastX = touchEvent.getX();
+                    lastY = touchEvent.getY();
+                    break;
+                }
+
+                case MotionEvent.ACTION_MOVE:
+                {
+                    float currentX = touchEvent.getX();
+                    float currentY = touchEvent.getY();
+
+                    float distanceX = currentX - lastX;
+                    float distanceY = currentY - lastY;
+
+                    if (Math.abs(distanceY) > Math.abs(distanceX)) {
+                        return false;
+                    } else {
+                        if (currentX < lastX) {
+
+                            //If on last page, don't move further right
+                            if (mFlipper.getDisplayedChild() == mRecipeViewList.size()) {
+                                break;
+                            } else {
+                                mFlipper.setInAnimation(v.getContext(), R.anim.in_from_right);
+                                mFlipper.setOutAnimation(v.getContext(), R.anim.out_to_left);
+                                mFlipper.showNext();
+                            }
+                        } else {
+                            //If on start page don't move further left
+                            if (mFlipper.getDisplayedChild() == 0) {
+                                break;
+                            } else {
+                                mFlipper.setInAnimation(v.getContext(), R.anim.in_from_left);
+                                mFlipper.setOutAnimation(v.getContext(), R.anim.out_to_right);
+                                mFlipper.showPrevious();
+                            }
+                        }
+
+                        return true;
+                    }
+                }
+            }
+
+            boolean onStartPage = mFlipper.getDisplayedChild() != 0;
+            return onStartPage;
+        }
+    };
 
     private View _getHomeRecipeLayoutView() {
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View recipeLayout = inflater.inflate(R.layout.recipe, (ViewGroup) findViewById(R.id.recipeLayout));
+        View recipeLayout = inflater.inflate(R.layout.recipe_home, (ViewGroup) findViewById(R.id.recipeScrollLayout));
 
         //Cheese picture
         ImageView cheeseImg = (ImageView) recipeLayout.findViewById(R.id.recipeCheeseImg);
@@ -248,10 +311,12 @@ public class Recipe extends Activity {
 
         LinearLayout warningTextLayout = (LinearLayout) recipeLayout.findViewById(R.id.recipeWarningTextLayout);
         if (!mYield.equals(mOriginalYield)) {
+            warningTextLayout.removeAllViews();
+
             TextView warningText = new TextView(this);
             warningText.setTextColor(Color.parseColor("#ff0000"));
             warningText.setTextSize(16);
-            warningText.setText("Warning - Modified ingredient quantities are approximated");
+            warningText.setText("Warning - The following recipe is not guaranteed to work for the calculated ingredient quantities");
 
             warningTextLayout.addView(warningText);
         } else {
@@ -352,76 +417,6 @@ public class Recipe extends Activity {
         return mRecipeCursor;
     }
 
-//    private void _initFlipper() {
-//        mFlipper = new ViewFlipper(this);
-//        View currentView = createView(listPosition,null);
-//        if (currentView==null) {
-//            // failed to create the view
-//            finish();
-//            return;
-//        }
-//        mFlipper.addView(currentView);
-//
-//        if (listPosition>0) { // is there a previous?
-//            View prevView = createView(listPosition-1,null);
-//            mFlipper.addView(prevView,0);
-//            mFlipper.showNext();
-//        }
-//
-//        // are we starting at the end and we have more than 2 entries?
-//        if (((listPosition+1)==rowids.length) && (rowids.length > 2)) {
-//            View prevView = createView(listPosition-2,null);
-//            mFlipper.addView(prevView,0);
-//            mFlipper.showNext();
-//        }
-//
-//        if (rowids.length > (listPosition+1)) {  // is there a next?
-//            View nextView = createView(listPosition+1,null);
-//            mFlipper.addView(nextView, mFlipper.getChildCount());
-//        }
-//
-//        // are we starting at the start and we have more than 2 entries?
-//        if ((listPosition==0) && (rowids.length > 2)) {
-//            mFlipper.addView(nextView, mFlipper.getChildCount());
-//        }
-//
-//        setContentView(mFlipper);
-//    }
-
-//    private View createView(int position, View view) {
-//        if (view==null) {
-//            LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            view = inflater.inflate(R.layout.recipe, null);
-//        }
-//        if (_populateFields(rowids[position], view) == false) {
-//            // failed to retreive record
-//            return null;
-//        }
-//        Button previousButton = (Button) view.findViewById(R.id.prev_pass);
-//        if (position>0) {    // is there a previous?
-//            previousButton.setEnabled(true);
-//            previousButton.setOnClickListener(new prevButtonListener());
-//        } else {
-//            previousButton.setEnabled(false);
-//        }
-//        Button nextButton = (Button) view.findViewById(R.id.next_pass);
-//        if (rowids.length > (position+1)) {  // is there a next?
-//            nextButton.setEnabled(true);
-//            nextButton.setOnClickListener(new nextButtonListener());
-//        } else {
-//            nextButton.setEnabled(false);
-//        }
-//
-//        Button goButton = (Button) view.findViewById(R.id.go);
-//        goButton.setOnClickListener(new goButtonListener());
-//
-//        TextView usernameText = (TextView) view.findViewById(R.id.username);
-//        usernameText.setOnClickListener(new usernameTextListener());
-//        TextView passwordText = (TextView) view.findViewById(R.id.password);
-//        passwordText.setOnClickListener(new passwordTextListener());
-//        return view;
-//    }
-
     private void _initializeDatabases() {
         mCheeseDb = new CheeseDbAdapter(this);
         mCheeseDb.open();
@@ -442,19 +437,6 @@ public class Recipe extends Activity {
         super.onDestroy();
     }
 
-//    private void _setupCheesePicture(Cursor mCheeseCursor) {
-//        int firstColumn = 1;
-//        int picResource = Util.getImageResourceFromCursor(this, mCheeseCursor, firstColumn);
-//
-//        ImageView imageView = (ImageView) findViewById(R.id.largeRecipeCheeseImg);
-//        imageView.setImageResource(picResource);
-//    }
-
-//    private void _setupCheeseName(Cursor mCheeseCursor) {
-//        TextView CheeseName = (TextView) findViewById(R.id.cheeseRecipeName);
-//        CheeseName.setText(mCheeseCursor.getString(mCheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME)));
-//    }
-
     private long _getCheeseId(Bundle savedInstanceState) {
         Long cheeseId = (savedInstanceState == null) ? null : (Long) savedInstanceState.getSerializable(CheeseInfo.CHEESE_ID_KEY);
 
@@ -465,5 +447,4 @@ public class Recipe extends Activity {
 
         return cheeseId;
     }
-
 }

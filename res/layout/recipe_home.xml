@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recipeScrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="#FFFFFF">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp">
+        <ImageView
+                android:id="@+id/recipeCheeseImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:maxHeight="125sp"
+                android:maxWidth="125sp"
+                android:src="@drawable/swiss"
+                android:contentDescription="Picture of cheese"/>
+        <TextView
+                android:id="@+id/recipeCheeseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/recipeCheeseImg"
+                android:layout_marginLeft="5sp"
+                android:textSize="35sp"
+                android:textColor="#000000"
+                android:text="Cheddar"
+                />
+
+        <TableLayout
+                android:id="@+id/recipeTimeYieldTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/recipeCheeseImg"
+                android:layout_marginBottom="10sp"
+                >
+            <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="Approximate Time: "
+                        android:textColor="#000000"
+                        />
+                <TextView
+                        android:id="@+id/timeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textStyle="bold"
+                        android:textSize="23sp"
+                        android:text="5 hours"
+                        android:textColor="#000000"
+                        />
+            </TableRow>
+            <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:text="Yield: "
+                        android:textColor="#000000"
+                        />
+                <Spinner
+                        android:id="@+id/recipeYieldSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+                android:id="@+id/recipeWarningTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_below="@id/recipeTimeYieldTable"
+                android:textSize="16sp"
+                android:textColor="#ff0000"
+                />
+
+        <LinearLayout
+                android:id="@+id/recipeIngredientsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/recipeWarningTextLayout"
+                android:layout_margin="10sp"
+                android:paddingLeft="10sp"
+                android:paddingTop="5sp"
+                android:paddingRight="5sp"
+                android:paddingBottom="10sp"
+                android:background="@drawable/inset_border">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5sp"
+                    android:textSize="20sp"
+                    android:text="Ingredients:"
+                    android:textColor="#000000"
+                    />
+
+            <LinearLayout
+                    android:id="@+id/mainIngredientList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10sp"
+                    />
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp"
+                android:layout_below="@id/recipeIngredientsLayout"
+                android:gravity="center_horizontal|bottom"
+                >
+
+            <ImageView
+                    android:id="@+id/recipeCheeseImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_left"
+                    android:contentDescription="swipe left arrow"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_marginLeft="10sp"
+                    android:text="Swipe to start"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right"
+                    android:contentDescription="swipe right arrow"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

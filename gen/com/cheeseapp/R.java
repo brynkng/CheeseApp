@@ -11,8 +11,12 @@ public final class R {
     public static final class anim {
         public static final int grow_from_bottom=0x7f040000;
         public static final int grow_from_bottomright_to_topleft=0x7f040001;
-        public static final int shrink_from_top=0x7f040002;
-        public static final int shrink_from_topleft_to_bottomright=0x7f040003;
+        public static final int in_from_left=0x7f040002;
+        public static final int in_from_right=0x7f040003;
+        public static final int out_to_left=0x7f040004;
+        public static final int out_to_right=0x7f040005;
+        public static final int shrink_from_top=0x7f040006;
+        public static final int shrink_from_topleft_to_bottomright=0x7f040007;
     }
     public static final class array {
         /** Recipe
@@ -49,21 +53,23 @@ public final class R {
         public static final int favoriteText=0x7f080004;
         public static final int largeInfoCheeseImg=0x7f080001;
         public static final int listFavoriteIcon=0x7f08000c;
-        public static final int mainIngredientList=0x7f080019;
+        public static final int mainIngredientList=0x7f08001b;
         public static final int makeItButton=0x7f080006;
         public static final int notePopup=0x7f08000d;
         public static final int note_list=0x7f080008;
         public static final int note_row=0x7f080011;
         public static final int recipeCheeseImg=0x7f080014;
         public static final int recipeCheeseName=0x7f080015;
-        public static final int recipeLayout=0x7f080012;
-        public static final int recipeViewFlipper=0x7f080013;
-        public static final int recipeWarningTextLayout=0x7f080018;
-        public static final int recipeYieldSpinner=0x7f080017;
-        public static final int recipeYieldSpinnerLayout=0x7f08001a;
+        public static final int recipeIngredientsLayout=0x7f08001a;
+        public static final int recipeScrollLayout=0x7f080013;
+        public static final int recipeTimeYieldTable=0x7f080016;
+        public static final int recipeViewFlipper=0x7f080012;
+        public static final int recipeWarningTextLayout=0x7f080019;
+        public static final int recipeYieldSpinner=0x7f080018;
+        public static final int recipeYieldSpinnerLayout=0x7f08001c;
         public static final int saveNoteButton=0x7f080010;
         public static final int smallCheeseImg=0x7f08000a;
-        public static final int timeText=0x7f080016;
+        public static final int timeText=0x7f080017;
     }
     public static final class layout {
         public static final int cheese_info=0x7f030000;
@@ -72,7 +78,8 @@ public final class R {
         public static final int note_popup=0x7f030003;
         public static final int note_row=0x7f030004;
         public static final int recipe=0x7f030005;
-        public static final int yield_spinner_layout=0x7f030006;
+        public static final int recipe_home=0x7f030006;
+        public static final int yield_spinner_layout=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

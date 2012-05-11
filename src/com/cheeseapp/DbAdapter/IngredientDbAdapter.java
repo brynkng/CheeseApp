@@ -33,6 +33,15 @@ public class IngredientDbAdapter extends DbAdapter{
         this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (1, 1, 1, 2)");
         this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (2, 1, 1, 1)");
         this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
+        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
     }
 
     public IngredientDbAdapter(Context ctx) {
