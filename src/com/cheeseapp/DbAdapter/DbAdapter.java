@@ -114,6 +114,15 @@ abstract public class DbAdapter {
                 + ");";
         TABLE_CREATES.add(recipeIngredientsTable);
 
+
+        //glossary entries
+        String glossaryEntriesTable = "CREATE TABLE IF NOT EXISTS " + GlossaryDbAdapter.TABLE
+                + "("
+                + GlossaryDbAdapter.KEY_ID + " integer,"
+                + GlossaryDbAdapter.KEY_WORD + " text,"
+                + GlossaryDbAdapter.KEY_DEFINITION + " text"
+                + ");";
+        TABLE_CREATES.add(glossaryEntriesTable);
     }
 
     abstract void prePopulate();
