@@ -11,7 +11,7 @@ import com.cheeseapp.R;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class Glossary extends SherlockListActivity {
+public class Glossary extends MyCheeseActivity {
 
     private GlossaryDbAdapter mGlossaryDb;
 
@@ -39,7 +39,9 @@ public class Glossary extends SherlockListActivity {
                 from,
                 to
         );
-        setListAdapter(CheeseListAdapter);
+
+        ListView listView = (ListView)findViewById(R.id.glossaryList);
+        listView.setAdapter(CheeseListAdapter);
     }
 
     @Override

@@ -16,13 +16,12 @@ import com.cheeseapp.Util.Util;
 import java.util.*;
 
 import static java.lang.Math.abs;
-import static java.lang.Math.random;
 
 /**
  * User: Bryan King
  * Date: 5/6/12
  */
-public class Recipe extends SherlockActivity {
+public class Recipe extends MyCheeseActivity {
 
     private long mCheeseId;
     private CheeseDbAdapter mCheeseDb;

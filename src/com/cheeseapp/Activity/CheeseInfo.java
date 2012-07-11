@@ -18,7 +18,7 @@ import com.cheeseapp.Util.Util;
  * User: Bryan King
  * Date: 4/29/12
  */
-public class CheeseInfo extends SherlockActivity {
+public class CheeseInfo extends MyCheeseActivity {
 
     private CheeseDbAdapter mCheeseDb;
     private CheeseTypeDbAdapter mCheeseTypeDb;
@@ -36,7 +36,9 @@ public class CheeseInfo extends SherlockActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_info);
+
         this.savedInstanceState = savedInstanceState;
+
 
         _initializeDatabases();
         mCheeseTypeDb.prePopulate();

@@ -8,7 +8,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.cheeseapp.DbAdapter.CheeseDbAdapter;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
@@ -17,22 +17,24 @@ import com.cheeseapp.Util.Util;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class CheeseList extends SherlockListActivity {
+public class CheeseList extends MyCheeseActivity {
 
     private CheeseDbAdapter mCheeseDb;
     private static final int FAVORITE_NOTE_KEY = 1;
+    private ListView mListView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_list);
+        mListView =  (ListView)findViewById(R.id.cheeseList);
+        mListView.setOnItemClickListener(onListItemClickListener);
 
         this.mCheeseDb = new CheeseDbAdapter(this);
         this.mCheeseDb.open();
         this.mCheeseDb.prePopulate();
-
         _setupCheeseList();
 
-        registerForContextMenu(getListView());
+        registerForContextMenu(mListView);
     }
 
     private void _setupCheeseList() {
@@ -49,7 +51,7 @@ public class CheeseList extends SherlockListActivity {
                 to
         );
         CheeseListAdapter.setViewBinder(CheeseListViewBinder);
-        setListAdapter(CheeseListAdapter);
+        mListView.setAdapter(CheeseListAdapter);
     }
 
     @Override
@@ -64,14 +66,13 @@ public class CheeseList extends SherlockListActivity {
         //TODO FILL
     }
 
-    @Override
-    protected void onListItemClick(ListView listView, View view, int position, long cheeseId) {
-        super.onListItemClick(listView, view, position, cheeseId);
-
-        Intent intent = new Intent(this, CheeseInfo.class);
-        intent.putExtra(getString(R.string.key_cheese_id), cheeseId);
-        startActivity(intent);
-    }
+    protected AdapterView.OnItemClickListener onListItemClickListener = new AdapterView.OnItemClickListener() {
+        public void onItemClick(android.widget.AdapterView<?> adapterView, android.view.View view, int i, long l) {
+            Intent intent = new Intent(adapterView.getContext(), CheeseInfo.class);
+            intent.putExtra(getString(R.string.key_cheese_id), l);
+            startActivity(intent);
+        }
+    };
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

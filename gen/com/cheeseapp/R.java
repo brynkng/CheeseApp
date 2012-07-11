@@ -196,7 +196,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int buttonStyleSmall=0x7f010019;
-        /**  Specifies a layout for custom navigation. Overrides navigationMode. 
+        /**  Specifies a layout for custom Navigation. Overrides navigationMode. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -375,7 +375,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int logo=0x7f01003f;
-        /**  The type of navigation to use. 
+        /**  The type of Navigation to use. 
          <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -383,8 +383,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>normal</code></td><td>0</td><td> Normal static title text </td></tr>
-<tr><td><code>listMode</code></td><td>1</td><td> The action bar will use a selection list for navigation. </td></tr>
-<tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for navigation. </td></tr>
+<tr><td><code>listMode</code></td><td>1</td><td> The action bar will use a selection list for Navigation. </td></tr>
+<tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for Navigation. </td></tr>
 </table>
          */
         public static final int navigationMode=0x7f01003a;
@@ -843,48 +843,50 @@ containing a value of this type.
         public static final int abs__titleDivider=0x7f05001c;
         public static final int abs__up=0x7f05000b;
         public static final int addNoteButton=0x7f050030;
-        public static final int cancelNotePopupButton=0x7f050038;
+        public static final int cancelNotePopupButton=0x7f05003a;
         public static final int cheeseInfoLayout=0x7f050027;
         public static final int cheeseInfoName=0x7f050029;
-        public static final int cheeseRowName=0x7f050032;
+        public static final int cheeseList=0x7f050031;
+        public static final int cheeseRowName=0x7f050033;
         public static final int cheeseTypes=0x7f05002a;
         public static final int description=0x7f05002e;
         public static final int disableHome=0x7f050009;
-        public static final int editNoteText=0x7f050037;
+        public static final int editNoteText=0x7f050039;
         public static final int favoriteStar=0x7f05002c;
         public static final int favoriteText=0x7f05002b;
-        public static final int glossaryDefinition=0x7f050035;
-        public static final int glossaryWord=0x7f050034;
+        public static final int glossaryDefinition=0x7f050037;
+        public static final int glossaryList=0x7f050035;
+        public static final int glossaryWord=0x7f050036;
         public static final int homeAsUp=0x7f050006;
         public static final int largeInfoCheeseImg=0x7f050028;
-        public static final int listFavoriteIcon=0x7f050033;
+        public static final int listFavoriteIcon=0x7f050034;
         public static final int listMode=0x7f050002;
-        public static final int mainIngredientList=0x7f050044;
+        public static final int mainIngredientList=0x7f050046;
         public static final int makeItButton=0x7f05002d;
         public static final int normal=0x7f050001;
-        public static final int notePopup=0x7f050036;
+        public static final int notePopup=0x7f050038;
         public static final int note_list=0x7f05002f;
-        public static final int note_row=0x7f05003a;
-        public static final int recipeCheeseImg=0x7f05003d;
-        public static final int recipeCheeseName=0x7f05003e;
-        public static final int recipeDirectionCategory=0x7f050046;
-        public static final int recipeDirectionIngredients=0x7f050047;
-        public static final int recipeIngredientsLayout=0x7f050043;
-        public static final int recipePageDirectionsText=0x7f050048;
-        public static final int recipePageLayout=0x7f050045;
-        public static final int recipeScrollLayout=0x7f05003c;
-        public static final int recipeTimeYieldTable=0x7f05003f;
-        public static final int recipeViewFlipper=0x7f05003b;
-        public static final int recipeWarningTextLayout=0x7f050042;
-        public static final int recipeYieldSpinner=0x7f050041;
-        public static final int recipeYieldSpinnerLayout=0x7f050049;
-        public static final int saveNoteButton=0x7f050039;
+        public static final int note_row=0x7f05003c;
+        public static final int recipeCheeseImg=0x7f05003f;
+        public static final int recipeCheeseName=0x7f050040;
+        public static final int recipeDirectionCategory=0x7f050048;
+        public static final int recipeDirectionIngredients=0x7f050049;
+        public static final int recipeIngredientsLayout=0x7f050045;
+        public static final int recipePageDirectionsText=0x7f05004a;
+        public static final int recipePageLayout=0x7f050047;
+        public static final int recipeScrollLayout=0x7f05003e;
+        public static final int recipeTimeYieldTable=0x7f050041;
+        public static final int recipeViewFlipper=0x7f05003d;
+        public static final int recipeWarningTextLayout=0x7f050044;
+        public static final int recipeYieldSpinner=0x7f050043;
+        public static final int recipeYieldSpinnerLayout=0x7f05004b;
+        public static final int saveNoteButton=0x7f05003b;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
-        public static final int smallCheeseImg=0x7f050031;
+        public static final int smallCheeseImg=0x7f050032;
         public static final int tabMode=0x7f050003;
-        public static final int timeText=0x7f050040;
+        public static final int timeText=0x7f050042;
         public static final int useLogo=0x7f050004;
         public static final int wrap_content=0x7f050000;
     }
@@ -1069,7 +1071,7 @@ containing a value of this type.
            <tr><td><code>{@link #SherlockActionBar_background com.cheeseapp:background}</code></td><td> Specifies a background drawable for the action bar.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_backgroundSplit com.cheeseapp:backgroundSplit}</code></td><td> Specifies a background drawable for the bottom component of a split action bar.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_backgroundStacked com.cheeseapp:backgroundStacked}</code></td><td> Specifies a background drawable for a second stacked row of the action bar.</td></tr>
-           <tr><td><code>{@link #SherlockActionBar_customNavigationLayout com.cheeseapp:customNavigationLayout}</code></td><td> Specifies a layout for custom navigation.</td></tr>
+           <tr><td><code>{@link #SherlockActionBar_customNavigationLayout com.cheeseapp:customNavigationLayout}</code></td><td> Specifies a layout for custom Navigation.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_displayOptions com.cheeseapp:displayOptions}</code></td><td> Options affecting how the action bar is displayed.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_divider com.cheeseapp:divider}</code></td><td> Specifies the drawable used for item dividers.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_height com.cheeseapp:height}</code></td><td> Specifies a fixed height.</td></tr>
@@ -1079,7 +1081,7 @@ containing a value of this type.
            <tr><td><code>{@link #SherlockActionBar_itemPadding com.cheeseapp:itemPadding}</code></td><td> Specifies padding that should be applied to the left and right sides of
              system-provided items in the bar.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_logo com.cheeseapp:logo}</code></td><td> Specifies the drawable used for the application logo.</td></tr>
-           <tr><td><code>{@link #SherlockActionBar_navigationMode com.cheeseapp:navigationMode}</code></td><td> The type of navigation to use.</td></tr>
+           <tr><td><code>{@link #SherlockActionBar_navigationMode com.cheeseapp:navigationMode}</code></td><td> The type of Navigation to use.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_progressBarPadding com.cheeseapp:progressBarPadding}</code></td><td> Specifies the horizontal padding on either end for an embedded progress bar.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_progressBarStyle com.cheeseapp:progressBarStyle}</code></td><td> Specifies a style resource to use for an embedded progress bar.</td></tr>
            <tr><td><code>{@link #SherlockActionBar_subtitle com.cheeseapp:subtitle}</code></td><td> Specifies subtitle text used for navigationMode="normal" </td></tr>
@@ -1159,7 +1161,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**
           <p>
           @attr description
-           Specifies a layout for custom navigation. Overrides navigationMode. 
+           Specifies a layout for custom Navigation. Overrides navigationMode. 
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1291,7 +1293,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**
           <p>
           @attr description
-           The type of navigation to use. 
+           The type of Navigation to use. 
 
 
           <p>Must be one of the following constant values.</p>
@@ -1301,8 +1303,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>normal</code></td><td>0</td><td> Normal static title text </td></tr>
-<tr><td><code>listMode</code></td><td>1</td><td> The action bar will use a selection list for navigation. </td></tr>
-<tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for navigation. </td></tr>
+<tr><td><code>listMode</code></td><td>1</td><td> The action bar will use a selection list for Navigation. </td></tr>
+<tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for Navigation. </td></tr>
 </table>
           <p>This is a private symbol.
           @attr name android:navigationMode
