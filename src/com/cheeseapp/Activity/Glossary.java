@@ -1,10 +1,9 @@
 package com.cheeseapp.Activity;
 
-import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.*;
-//import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.cheeseapp.DbAdapter.GlossaryDbAdapter;
 import com.cheeseapp.R;
 
@@ -12,7 +11,7 @@ import com.cheeseapp.R;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class Glossary extends ListActivity {
+public class Glossary extends SherlockListActivity {
 
     private GlossaryDbAdapter mGlossaryDb;
 

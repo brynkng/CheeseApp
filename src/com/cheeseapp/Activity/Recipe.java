@@ -1,43 +1,51 @@
 package com.cheeseapp.Activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.cheeseapp.DbAdapter.*;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
 
 import java.util.*;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.random;
+
 /**
  * User: Bryan King
  * Date: 5/6/12
  */
-public class Recipe extends Activity {
+public class Recipe extends SherlockActivity {
 
     private long mCheeseId;
     private CheeseDbAdapter mCheeseDb;
     private RecipeDbAdapter mRecipeDb;
     private IngredientDbAdapter mIngredientDb;
+    private DirectionDbAdapter mDirectionDb;
     private Cursor mRecipeCursor;
-    private Cursor mCheeseCursor;
+    private Cursor mDirectionCursor;
 
+    private Cursor mCheeseCursor;
     private ViewFlipper mFlipper;
     private long mRecipeId;
     private Double mOriginalYield;
     private Double mYield;
     private ArrayList<View> mRecipeViewList;
+    private ArrayList<HashMap> mRecipeDirections;
     private int mCheeseImgResource;
     private String mCheeseName;
     private String mTime;
     private ArrayList<HashMap> mIngredients = new ArrayList<HashMap>();
     private ArrayList<HashMap> mOriginalIngredients = new ArrayList<HashMap>();
-    private float lastX;
-    private float lastY;
+    private float mLastX;
+    private float mLastY;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +64,30 @@ public class Recipe extends Activity {
         mYield = _getCheeseYield(savedInstanceState);
         mIngredients = _getIngredients(savedInstanceState);
 
+        mRecipeDirections = _getRecipeDirections(savedInstanceState);
         mRecipeViewList = _getRecipeViewList();
+    }
+
+    private ArrayList<HashMap> _getRecipeDirections(Bundle savedInstanceState) {
+        @SuppressWarnings("unchecked")
+        ArrayList<HashMap> recipeDirections = (savedInstanceState == null) ? null :  (ArrayList<HashMap>) savedInstanceState.getSerializable("paged_directions");
+
+        if (recipeDirections == null) {
+            recipeDirections = new ArrayList<HashMap>();
+            Cursor directionC = _getDirectionCursor();
+
+            while (!directionC.isAfterLast()) {
+                HashMap<Integer, String> direction = new HashMap<Integer, String>();
+                Integer directionCategoryId = directionC.getInt(directionC.getColumnIndexOrThrow(DirectionDbAdapter.KEY_DIRECTION_CATEGORY_ID));
+                String directionText = directionC.getString(directionC.getColumnIndexOrThrow(DirectionDbAdapter.KEY_DIRECTION));
+                direction.put(directionCategoryId, directionText);
+
+                recipeDirections.add(direction);
+            }
+
+        }
+
+        return recipeDirections;
     }
 
     @Override
@@ -66,17 +97,6 @@ public class Recipe extends Activity {
         if (mFlipper == null) {
             _initializeFlipper();
         }
-    }
-
-    private ArrayList<View> _getRecipeViewList() {
-        ArrayList<View> recipeViewList = new ArrayList<View>();
-        LinearLayout recipeViewLayout = new LinearLayout(this);
-        TextView recipeText = new TextView(this);
-        recipeText.setText("This is a recipe! Hello Bean.");
-        recipeViewLayout.addView(recipeText);
-        recipeViewList.add(recipeViewLayout);
-
-        return recipeViewList;
     }
 
     private String _getTime(Bundle savedInstanceState) {
@@ -148,9 +168,6 @@ public class Recipe extends Activity {
 
         View recipeLayoutView = _getHomeRecipeLayoutView();
 
-//        ScrollView scrollView = (ScrollView) recipeLayoutView.findViewById(R.id.recipeScrollLayout);
-//        scrollView.setOnTouchListener(flipperViewsOnTouchListener);
-
         recipeLayoutView.setOnTouchListener(flipperViewsOnTouchListener);
 
         mFlipper.addView(recipeLayoutView);
@@ -159,14 +176,81 @@ public class Recipe extends Activity {
             recipeView.setOnTouchListener(flipperViewsOnTouchListener);
             mFlipper.addView(recipeView);
         }
+    }
 
-        mFlipper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFlipper.showNext();
+    private ArrayList<View> _getRecipeViewList() {
+        ArrayList<View> recipeViewList = new ArrayList<View>();
+
+        String text = "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
+                "   " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
+                "Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. 3424234234234";
+
+        LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
+        TextView emptyRecipeText = (TextView) emptyRecipeLayout.findViewById(R.id.recipePageDirectionsText);
+        TextView directionCategoryText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionCategory);
+        directionCategoryText.setText("Ripening");
+        TextView directionIngredientsText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionIngredients);
+        directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
+        float directionCategoryHeight = abs(directionCategoryText.getPaint().getFontMetrics().top);
+        float directionIngredientHeight = abs(directionIngredientsText.getPaint().getFontMetrics().top);
+        int headerHeight = Math.round(directionCategoryHeight + directionIngredientHeight) + 20;
+
+        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        float width = display.getWidth() - 20;
+        int height = display.getHeight() - headerHeight;
+
+        Paint textPaint = emptyRecipeText.getPaint();
+        float fontHeight = abs(textPaint.getFontMetrics().top) + abs(textPaint.getFontMetrics().bottom);
+        textPaint.getTextSize();
+        int maxNumCharsPerLine = textPaint.breakText(text, 0, text.length(), true, width, null) - 1;
+        int maxLines = (int) abs(height / fontHeight);
+
+        while (text.length() > 0) {
+            View recipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
+            TextView recipeText = (TextView) recipeLayout.findViewById(R.id.recipePageDirectionsText);
+            String finalText = "";
+
+            int currentLineNum = 1;
+            while (currentLineNum <= maxLines) {
+                int numCharsOnLine = (maxNumCharsPerLine < text.length()) ? maxNumCharsPerLine : text.length();
+                String subText = TextUtils.substring(text, 0, numCharsOnLine);
+                subText += "\n";
+
+                //if this is the last line, clear out the text
+                //otherwise remove the portion we added
+                if (numCharsOnLine == text.length()) {
+                    text = "";
+                } else {
+                    text = TextUtils.substring(text, numCharsOnLine, text.length());
+                }
+
+                finalText += subText;
+
+                currentLineNum++;
             }
-        });
 
+            recipeText.setText(finalText);
+            recipeViewList.add(recipeLayout);
+        }
+
+        return recipeViewList;
     }
 
     /**
@@ -188,8 +272,8 @@ public class Recipe extends Activity {
 
                 case MotionEvent.ACTION_DOWN:
                 {
-                    lastX = touchEvent.getX();
-                    lastY = touchEvent.getY();
+                    mLastX = touchEvent.getX();
+                    mLastY = touchEvent.getY();
                     break;
                 }
 
@@ -198,13 +282,13 @@ public class Recipe extends Activity {
                     float currentX = touchEvent.getX();
                     float currentY = touchEvent.getY();
 
-                    float distanceX = currentX - lastX;
-                    float distanceY = currentY - lastY;
+                    float distanceX = currentX - mLastX;
+                    float distanceY = currentY - mLastY;
 
                     if (Math.abs(distanceY) > Math.abs(distanceX)) {
                         return false;
                     } else {
-                        if (currentX < lastX) {
+                        if (currentX < mLastX) {
 
                             //If on last page, don't move further right
                             if (mFlipper.getDisplayedChild() == mRecipeViewList.size()) {
@@ -417,6 +501,14 @@ public class Recipe extends Activity {
         return mRecipeCursor;
     }
 
+    private Cursor _getDirectionCursor() {
+        if (mDirectionCursor == null) {
+            mDirectionCursor = mDirectionDb.getDirectionsForRecipe(mRecipeId);
+        }
+
+        return mDirectionCursor;
+    }
+
     private void _initializeDatabases() {
         mCheeseDb = new CheeseDbAdapter(this);
         mCheeseDb.open();
@@ -426,6 +518,9 @@ public class Recipe extends Activity {
 
         mIngredientDb = new IngredientDbAdapter(this);
         mIngredientDb.open();
+
+        mDirectionDb = new DirectionDbAdapter(this);
+        mDirectionDb.open();
     }
 
     @Override
@@ -433,6 +528,7 @@ public class Recipe extends Activity {
         mCheeseDb.close();
         mRecipeDb.close();
         mIngredientDb.close();
+        mDirectionDb.close();
 
         super.onDestroy();
     }

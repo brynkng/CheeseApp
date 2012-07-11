@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/recipePageLayout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FFFFFF"
+              android:orientation="vertical">
+    <TextView
+        android:id="@+id/recipeDirectionCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Ripening"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+            android:id="@+id/recipeDirectionIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="2 Gallons Whole Milk      1 Packet Meso Starter"
+            android:textColor="#000000"
+            />
+    <TextView
+        android:id="@+id/recipePageDirectionsText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10sp"
+        android:textSize="16sp"
+        android:text="This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean.
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean.
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean.
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe!
+    Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. 3424234234234"
+        android:textColor="#000000"
+        />
+
+</LinearLayout>

@@ -14,7 +14,7 @@
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState>
-        <option name="device" value="3.2in HVGA (ADP2)" />
+        <option name="device" value="3.7in FWVGA slider" />
         <option name="dockMode" value="" />
         <option name="nightMode" value="notnight" />
         <option name="targetHashString" value="android-10" />
@@ -28,19 +28,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="First save point on view flipper&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/in_from_left.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/in_from_right.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/out_to_left.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/out_to_right.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/recipe_home.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/View/RecipeScrollView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/Library.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/recipe_page.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/View/RecipeTextView.java" />
+      <change type="DELETED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\gen\com\cheeseapp\R.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\src\com\cheeseapp\View\RecipeScrollView.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\drawable\arrow_left.png" afterPath="$PROJECT_DIR$/res/drawable/green_arrow_left.png" />
+      <change type="MOVED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\drawable\arrow_right.png" afterPath="$PROJECT_DIR$/res/drawable/green_arrow_right.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" afterPath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe.xml" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CheeseApp.iml" afterPath="$PROJECT_DIR$/CheeseApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe_home.xml" afterPath="$PROJECT_DIR$/res/layout/recipe_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java" />
     </list>
     <ignored path="Cheese App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,7 +80,20 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" line="148" class="com.cheeseapp.DbAdapter.DbAdapter.DatabaseHelper" package="com.cheeseapp.DbAdapter">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="252" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="166" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -118,109 +147,94 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Glossary.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="22" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Recipe.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="46" selection-start="745" selection-end="745" vertical-scroll-proportion="0.49334946">
+            <state line="33" column="53" selection-start="860" selection-end="860" vertical-scroll-proportion="0.529304">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#971#980#0" expanded="true" />
-                <element signature="e#1051#1060#0" expanded="true" />
-                <element signature="e#2076#2082#0" expanded="true" />
-                <element signature="e#5449#5602#0" expanded="true" />
-                <element signature="e#5591#5592#0" expanded="true" />
-                <element signature="e#6232#8342#0" expanded="true" />
-                <element signature="e#8335#8336#0" expanded="true" />
-                <element signature="e#9357#9387#1" expanded="true" />
-                <element signature="e#10301#10317#0" expanded="true" />
-                <element signature="e#10878#10887#0" expanded="true" />
-                <element signature="e#11004#11020#0" expanded="true" />
-                <element signature="e#11093#11123#1" expanded="true" />
-                <element signature="e#14460#14490#1" expanded="true" />
-                <element signature="e#14786#14816#1" expanded="true" />
+                <element signature="e#12418#14533#0" expanded="true" />
+                <element signature="e#14526#14527#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecipeScrollView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/View/RecipeScrollView.java">
+      <file leaf-file-name="IngredientDbAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="18" selection-start="1056" selection-end="1098" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="in_from_right.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/in_from_right.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="17" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+            <state line="24" column="16" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shrink_from_top.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/shrink_from_top.xml">
+      <file leaf-file-name="ViewAnimator.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-15/android.jar!/android/widget/ViewAnimator.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="83" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
+            <state line="15" column="16" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grow_from_bottom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/grow_from_bottom.xml">
+      <file leaf-file-name="DbAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="165" column="27" selection-start="6086" selection-end="6086" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grow_from_bottomright_to_topleft.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/grow_from_bottomright_to_topleft.xml">
+      <file leaf-file-name="CheeseList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="17" column="48" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="in_from_left.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/in_from_left.xml">
+      <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="33" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+            <state line="2" column="10" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="out_to_left.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/out_to_left.xml">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="29" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0">
+            <state line="6" column="45" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="out_to_right.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/out_to_right.xml">
+      <file leaf-file-name="glossary_list.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/glossary_list.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
+            <state line="6" column="25" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recipe_home.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/recipe_home.xml">
+      <file leaf-file-name="glossary_row.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/glossary_row.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="113" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+            <state line="19" column="13" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -237,24 +251,27 @@
     <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/drawable/inset_border.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/popup_background.xml" />
-        <option value="$PROJECT_DIR$/res/layout/change_yield_popup.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/spinner_layout.xml" />
-        <option value="$PROJECT_DIR$/res/layout/yield_spinner_layout.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/RecipeDbAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/recipe.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/View/RecipeScrollView.java" />
-        <option value="$PROJECT_DIR$/res/layout/recipe_home.xml" />
         <option value="$PROJECT_DIR$/res/anim/in_from_right.xml" />
         <option value="$PROJECT_DIR$/res/anim/in_from_left.xml" />
         <option value="$PROJECT_DIR$/res/anim/out_to_left.xml" />
         <option value="$PROJECT_DIR$/res/anim/out_to_right.xml" />
+        <option value="$PROJECT_DIR$/res/layout/recipe_page.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/GlossaryDbAdapter.java" />
+        <option value="$PROJECT_DIR$/res/layout/glossary_row.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" />
+        <option value="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
+        <option value="$PROJECT_DIR$/libs/library/src/com/actionbarsherlock/app/SherlockListActivity.java" />
+        <option value="$PROJECT_DIR$/CheeseApp.iml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
       </list>
     </option>
@@ -322,6 +339,11 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
+  <component name="ProjectStructureProblems">
+    <ignored-problems>
+      <problem id="unused-library(library:project:abs)" />
+    </ignored-problems>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -342,10 +364,6 @@
               <option name="myItemId" value="Cheese App" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -361,7 +379,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -375,7 +393,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -393,7 +411,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -415,7 +481,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Android 2.3.3 Platform &gt;" />
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -427,7 +493,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="widget" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,28 +518,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cheeseapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -549,29 +593,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="actionBarSherlock" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -585,25 +611,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cheese App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CheeseApp" />
+              <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="anim" />
+              <option name="myItemId" value="cheeseapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -621,110 +633,6 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/cheeseapp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/cheeseapp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Activity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="res">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="values">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="res">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CheeseApp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="res">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="anim">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
         <subPane subId="All" />
       </pane>
@@ -732,12 +640,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="ExportedApkPath" value="C:\Users\Bryan\Dropbox\development\android\CheeseApp\CheeseApp.apk" />
-    <property name="options.lastSelected" value="reference.projectsettings.compiler.excludes" />
+    <property name="options.lastSelected" value="android.dex.compiler" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="ExportedModule" value="CheeseApp" />
@@ -749,19 +657,20 @@
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cheeseapp.Activity" />
       <recent name="com.cheeseapp.DbAdapter" />
       <recent name="com.cheeseapp.DbAdapters" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\layout" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\anim" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\values" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\drawable" />
-      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\layout" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.On Phone">
@@ -840,6 +749,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -865,24 +792,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -994,17 +903,22 @@
     </configuration>
     <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Android Application.CheeseInfo" />
-      <item index="1" class="java.lang.String" itemvalue="Android Application.Emulator" />
-      <item index="2" class="java.lang.String" itemvalue="Android Application.On Phone" />
-      <item index="3" class="java.lang.String" itemvalue="Android Application.Recipe" />
+      <item index="1" class="java.lang.String" itemvalue="Android Application.Recipe" />
+      <item index="2" class="java.lang.String" itemvalue="Android Application.Emulator" />
+      <item index="3" class="java.lang.String" itemvalue="Android Application.On Phone" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="ShelveChangesManager" show_recycled="false">
+    <recycled_changelist date="1336843540432">
+      <option name="PATH" value="C:\Users\Bryan\.IdeaIC11\config\shelf\raaaa.patch" />
+      <option name="DESCRIPTION" value="raaaa" />
+    </recycled_changelist>
+  </component>
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -1032,7 +946,15 @@
       <created>1336697219708</created>
       <updated>1336697219708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Glossary activity.&#10;">
+      <created>1341887655355</created>
+      <updated>1341887655355</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Removed cloning library as I wasn't able to get it working correctly.">
+      <created>1341887700376</created>
+      <updated>1341887700376</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1056,42 +978,42 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="0" />
+    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21643163" sideWeight="0.60273975" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2152054" sideWeight="0.6723744" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954017" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39726028" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.49785408" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24953903" sideWeight="0.6031927" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39680728" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32077625" sideWeight="0.50521153" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.49785408" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762557" sideWeight="0.51747394" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329859" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870968" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1563458" sideWeight="0.6712329" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2035561" sideWeight="0.67808217" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3219178" sideWeight="0.4929491" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22501533" sideWeight="0.6792237" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32077625" sideWeight="0.49049664" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1492" height="836" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30330673" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30216646" sideWeight="0.4954016" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
@@ -1124,7 +1046,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="First save point on view flipper&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed cloning library as I wasn't able to get it working correctly." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1146,6 +1068,9 @@
     <MESSAGE value="Improved the UI for yield modifier" />
     <MESSAGE value="Now all dependencies in Recipe are cached in saveStateInstance" />
     <MESSAGE value="First save point on view flipper&#10;" />
+    <MESSAGE value="raaaa" />
+    <MESSAGE value="Added Glossary activity.&#10;" />
+    <MESSAGE value="Removed cloning library as I wasn't able to get it working correctly." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1155,132 +1080,93 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-15/android.jar!/android/database/sqlite/SQLiteOpenHelper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" />
+        <state line="13" column="63" selection-start="761" selection-end="761" vertical-scroll-proportion="0.3715847" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
+    <entry file="file://$PROJECT_DIR$/CheeseApp.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+        <state line="42" column="40" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/actionBarSherlock/library/res/values-v14/abs__styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.568662" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Home.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="0.24908425" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/NoteDbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="22" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-15/android.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="11" selection-start="353" selection-end="353" vertical-scroll-proportion="0.020556228">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="27" selection-start="6086" selection-end="6086" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="48" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="45" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/glossary_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="25" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/glossary_row.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-15/android.jar!/android/widget/ViewAnimator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="16" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/IngredientDbAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="52" selection-start="2826" selection-end="2826" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/android/android-2.3.3_r1-sources.jar!/frameworks/base/core/java/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="902" column="0" selection-start="31023" selection-end="31023" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/android/android-2.3.3_r1-sources.jar!/frameworks/base/core/java/android/view/GestureDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#24006#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/View/RecipeScrollView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="18" selection-start="1056" selection-end="1098" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/android/android-2.3.3_r1-sources.jar!/frameworks/base/core/java/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4180" column="57" selection-start="153255" selection-end="153255" vertical-scroll-proportion="0.36726546">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/recipe_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="113" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/out_to_right.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/out_to_left.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="29" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/in_from_left.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/in_from_right.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/shrink_from_top.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="83" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/grow_from_bottom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/grow_from_bottomright_to_topleft.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="24" column="16" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="46" selection-start="745" selection-end="745" vertical-scroll-proportion="0.49334946">
+        <state line="33" column="53" selection-start="860" selection-end="860" vertical-scroll-proportion="0.529304">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#971#980#0" expanded="true" />
-            <element signature="e#1051#1060#0" expanded="true" />
-            <element signature="e#2076#2082#0" expanded="true" />
-            <element signature="e#5449#5602#0" expanded="true" />
-            <element signature="e#5591#5592#0" expanded="true" />
-            <element signature="e#6232#8342#0" expanded="true" />
-            <element signature="e#8335#8336#0" expanded="true" />
-            <element signature="e#9357#9387#1" expanded="true" />
-            <element signature="e#10301#10317#0" expanded="true" />
-            <element signature="e#10878#10887#0" expanded="true" />
-            <element signature="e#11004#11020#0" expanded="true" />
-            <element signature="e#11093#11123#1" expanded="true" />
-            <element signature="e#14460#14490#1" expanded="true" />
-            <element signature="e#14786#14816#1" expanded="true" />
+            <element signature="e#12418#14533#0" expanded="true" />
+            <element signature="e#14526#14527#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1302,7 +1188,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1325,7 +1211,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>Android 4.0.3 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1337,7 +1223,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>CheeseApp</last-edited>
+          <last-edited>Library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1349,7 +1235,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>Android 4.0.3 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1361,7 +1247,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>cloning-1.7.8</last-edited>
+          <last-edited>abs</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

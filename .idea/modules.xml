@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CheeseApp.iml" filepath="$PROJECT_DIR$/CheeseApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/actionBarSherlock/library/Library.iml" filepath="$PROJECT_DIR$/libs/actionBarSherlock/library/Library.iml" />
     </modules>
   </component>
 </project>

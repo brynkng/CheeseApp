@@ -35,11 +35,15 @@ public class DirectionDbAdapter extends DbAdapter{
 //    }
 
     public Cursor getDirectionsForRecipe(long recipeId) {
-        return this.mDb.query(
+        Cursor cursor = this.mDb.query(
                 TABLE,
                 new String[] {KEY_ID, KEY_DIRECTION, KEY_DIRECTION_CATEGORY_ID},
                 KEY_RECIPE_ID + " = ?",
                 new String[] {Long.toString(recipeId)}, null, null, null
         );
+
+        cursor.moveToFirst();
+
+        return cursor;
     }
 }

@@ -1,6 +1,5 @@
 package com.cheeseapp.Activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.cheeseapp.DbAdapter.CheeseDbAdapter;
 import com.cheeseapp.DbAdapter.CheeseTypeDbAdapter;
 import com.cheeseapp.DbAdapter.NoteDbAdapter;
@@ -18,7 +18,7 @@ import com.cheeseapp.Util.Util;
  * User: Bryan King
  * Date: 4/29/12
  */
-public class CheeseInfo extends Activity {
+public class CheeseInfo extends SherlockActivity {
 
     private CheeseDbAdapter mCheeseDb;
     private CheeseTypeDbAdapter mCheeseTypeDb;

@@ -141,7 +141,7 @@
                     android:id="@+id/recipeCheeseImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_left"
+                    android:src="@drawable/green_arrow_left"
                     android:contentDescription="swipe left arrow"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -157,7 +157,7 @@
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_right"
+                    android:src="@drawable/green_arrow_right"
                     android:contentDescription="swipe right arrow"/>
         </LinearLayout>
     </RelativeLayout>

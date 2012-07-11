@@ -1,17 +1,15 @@
 package com.cheeseapp.Activity;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.UserDictionary;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.cheeseapp.DbAdapter.CheeseDbAdapter;
-import com.cheeseapp.DbAdapter.CheeseTypeDbAdapter;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
 
@@ -19,7 +17,7 @@ import com.cheeseapp.Util.Util;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class CheeseList extends ListActivity {
+public class CheeseList extends SherlockListActivity {
 
     private CheeseDbAdapter mCheeseDb;
     private static final int FAVORITE_NOTE_KEY = 1;
