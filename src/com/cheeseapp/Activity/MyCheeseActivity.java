@@ -47,25 +47,11 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
 
         getSupportActionBar().setSelectedNavigationItem(_currentTabPosition);
     }
-    public MyCheeseActivity() {
-
-    }
 
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         if (_shouldChangeActivity(tab)) {
-            Class targetClass = (Class) tab.getTag();
-            Intent intent = new Intent(this, targetClass);
-
-            intent.putExtra(TARGET_TAB_POSITION_KEY, tab.getPosition());
-            intent.putExtra(LAST_TAB_POSITION_KEY, _currentTabPosition);
-            startActivity(intent);
+            _changeActivity(tab);
         }
-    }
-
-    private boolean _shouldChangeActivity(ActionBar.Tab tab) {
-        Class targetClass = (Class) tab.getTag();
-
-        return (this.getClass() != targetClass) && (tab.getPosition() != _currentTabPosition);
     }
 
     @Override
@@ -74,5 +60,23 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        Class targetClass = (Class) tab.getTag();
+        if (this.getClass() != targetClass) {
+            _changeActivity(tab);
+        }
+    }
+
+    private boolean _shouldChangeActivity(ActionBar.Tab tab) {
+        Class targetClass = (Class) tab.getTag();
+        return (this.getClass() != targetClass) && (tab.getPosition() != _currentTabPosition);
+    }
+
+    private void _changeActivity(ActionBar.Tab tab) {
+        Class targetClass = (Class) tab.getTag();
+        Intent intent = new Intent(this, targetClass);
+
+        intent.putExtra(TARGET_TAB_POSITION_KEY, tab.getPosition());
+        intent.putExtra(LAST_TAB_POSITION_KEY, _currentTabPosition);
+        startActivity(intent);
     }
 }

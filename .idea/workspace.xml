@@ -28,18 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/src/android/support/v4/app/_ActionBarSherlockTrojanHorse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Navigation/TabInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CheeseApp.iml" afterPath="$PROJECT_DIR$/CheeseApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" afterPath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/cheese_list.xml" afterPath="$PROJECT_DIR$/res/layout/cheese_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/glossary_list.xml" afterPath="$PROJECT_DIR$/res/layout/glossary_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" />
     </list>
     <ignored path="Cheese App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -144,10 +134,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyCheeseActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyCheeseActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="11" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0">
+            <state line="63" column="58" selection-start="2126" selection-end="2126" vertical-scroll-proportion="0.49941108">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#953#962#0" expanded="true" />
@@ -168,7 +158,7 @@
       <file leaf-file-name="Recipe.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="34" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0">
+            <state line="192" column="70" selection-start="7756" selection-end="7756" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2235#2265#1" expanded="true" />
@@ -193,13 +183,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Glossary.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Glossary.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="136" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.6007067">
+            <state line="20" column="66" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1341978929716" expanded="true" signature="532:687" placeholder="//..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlossaryDbAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/GlossaryDbAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="16" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,7 +207,16 @@
       <file leaf-file-name="glossary_list.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/glossary_list.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="41" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+            <state line="11" column="55" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="glossary_row.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/glossary_row.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="52" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -221,7 +230,6 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -241,11 +249,11 @@
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Navigation/TabManager.java" />
         <option value="$PROJECT_DIR$/res/layout/cheese_list.xml" />
         <option value="$PROJECT_DIR$/res/layout/glossary_list.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" />
       </list>
     </option>
   </component>
@@ -609,6 +617,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Navigation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CheeseApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cheeseapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DbAdapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1213,7 +1243,11 @@
       <created>1341964821314</created>
       <updated>1341964821314</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished next iteration of navigation. Nav buttons now send you to correct activity and I was able to extract all the nav data into a common MyCheeseActivity class.">
+      <created>1341978807040</created>
+      <updated>1341978807040</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1242,7 +1276,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2152054" sideWeight="0.67009133" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2152054" sideWeight="0.6792237" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24953903" sideWeight="0.6031927" order="1" side_tool="false" content_ui="tabs" />
@@ -1305,7 +1339,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="First iteration (not fully working yet) of the recipe flipper. Also implemented the Action Bar Sherlock library (no tabs or anything set up yet)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished next iteration of navigation. Nav buttons now send you to correct activity and I was able to extract all the nav data into a common MyCheeseActivity class." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1331,6 +1365,7 @@
     <MESSAGE value="Added Glossary activity.&#10;" />
     <MESSAGE value="Removed cloning library as I wasn't able to get it working correctly." />
     <MESSAGE value="First iteration (not fully working yet) of the recipe flipper. Also implemented the Action Bar Sherlock library (no tabs or anything set up yet)." />
+    <MESSAGE value="Finished next iteration of navigation. Nav buttons now send you to correct activity and I was able to extract all the nav data into a common MyCheeseActivity class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1340,13 +1375,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Android/android-sdk/platforms/android-15/android.jar!/android/app/Activity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="43" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/actionBarSherlock/library/src/com/actionbarsherlock/internal/app/ActionBarImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="305" column="0" selection-start="11576" selection-end="11576" vertical-scroll-proportion="0.0">
@@ -1396,42 +1424,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/glossary_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/actionBarSherlock/library/src/com/actionbarsherlock/app/SherlockListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="59" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="11" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#953#962#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="34" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2235#2265#1" expanded="true" />
-            <element signature="e#2694#2711#0" expanded="true" />
-            <element signature="e#15511#15541#1" expanded="true" />
-            <element signature="e#17247#17277#1" expanded="true" />
-            <element signature="e#20614#20644#1" expanded="true" />
-            <element signature="e#20940#20970#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1456,11 +1452,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/GlossaryDbAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/glossary_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="55" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/glossary_row.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="52" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="136" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.6007067">
+        <state line="20" column="66" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1341978929716" expanded="true" signature="532:687" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="192" column="70" selection-start="7756" selection-end="7756" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2235#2265#1" expanded="true" />
+            <element signature="e#2694#2711#0" expanded="true" />
+            <element signature="e#15511#15541#1" expanded="true" />
+            <element signature="e#17247#17277#1" expanded="true" />
+            <element signature="e#20614#20644#1" expanded="true" />
+            <element signature="e#20940#20970#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="58" selection-start="2126" selection-end="2126" vertical-scroll-proportion="0.49941108">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#953#962#0" expanded="true" />
           </folding>
         </state>
       </provider>
