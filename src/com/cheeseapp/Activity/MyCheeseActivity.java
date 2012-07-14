@@ -31,7 +31,7 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
         TabInfo cheeses = new TabInfo("CHEESES", CheeseList.class);
         _tabInfoList.add(cheeses);
 
-        TabInfo journal = new TabInfo("JOURNAL", CheeseList.class);
+        TabInfo journal = new TabInfo("JOURNAL", JournalHome.class);
         _tabInfoList.add(journal);
 
         TabInfo glossary = new TabInfo("GLOSSARY", Glossary.class);

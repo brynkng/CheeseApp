@@ -118,11 +118,40 @@ abstract public class DbAdapter {
         //glossary entries
         String glossaryEntriesTable = "CREATE TABLE IF NOT EXISTS " + GlossaryDbAdapter.TABLE
                 + "("
-                + GlossaryDbAdapter.KEY_ID + " integer,"
+                + GlossaryDbAdapter.KEY_ID + " integer primary key autoincrement,"
                 + GlossaryDbAdapter.KEY_WORD + " text,"
                 + GlossaryDbAdapter.KEY_DEFINITION + " text"
                 + ");";
         TABLE_CREATES.add(glossaryEntriesTable);
+
+        //journals
+        String journalsTable = "CREATE TABLE IF NOT EXISTS " + JournalDbAdapter.TABLE
+                + "("
+                + JournalDbAdapter.KEY_ID + " integer primary key autoincrement,"
+                + JournalDbAdapter.KEY_CHEESE_ID + " integer,"
+                + JournalDbAdapter.KEY_START_DATE + " timestamp DEFAULT CURRENT_TIMESTAMP,"
+                + JournalDbAdapter.KEY_TITLE + " text"
+                + ");";
+        TABLE_CREATES.add(journalsTable);
+
+        //journal entries
+        String journalEntriesTable = "CREATE TABLE IF NOT EXISTS " + JournalEntryDbAdapter.TABLE
+                + "("
+                + JournalEntryDbAdapter.KEY_JOURNAL_ID + " integer,"
+                + JournalEntryDbAdapter.KEY_DIRECTION_CATEGORY_ID + " integer,"
+                + JournalEntryDbAdapter.KEY_LAST_EDITED_DATE + " timestamp DEFAULT CURRENT_TIMESTAMP,"
+                + JournalEntryDbAdapter.KEY_TEXT + " text"
+                + "); "
+                + "CREATE INDEX journalEntryx ON journal_entries (journal_id)";
+        TABLE_CREATES.add(journalEntriesTable);
+
+        //direction categories
+        String directionCategoriesTable = "CREATE TABLE IF NOT EXISTS " + DirectionCategoryDbAdapter.TABLE
+                + "("
+                + DirectionCategoryDbAdapter.KEY_ID + " integer primary key autoincrement,"
+                + DirectionCategoryDbAdapter.KEY_NAME + " text"
+                + "); ";
+        TABLE_CREATES.add(directionCategoriesTable);
     }
 
     abstract void prePopulate();

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_height="48dp"
+              android:layout_width="match_parent"
+        >
+
+    <ImageView
+            android:id="@+id/journalSmallCheeseImg"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:maxHeight="40dp"
+            android:maxWidth="40dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:src="@drawable/swiss"
+            />
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="0px"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        >
+        <TextView
+                android:id="@+id/journalRowName"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Sample Cheese"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="#000000"
+                />
+        <TextView
+                android:id="@+id/journalCurrentDirectionCategory"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Cooking Curds"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                />
+    </LinearLayout>
+    <TextView
+            android:id="@+id/journalLatestDate"
+            android:layout_height="match_parent"
+            android:layout_width="0px"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="12-24-2012"
+            android:textSize="13sp"
+            android:textColor="#000000"
+            />
+
+</LinearLayout>

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Cheese Making Bible</string>
 
-    <string name="delete_note">Delete</string>
+    <string name="delete">Delete</string>
 
     <string name="notes_title">Notes</string>
     <string name="make_favorite">Favorite</string>

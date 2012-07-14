@@ -8,7 +8,6 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockActivity;
 import com.cheeseapp.DbAdapter.CheeseDbAdapter;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
@@ -42,7 +41,7 @@ public class CheeseList extends MyCheeseActivity {
         startManagingCursor(cAllCheeses);
 
         String[] from = new String[] {CheeseDbAdapter.KEY_NAME, CheeseDbAdapter.KEY_NAME, CheeseDbAdapter.KEY_ID};
-        int[] to = new int[] {R.id.cheeseRowName, R.id.smallCheeseImg, R.id.listFavoriteIcon};
+        int[] to = new int[] {R.id.cheeseRowName, R.id.cheeseListSmallCheeseImg, R.id.listFavoriteIcon};
         SimpleCursorAdapter CheeseListAdapter = new SimpleCursorAdapter(
                 this,
                 R.layout.cheese_row,
@@ -121,7 +120,7 @@ public class CheeseList extends MyCheeseActivity {
                     cheeseNameView.setText(cursor.getString(columnIndex));
                     break;
                 
-                case R.id.smallCheeseImg:
+                case R.id.cheeseListSmallCheeseImg:
 
                     ImageView cheesePictureView = (ImageView) view;
                     Context context = view.getContext();

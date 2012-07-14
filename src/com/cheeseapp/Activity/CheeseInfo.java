@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockActivity;
 import com.cheeseapp.DbAdapter.CheeseDbAdapter;
 import com.cheeseapp.DbAdapter.CheeseTypeDbAdapter;
 import com.cheeseapp.DbAdapter.NoteDbAdapter;
@@ -170,7 +169,7 @@ public class CheeseInfo extends MyCheeseActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, DELETE_NOTE_KEY, 0, R.string.delete_note);
+        menu.add(0, DELETE_NOTE_KEY, 0, R.string.delete);
     }
 
     @Override
