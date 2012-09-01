@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
-import com.cheeseapp.Navigation.TabInfo;
+import com.cheeseapp.navigation.TabInfo;
+import com.cheeseapp.R;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +19,11 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
 
     public static final String TARGET_TAB_POSITION_KEY = "targetTabPosition";
     public static final String LAST_TAB_POSITION_KEY = "lastTabPosition";
+
+    public static final int TAB_POSITION_CHEESES = 0;
+    public static final int TAB_POSITION_JOURNAL = 1;
+    public static final int TAB_POSITION_GLOSSARY = 2;
+
     private int _currentTabPosition;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -78,5 +85,6 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
         intent.putExtra(TARGET_TAB_POSITION_KEY, tab.getPosition());
         intent.putExtra(LAST_TAB_POSITION_KEY, _currentTabPosition);
         startActivity(intent);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

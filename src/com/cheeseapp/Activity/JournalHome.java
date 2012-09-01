@@ -18,6 +18,7 @@ import com.cheeseapp.DbAdapter.JournalDbAdapter;
 import com.cheeseapp.DbAdapter.JournalEntryDbAdapter;
 import com.cheeseapp.R;
 import com.cheeseapp.ViewComponent.JournalListViewBinder;
+import com.cheeseapp.navigation.TabInfo;
 
 /**
  * User: Bryan King
@@ -45,15 +46,12 @@ public class JournalHome extends MyCheeseActivity {
 
         mJournalDb = new JournalDbAdapter(this);
         mJournalDb.open();
-        mJournalDb.prePopulate();
 
         mJournalEntryDb = new JournalEntryDbAdapter(this);
         mJournalEntryDb.open();
-        mJournalEntryDb.prePopulate();
 
         mDirectionCategoryDb = new DirectionCategoryDbAdapter(this);
         mDirectionCategoryDb.open();
-        mDirectionCategoryDb.prePopulate();
 
         mCheeseDb = new CheeseDbAdapter(this);
         mCheeseDb.open();
@@ -91,8 +89,10 @@ public class JournalHome extends MyCheeseActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(adapterView.getContext(), JournalInfo.class);
-            intent.putExtra(getString(R.string.key_cheese_id), l);
+            intent.putExtra(getString(R.string.key_journal_id), l);
+            intent.putExtra(TARGET_TAB_POSITION_KEY, TAB_POSITION_JOURNAL);
             startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         }
     };
 
