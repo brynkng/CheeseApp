@@ -29,7 +29,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe.xml" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
     </list>
     <ignored path="Cheese App.iws" />
@@ -96,11 +95,11 @@
       <file leaf-file-name="Recipe.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="223" column="60" selection-start="10276" selection-end="10276" vertical-scroll-proportion="0.46975088">
+            <state line="182" column="105" selection-start="6617" selection-end="6617" vertical-scroll-proportion="0.06481481">
               <folding>
                 <element signature="docComment;class#Recipe#0" expanded="false" />
                 <element signature="method#_getRecipeDirections#0;class#Recipe#0" expanded="false" />
-                <element signature="e#2733#2763#1" expanded="true" />
+                <element signature="e#2685#2715#1" expanded="true" />
                 <element signature="method#onPause#0;class#Recipe#0" expanded="false" />
                 <element signature="method#onResume#0;class#Recipe#0" expanded="false" />
                 <element signature="method#_getTime#0;class#Recipe#0" expanded="false" />
@@ -109,19 +108,19 @@
                 <element signature="method#_getCheeseImageResource#0;class#Recipe#0" expanded="false" />
                 <element signature="method#_getCheeseCursor#0;class#Recipe#0" expanded="false" />
                 <element signature="method#onSaveInstanceState#0;class#Recipe#0" expanded="false" />
-                <element signature="e#10898#10944#0" expanded="false" />
+                <element signature="e#6383#6389#0" expanded="true" />
                 <element signature="method#_getIngredients#0;class#Recipe#0" expanded="false" />
-                <element signature="e#12477#12507#1" expanded="true" />
+                <element signature="e#11863#11893#1" expanded="true" />
                 <element signature="method#_getClonedArrayListHashMap#0;class#Recipe#0" expanded="false" />
-                <element signature="e#14213#14243#1" expanded="true" />
+                <element signature="e#13599#13629#1" expanded="true" />
                 <element signature="method#_setupRecipeIngredients#0;class#Recipe#0" expanded="false" />
                 <element signature="method#_setupYieldSpinner#0;class#Recipe#0" expanded="false" />
-                <element signature="class#16892:17433" expanded="false" />
-                <element signature="method#onItemSelected#0;class#16892:17433" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#16892:17433" expanded="false" />
+                <element signature="class#16278:16819" expanded="false" />
+                <element signature="method#onItemSelected#0;class#16278:16819" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#16278:16819" expanded="false" />
                 <element signature="method#_recalculateIngredientQuantities#0;class#Recipe#0" expanded="false" />
-                <element signature="e#17589#17619#1" expanded="true" />
-                <element signature="e#17915#17945#1" expanded="true" />
+                <element signature="e#16975#17005#1" expanded="true" />
+                <element signature="e#17301#17331#1" expanded="true" />
                 <element signature="method#_getCheeseYield#0;class#Recipe#0" expanded="false" />
                 <element signature="method#_getRecipeCursor#0;class#Recipe#0" expanded="false" />
                 <element signature="method#_getDirectionCursor#0;class#Recipe#0" expanded="false" />
@@ -163,15 +162,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="33" selection-start="8250" selection-end="8250" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="recipe.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -193,7 +183,16 @@
       <file leaf-file-name="CurlView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="353" column="8" selection-start="11110" selection-end="11110" vertical-scroll-proportion="0.0">
+            <state line="204" column="17" selection-start="5826" selection-end="5826" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/view/View.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="438" column="19" selection-start="21588" selection-end="21588" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -202,7 +201,16 @@
       <file leaf-file-name="CurlPage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="12" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0">
+            <state line="49" column="7" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurlRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="29" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -1208,7 +1216,11 @@
       <created>1346478535016</created>
       <updated>1346478535016</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Portrait view mode curl effect now in working state">
+      <created>1346512042540</created>
+      <updated>1346512042540</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1251,7 +1263,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329859" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870968" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20478234" sideWeight="0.6801386" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31986144" sideWeight="0.48804414" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31986144" sideWeight="0.48804414" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="92" y="92" width="1492" height="836" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1300,7 +1312,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Curling effect for recipes is now starting to be in a working state (still much more tuning left)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Portrait view mode curl effect now in working state" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1332,6 +1344,7 @@
     <MESSAGE value="Fixed tab target when changing to a journalInfo activity. Now stays on Journal tab.  &#10;&#10;Also fixed navigation capitalization bug" />
     <MESSAGE value="Implemented standalone Journal home and info activities.&#10;&#10;Also fixed navigation capitalization bug" />
     <MESSAGE value="Curling effect for recipes is now starting to be in a working state (still much more tuning left)" />
+    <MESSAGE value="Portrait view mode curl effect now in working state" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1341,13 +1354,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/navigation/TabInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="26" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalHome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="63" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.0">
@@ -1408,30 +1414,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/view/View.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="822" column="22" selection-start="37344" selection-end="37344" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="30" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="12" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="8" selection-start="11110" selection-end="11110" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1450,13 +1435,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="7" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="29" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/view/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="438" column="19" selection-start="21588" selection-end="21588" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="204" column="17" selection-start="5826" selection-end="5826" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="223" column="60" selection-start="10276" selection-end="10276" vertical-scroll-proportion="0.46975088">
+        <state line="182" column="105" selection-start="6617" selection-end="6617" vertical-scroll-proportion="0.06481481">
           <folding>
             <element signature="docComment;class#Recipe#0" expanded="false" />
             <element signature="method#_getRecipeDirections#0;class#Recipe#0" expanded="false" />
-            <element signature="e#2733#2763#1" expanded="true" />
+            <element signature="e#2685#2715#1" expanded="true" />
             <element signature="method#onPause#0;class#Recipe#0" expanded="false" />
             <element signature="method#onResume#0;class#Recipe#0" expanded="false" />
             <element signature="method#_getTime#0;class#Recipe#0" expanded="false" />
@@ -1465,19 +1478,19 @@
             <element signature="method#_getCheeseImageResource#0;class#Recipe#0" expanded="false" />
             <element signature="method#_getCheeseCursor#0;class#Recipe#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#Recipe#0" expanded="false" />
-            <element signature="e#10898#10944#0" expanded="false" />
+            <element signature="e#6383#6389#0" expanded="true" />
             <element signature="method#_getIngredients#0;class#Recipe#0" expanded="false" />
-            <element signature="e#12477#12507#1" expanded="true" />
+            <element signature="e#11863#11893#1" expanded="true" />
             <element signature="method#_getClonedArrayListHashMap#0;class#Recipe#0" expanded="false" />
-            <element signature="e#14213#14243#1" expanded="true" />
+            <element signature="e#13599#13629#1" expanded="true" />
             <element signature="method#_setupRecipeIngredients#0;class#Recipe#0" expanded="false" />
             <element signature="method#_setupYieldSpinner#0;class#Recipe#0" expanded="false" />
-            <element signature="class#16892:17433" expanded="false" />
-            <element signature="method#onItemSelected#0;class#16892:17433" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#16892:17433" expanded="false" />
+            <element signature="class#16278:16819" expanded="false" />
+            <element signature="method#onItemSelected#0;class#16278:16819" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#16278:16819" expanded="false" />
             <element signature="method#_recalculateIngredientQuantities#0;class#Recipe#0" expanded="false" />
-            <element signature="e#17589#17619#1" expanded="true" />
-            <element signature="e#17915#17945#1" expanded="true" />
+            <element signature="e#16975#17005#1" expanded="true" />
+            <element signature="e#17301#17331#1" expanded="true" />
             <element signature="method#_getCheeseYield#0;class#Recipe#0" expanded="false" />
             <element signature="method#_getRecipeCursor#0;class#Recipe#0" expanded="false" />
             <element signature="method#_getDirectionCursor#0;class#Recipe#0" expanded="false" />

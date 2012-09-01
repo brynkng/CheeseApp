@@ -68,12 +68,11 @@ public class Recipe extends MyCheeseActivity {
         mIngredients = _getIngredients(savedInstanceState);
 
         mRecipeDirections = _getRecipeDirections(savedInstanceState);
-        mRecipeViewList = _getRecipeViewList();
 
         mCurlView = (CurlView) findViewById(R.id.recipeCurlView);
+        mCurlView.setCurrentIndex(index);
         mCurlView.setPageProvider(new PageProvider());
         mCurlView.setSizeChangedObserver(new SizeChangedObserver());
-        mCurlView.setCurrentIndex(index);
         mCurlView.setBackgroundColor(Color.WHITE);
         mCurlView.setAllowLastPageCurl(false);
     }
@@ -177,40 +176,39 @@ public class Recipe extends MyCheeseActivity {
         outState.putSerializable("ingredients", mIngredients);
     }
 
-    private ArrayList<View> _getRecipeViewList() {
+    private ArrayList<View> _getRecipeViewList(int width, int height) {
         ArrayList<View> recipeViewList = new ArrayList<View>();
 
-        String text = "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
-                "   " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! " +
-                "Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. 3424234234234";
+        String text = "1. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
+        + "2. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
+        + "3. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
+        + "4. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
+        + "5. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean.\n\n"
+        + "6. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
+        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. END END";
 
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
         TextView emptyRecipeText = (TextView) emptyRecipeLayout.findViewById(R.id.recipePageDirectionsText);
 
-        float width = 375;
-        int height = 500;
-
-        emptyRecipeText.setHeight(500);
         Paint textPaint = emptyRecipeText.getPaint();
         float fontHeight = abs(textPaint.getFontMetrics().top) + abs(textPaint.getFontMetrics().bottom);
         textPaint.getTextSize();
-        int maxNumCharsPerLine = textPaint.breakText(text, true, width, null) - 1;
+        int maxNumCharsPerLine = textPaint.breakText(text, true, width, null);
         int maxLines = (int) abs(height / fontHeight);
 
         int pageNum = 1;
@@ -231,7 +229,6 @@ public class Recipe extends MyCheeseActivity {
             while (currentLineNum <= maxLines) {
                 int numCharsOnLine = (maxNumCharsPerLine < text.length()) ? maxNumCharsPerLine : text.length();
                 String subText = TextUtils.substring(text, 0, numCharsOnLine);
-                subText += "\n";
 
                 //if this is the last line, clear out the text
                 //otherwise remove the portion we added
@@ -560,10 +557,14 @@ public class Recipe extends MyCheeseActivity {
 
     private class SizeChangedObserver implements CurlView.SizeChangedObserver {
         @Override
-        public void onSizeChanged(int w, int h) {
-            if (w > h) {
+        public void onSizeChanged(int width, int height) {
+            if (mRecipeViewList == null) {
+                mRecipeViewList = _getRecipeViewList(width, height);
+            }
+
+            if (width > height) {
                 mCurlView.setViewMode(CurlView.SHOW_TWO_PAGES);
-                mCurlView.setMargins(.01f, .05f, .01f, .05f);
+                mCurlView.setMargins(0, 0, 0, 0);
             } else {
                 mCurlView.setViewMode(CurlView.SHOW_ONE_PAGE);
                 mCurlView.setMargins(0, 0, 0, 0);
