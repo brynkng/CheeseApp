@@ -26,4 +26,5 @@
 
     <!-- Bundle keys -->
     <string name="key_cheese_id">cheese_id</string>
+    <string name="key_journal_id">journal_id</string>
 </resources>

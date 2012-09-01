@@ -33,6 +33,7 @@ public class JournalDbAdapter extends DbAdapter{
         this.createJournal(1, "First Cheddar");
         this.createJournal(1, "");
         this.createJournal(2, "");
+        this.createJournal(3, "");
     }
 
     /**

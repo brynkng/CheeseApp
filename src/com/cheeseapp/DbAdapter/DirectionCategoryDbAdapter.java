@@ -46,6 +46,19 @@ public class DirectionCategoryDbAdapter extends DbAdapter{
         return directionCursor.getString(directionCursor.getColumnIndexOrThrow(KEY_NAME));
     }
 
+    public Cursor getPossibleDirectionCategoriesForJournal(long journalId) {
+        String sql = "SELECT dc.* "
+                + "FROM journals j "
+                + "JOIN recipes r  USING(cheese_id) "
+                + "JOIN directions d  ON(r._id = d.recipe_id) "
+                + "JOIN direction_categories dc  ON(dc._id = d.direction_category_id) "
+                + "WHERE j._id = ? ";
+        Cursor directionCategoryCursor = this.mDb.rawQuery(sql, new String[] {Long.toString(journalId)});
+        directionCategoryCursor.moveToFirst();
+
+        return directionCategoryCursor;
+    }
+
     public String getDirectionCategoryNameForJournalEntry(long journalEntryId) {
         String sql = "SELECT dc.name "
             + "FROM direction_categories dc "

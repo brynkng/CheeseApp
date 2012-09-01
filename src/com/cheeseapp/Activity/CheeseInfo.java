@@ -40,7 +40,6 @@ public class CheeseInfo extends MyCheeseActivity {
 
 
         _initializeDatabases();
-        mCheeseTypeDb.prePopulate();
 
         mCheeseId = _getCheeseId(savedInstanceState);
         Cursor CheeseCursor =  this.mCheeseDb.getCheese(mCheeseId);
@@ -70,6 +69,7 @@ public class CheeseInfo extends MyCheeseActivity {
                 intent.putExtra(CHEESE_ID_KEY, mCheeseId);
 
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
     }

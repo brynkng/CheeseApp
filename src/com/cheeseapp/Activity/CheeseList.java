@@ -8,7 +8,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.cheeseapp.DbAdapter.CheeseDbAdapter;
+import com.cheeseapp.DbAdapter.*;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
 
@@ -30,10 +30,65 @@ public class CheeseList extends MyCheeseActivity {
 
         this.mCheeseDb = new CheeseDbAdapter(this);
         this.mCheeseDb.open();
-        this.mCheeseDb.prePopulate();
+
+        //TODO REMOVE
+        _prepopulateDbs();
+
         _setupCheeseList();
 
         registerForContextMenu(mListView);
+    }
+
+    private void _prepopulateDbs() {
+        if (mCheeseDb.getAllCheeses().getCount() < 2) {
+
+            mCheeseDb.prePopulate();
+
+            CheeseTypeDbAdapter cheeseTypeDb = new CheeseTypeDbAdapter(this);
+            cheeseTypeDb.open();
+            cheeseTypeDb.prePopulate();
+            cheeseTypeDb.close();
+
+            DirectionCategoryDbAdapter dcAdapter = new DirectionCategoryDbAdapter(this);
+            dcAdapter.open();
+            dcAdapter.prePopulate();
+            dcAdapter.close();
+
+            DirectionDbAdapter dAdapter = new DirectionDbAdapter(this);
+            dAdapter.open();
+            dAdapter.prePopulate();
+            dAdapter.close();
+
+            GlossaryDbAdapter gAdapter = new GlossaryDbAdapter(this);
+            gAdapter.open();
+            gAdapter.prePopulate();
+            gAdapter.close();
+
+            IngredientDbAdapter iAdapter = new IngredientDbAdapter(this);
+            iAdapter.open();
+            iAdapter.prePopulate();
+            iAdapter.close();
+
+            JournalDbAdapter jAdapter = new JournalDbAdapter(this);
+            jAdapter.open();
+            jAdapter.prePopulate();
+            jAdapter.close();
+
+            JournalEntryDbAdapter jeAdapter = new JournalEntryDbAdapter(this);
+            jeAdapter.open();
+            jeAdapter.prePopulate();
+            jeAdapter.close();
+
+            NoteDbAdapter nAdapter = new NoteDbAdapter(this);
+            nAdapter.open();
+            nAdapter.prePopulate();
+            nAdapter.close();
+
+            RecipeDbAdapter rAdapter = new RecipeDbAdapter(this);
+            rAdapter.open();
+            rAdapter.prePopulate();
+            rAdapter.close();
+        }
     }
 
     private void _setupCheeseList() {
@@ -70,6 +125,7 @@ public class CheeseList extends MyCheeseActivity {
             Intent intent = new Intent(adapterView.getContext(), CheeseInfo.class);
             intent.putExtra(getString(R.string.key_cheese_id), l);
             startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         }
     };
 

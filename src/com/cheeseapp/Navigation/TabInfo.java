@@ -1,4 +1,4 @@
-package com.cheeseapp.Navigation;
+package com.cheeseapp.navigation;
 
 /**
  * User: Bryan King

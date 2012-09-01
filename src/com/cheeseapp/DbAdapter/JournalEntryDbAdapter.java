@@ -13,6 +13,7 @@ public class JournalEntryDbAdapter extends DbAdapter{
     //Journal Entries table
     public static final String TABLE = "journal_entries";
 
+    public static final String KEY_ID = "_id";
     public static final String KEY_JOURNAL_ID = "journal_id";
     public static final String KEY_DIRECTION_CATEGORY_ID = "direction_category_id";
     public static final String KEY_TEXT = "text";
@@ -49,19 +50,23 @@ public class JournalEntryDbAdapter extends DbAdapter{
     }
 
     /**
+     * This returns all journal entries including those direction categories that have no text stored for them
+     *
      * @return Cursor over all journal entries
      */
     public Cursor getJournalEntries(long journalId) {
-        return this.mDb.query(
-            TABLE,
-            new String[] {KEY_JOURNAL_ID, KEY_DIRECTION_CATEGORY_ID, KEY_TEXT, KEY_LAST_EDITED_DATE},
-            "journal_id = " + journalId,
-            null,
-            null,
-            null,
-            null,
-            null
-        );
+        String sql = "SELECT je._id, dc.name as category_name, je.text as entry_text "
+                + "FROM journals j "
+                + "JOIN recipes r  USING(cheese_id) "
+                + "JOIN directions d  ON(r._id = d.recipe_id) "
+                + "JOIN direction_categories dc  ON(dc._id = d.direction_category_id) "
+                + "LEFT JOIN journal_entries je ON (je.direction_category_id = dc._id) "
+                + "WHERE journal_id = ? "
+                + "GROUP BY je._id";
+        Cursor cJournalEntries = mDb.rawQuery(sql, new String[] {Long.toString(journalId)});
+        cJournalEntries.moveToFirst();
+
+        return cJournalEntries;
     }
 
     public Cursor getLatestJournalEntry(long journalId) {

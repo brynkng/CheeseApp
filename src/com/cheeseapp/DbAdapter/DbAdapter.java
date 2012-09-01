@@ -137,6 +137,7 @@ abstract public class DbAdapter {
         //journal entries
         String journalEntriesTable = "CREATE TABLE IF NOT EXISTS " + JournalEntryDbAdapter.TABLE
                 + "("
+                + JournalEntryDbAdapter.KEY_ID + " integer primary key autoincrement,"
                 + JournalEntryDbAdapter.KEY_JOURNAL_ID + " integer,"
                 + JournalEntryDbAdapter.KEY_DIRECTION_CATEGORY_ID + " integer,"
                 + JournalEntryDbAdapter.KEY_LAST_EDITED_DATE + " timestamp DEFAULT CURRENT_TIMESTAMP,"

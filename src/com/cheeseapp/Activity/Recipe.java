@@ -51,8 +51,6 @@ public class Recipe extends MyCheeseActivity {
         _initializeDatabases();
         setContentView(R.layout.recipe);
 
-        mRecipeDb.prePopulate();
-        mIngredientDb.prePopulate();
 
         mCheeseId = _getCheeseId(savedInstanceState);
         mCheeseImgResource = _getCheeseImageResource(savedInstanceState);
@@ -82,6 +80,7 @@ public class Recipe extends MyCheeseActivity {
                 direction.put(directionCategoryId, directionText);
 
                 recipeDirections.add(direction);
+                directionC.moveToNext();
             }
 
         }
@@ -432,7 +431,7 @@ public class Recipe extends MyCheeseActivity {
         ArrayAdapter<CharSequence> yieldSpinnerAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.yield_amounts,
-                android.R.layout.simple_spinner_item
+                android.R.layout.simple_spinner_dropdown_item
         );
         yieldSpinnerAdapter.setDropDownViewResource(R.layout.yield_spinner_layout);
         YieldSpinner.setAdapter(yieldSpinnerAdapter);

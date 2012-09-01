@@ -9,14 +9,16 @@ package com.cheeseapp;
 
 public final class R {
     public static final class anim {
-        public static final int grow_from_bottom=0x7f040000;
-        public static final int grow_from_bottomright_to_topleft=0x7f040001;
-        public static final int in_from_left=0x7f040002;
-        public static final int in_from_right=0x7f040003;
-        public static final int out_to_left=0x7f040004;
-        public static final int out_to_right=0x7f040005;
-        public static final int shrink_from_top=0x7f040006;
-        public static final int shrink_from_topleft_to_bottomright=0x7f040007;
+        public static final int fadein=0x7f040000;
+        public static final int fadeout=0x7f040001;
+        public static final int grow_from_bottom=0x7f040002;
+        public static final int grow_from_bottomright_to_topleft=0x7f040003;
+        public static final int in_from_left=0x7f040004;
+        public static final int in_from_right=0x7f040005;
+        public static final int out_to_left=0x7f040006;
+        public static final int out_to_right=0x7f040007;
+        public static final int shrink_from_top=0x7f040008;
+        public static final int shrink_from_topleft_to_bottomright=0x7f040009;
     }
     public static final class array {
         /** Recipe
@@ -843,7 +845,7 @@ containing a value of this type.
         public static final int abs__titleDivider=0x7f05001c;
         public static final int abs__up=0x7f05000b;
         public static final int addNoteButton=0x7f050030;
-        public static final int cancelNotePopupButton=0x7f05003f;
+        public static final int cancelNotePopupButton=0x7f050044;
         public static final int cheeseInfoLayout=0x7f050027;
         public static final int cheeseInfoName=0x7f050029;
         public static final int cheeseList=0x7f050031;
@@ -852,46 +854,51 @@ containing a value of this type.
         public static final int cheeseTypes=0x7f05002a;
         public static final int description=0x7f05002e;
         public static final int disableHome=0x7f050009;
-        public static final int editNoteText=0x7f05003e;
+        public static final int editNoteText=0x7f050043;
         public static final int favoriteStar=0x7f05002c;
         public static final int favoriteText=0x7f05002b;
         public static final int glossaryDefinition=0x7f050037;
         public static final int glossaryList=0x7f050035;
         public static final int glossaryWord=0x7f050036;
         public static final int homeAsUp=0x7f050006;
-        public static final int journalCurrentDirectionCategory=0x7f05003b;
-        public static final int journalLatestDate=0x7f05003c;
-        public static final int journalList=0x7f050038;
-        public static final int journalRowName=0x7f05003a;
-        public static final int journalSmallCheeseImg=0x7f050039;
+        public static final int journalCurrentDirectionCategory=0x7f050040;
+        public static final int journalEntryCategoryText=0x7f050038;
+        public static final int journalEntryText=0x7f050039;
+        public static final int journalInfoList=0x7f05003c;
+        public static final int journalInfoStartDate=0x7f05003b;
+        public static final int journalInfoTitle=0x7f05003a;
+        public static final int journalLatestDate=0x7f050041;
+        public static final int journalList=0x7f05003d;
+        public static final int journalRowName=0x7f05003f;
+        public static final int journalSmallCheeseImg=0x7f05003e;
         public static final int largeInfoCheeseImg=0x7f050028;
         public static final int listFavoriteIcon=0x7f050034;
         public static final int listMode=0x7f050002;
-        public static final int mainIngredientList=0x7f05004b;
+        public static final int mainIngredientList=0x7f050050;
         public static final int makeItButton=0x7f05002d;
         public static final int normal=0x7f050001;
-        public static final int notePopup=0x7f05003d;
+        public static final int notePopup=0x7f050042;
         public static final int note_list=0x7f05002f;
-        public static final int note_row=0x7f050041;
-        public static final int recipeCheeseImg=0x7f050044;
-        public static final int recipeCheeseName=0x7f050045;
-        public static final int recipeDirectionCategory=0x7f05004d;
-        public static final int recipeDirectionIngredients=0x7f05004e;
-        public static final int recipeIngredientsLayout=0x7f05004a;
-        public static final int recipePageDirectionsText=0x7f05004f;
-        public static final int recipePageLayout=0x7f05004c;
-        public static final int recipeScrollLayout=0x7f050043;
-        public static final int recipeTimeYieldTable=0x7f050046;
-        public static final int recipeViewFlipper=0x7f050042;
-        public static final int recipeWarningTextLayout=0x7f050049;
-        public static final int recipeYieldSpinner=0x7f050048;
-        public static final int recipeYieldSpinnerLayout=0x7f050050;
-        public static final int saveNoteButton=0x7f050040;
+        public static final int note_row=0x7f050046;
+        public static final int recipeCheeseImg=0x7f050049;
+        public static final int recipeCheeseName=0x7f05004a;
+        public static final int recipeDirectionCategory=0x7f050052;
+        public static final int recipeDirectionIngredients=0x7f050053;
+        public static final int recipeIngredientsLayout=0x7f05004f;
+        public static final int recipePageDirectionsText=0x7f050054;
+        public static final int recipePageLayout=0x7f050051;
+        public static final int recipeScrollLayout=0x7f050048;
+        public static final int recipeTimeYieldTable=0x7f05004b;
+        public static final int recipeViewFlipper=0x7f050047;
+        public static final int recipeWarningTextLayout=0x7f05004e;
+        public static final int recipeYieldSpinner=0x7f05004d;
+        public static final int recipeYieldSpinnerLayout=0x7f050055;
+        public static final int saveNoteButton=0x7f050045;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
         public static final int tabMode=0x7f050003;
-        public static final int timeText=0x7f050047;
+        public static final int timeText=0x7f05004c;
         public static final int useLogo=0x7f050004;
         public static final int wrap_content=0x7f050000;
     }
@@ -924,16 +931,18 @@ containing a value of this type.
         public static final int cheese_row=0x7f030016;
         public static final int glossary_list=0x7f030017;
         public static final int glossary_row=0x7f030018;
-        public static final int journal_list=0x7f030019;
-        public static final int journal_row=0x7f03001a;
-        public static final int note_popup=0x7f03001b;
-        public static final int note_row=0x7f03001c;
-        public static final int recipe=0x7f03001d;
-        public static final int recipe_home=0x7f03001e;
-        public static final int recipe_page=0x7f03001f;
-        public static final int sherlock_spinner_dropdown_item=0x7f030020;
-        public static final int sherlock_spinner_item=0x7f030021;
-        public static final int yield_spinner_layout=0x7f030022;
+        public static final int journal_entry_row=0x7f030019;
+        public static final int journal_info=0x7f03001a;
+        public static final int journal_list=0x7f03001b;
+        public static final int journal_row=0x7f03001c;
+        public static final int note_popup=0x7f03001d;
+        public static final int note_row=0x7f03001e;
+        public static final int recipe=0x7f03001f;
+        public static final int recipe_home=0x7f030020;
+        public static final int recipe_page=0x7f030021;
+        public static final int sherlock_spinner_dropdown_item=0x7f030022;
+        public static final int sherlock_spinner_item=0x7f030023;
+        public static final int yield_spinner_layout=0x7f030024;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -972,6 +981,7 @@ containing a value of this type.
         /**  Bundle keys 
          */
         public static final int key_cheese_id=0x7f0a0010;
+        public static final int key_journal_id=0x7f0a0011;
         public static final int make_favorite=0x7f0a000e;
         public static final int notes_title=0x7f0a000d;
         public static final int un_favorite=0x7f0a000f;

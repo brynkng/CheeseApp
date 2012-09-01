@@ -21,7 +21,6 @@ public class Glossary extends MyCheeseActivity {
 
         this.mGlossaryDb = new GlossaryDbAdapter(this);
         this.mGlossaryDb.open();
-        this.mGlossaryDb.prePopulate();
 
         _setupGlossary();
     }
