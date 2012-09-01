@@ -17,7 +17,7 @@
         <option name="device" value="3.7in WVGA (Nexus One)" />
         <option name="dockMode" value="" />
         <option name="nightMode" value="notnight" />
-        <option name="targetHashString" value="android-10" />
+        <option name="targetHashString" value="android-15" />
         <option name="theme" value="Theme.Sherlock" />
       </GlobalState>
     </option>
@@ -27,31 +27,17 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Android exception" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="Fixed tab target when changing to a journalInfo activity. Now stays on Journal tab.  &#10;&#10;Also fixed navigation capitalization bug">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/fadein.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/fadeout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/journal_entry_row.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/journal_info.xml" />
-      <change type="DELETED" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\src\com\cheeseapp\Entity\Cheese.java" afterPath="" />
+    <list default="true" id="1f7e7911-5168-40b3-b035-574190ef1f6f" name="Default" comment="Implemented standalone Journal home and info activities.&#10;&#10;Also fixed navigation capitalization bug">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlMesh.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CheeseApp.iml" afterPath="$PROJECT_DIR$/CheeseApp.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" afterPath="$PROJECT_DIR$/gen/com/cheeseapp/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/actionBarSherlock/library/Library.iml" afterPath="$PROJECT_DIR$/libs/actionBarSherlock/library/Library.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe_home.xml" afterPath="$PROJECT_DIR$/res/layout/recipe_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/yield_spinner_layout.xml" afterPath="$PROJECT_DIR$/res/layout/yield_spinner_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Glossary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe.xml" afterPath="$PROJECT_DIR$/res/layout/recipe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/recipe_page.xml" afterPath="$PROJECT_DIR$/res/layout/recipe_page.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionCategoryDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionCategoryDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/DirectionDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalEntryDbAdapter.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalEntryDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Bryan\Dropbox\development\android\CheeseApp\src\com\cheeseapp\navigation\TabInfo.java" afterPath="$PROJECT_DIR$/src/com/cheeseapp/navigation/TabInfo.java" />
     </list>
     <ignored path="Cheese App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,47 +60,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="250" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" line="164" class="com.cheeseapp.Activity.Recipe" package="com.cheeseapp.Activity">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" line="31" class="com.cheeseapp.Activity.MyCheeseActivity" package="com.cheeseapp.Activity">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -155,20 +100,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Recipe.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Recipe.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="37" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
+            <state line="431" column="33" selection-start="18811" selection-end="18811" vertical-scroll-proportion="0.6672598">
+              <folding>
+                <element signature="docComment;class#Recipe#0" expanded="false" />
+                <element signature="method#_getRecipeDirections#0;class#Recipe#0" expanded="false" />
+                <element signature="method#onPause#0;class#Recipe#0" expanded="false" />
+                <element signature="method#onResume#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getTime#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getCheeseName#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getRecipeId#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getCheeseImageResource#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getCheeseCursor#0;class#Recipe#0" expanded="false" />
+                <element signature="method#onSaveInstanceState#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getRecipeViewList#0;class#Recipe#0" expanded="false" />
+                <element signature="e#10805#10851#0" expanded="false" />
+                <element signature="method#_getIngredients#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getClonedArrayListHashMap#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_setupRecipeIngredients#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_setupYieldSpinner#0;class#Recipe#0" expanded="false" />
+                <element signature="class#16776:17317" expanded="false" />
+                <element signature="method#onItemSelected#0;class#16776:17317" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#16776:17317" expanded="false" />
+                <element signature="method#_recalculateIngredientQuantities#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getCheeseYield#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getRecipeCursor#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getDirectionCursor#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_initializeDatabases#0;class#Recipe#0" expanded="false" />
+                <element signature="method#onDestroy#0;class#Recipe#0" expanded="false" />
+                <element signature="method#_getCheeseId#0;class#Recipe#0" expanded="false" />
+                <element signature="docComment;class#PageProvider#0;class#Recipe#0" expanded="false" />
+                <element signature="method#updatePage#0;class#PageProvider#0;class#Recipe#0" expanded="false" />
+                <element signature="e#22059#22127#0" expanded="false" />
+                <element signature="e#22705#22771#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/view/View.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="822" column="22" selection-start="37344" selection-end="37344" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JournalInfo.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalInfo.java">
+      <file leaf-file-name="GLSurfaceView.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/opengl/GLSurfaceView.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="69" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.41239572">
-              <folding />
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#4482#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,7 +163,7 @@
       <file leaf-file-name="MyCheeseActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="27" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
+            <state line="31" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,19 +171,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TabInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/navigation/TabInfo.java">
+      <file leaf-file-name="recipe_page.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/recipe_page.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="26" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+            <state line="26" column="13" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JournalHome.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalHome.java">
+      <file leaf-file-name="CheeseInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="63" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.0">
+            <state line="258" column="33" selection-start="8250" selection-end="8250" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recipe.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="42" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurlActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="30" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurlView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="774" column="21" selection-start="24292" selection-end="24292" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -218,10 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/anim/fadein.xml" />
-        <option value="$PROJECT_DIR$/res/anim/fadeout.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseList.java" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalDbAdapter.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/journal_entry_row.xml" />
@@ -230,10 +240,14 @@
         <option value="$PROJECT_DIR$/libs/actionBarSherlock/library/res/values/abs__styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/recipe_home.xml" />
         <option value="$PROJECT_DIR$/res/layout/yield_spinner_layout.xml" />
-        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/navigation/TabInfo.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java" />
         <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalHome.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/RecipeOrig.java" />
+        <option value="$PROJECT_DIR$/res/layout/recipe.xml" />
+        <option value="$PROJECT_DIR$/res/layout/recipe_page.xml" />
+        <option value="$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java" />
       </list>
     </option>
   </component>
@@ -324,6 +338,132 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Cheese App" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opengl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Android 4.0.3 Platform &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -453,6 +593,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DbAdapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cheese App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CheeseApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cheeseapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Curl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -712,12 +874,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cheeseapp.Activity" />
       <recent name="com.cheeseapp.DbAdapter" />
       <recent name="com.cheeseapp.ViewComponent" />
-      <recent name="com.cheeseapp.Activity" />
       <recent name="com.cheeseapp.DbAdapters" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\src\com\cheeseapp\Curl" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\anim" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\layout" />
       <recent name="C:\Users\Bryan\Dropbox\development\android\CheeseApp\res\values" />
@@ -1045,7 +1208,11 @@
       <created>1346467945478</created>
       <updated>1346467945478</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented standalone Journal home and info activities.&#10;&#10;Also fixed navigation capitalization bug">
+      <created>1346468084881</created>
+      <updated>1346468084881</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1072,27 +1239,27 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32794458" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21152668" sideWeight="0.6709007" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24953903" sideWeight="0.6031927" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3926097" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.50030655" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290993" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32678983" sideWeight="0.51747394" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.4954016" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290993" sideWeight="0.4954016" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329859" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870968" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20232986" sideWeight="0.6801386" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31986144" sideWeight="0.48804414" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20478234" sideWeight="0.6801386" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31986144" sideWeight="0.48804414" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="92" y="92" width="1492" height="836" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21204671" sideWeight="0.6792237" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15611555" sideWeight="0.6792237" order="3" side_tool="false" content_ui="tabs" />
@@ -1137,7 +1304,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed tab target when changing to a journalInfo activity. Now stays on Journal tab.  &#10;&#10;Also fixed navigation capitalization bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented standalone Journal home and info activities.&#10;&#10;Also fixed navigation capitalization bug" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1167,6 +1334,7 @@
     <MESSAGE value="Now reselecting the same tab will bring you back to that tab's activity if you aren't on that activity anymore." />
     <MESSAGE value="Added JournalHome which will list all of the current journals. Also supports deleting those journals but not yet the detailed page for the journal yet." />
     <MESSAGE value="Fixed tab target when changing to a journalInfo activity. Now stays on Journal tab.  &#10;&#10;Also fixed navigation capitalization bug" />
+    <MESSAGE value="Implemented standalone Journal home and info activities.&#10;&#10;Also fixed navigation capitalization bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1176,71 +1344,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/DbAdapter/JournalDbAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2538" selection-end="2538" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="93" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/journal_entry_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="38" selection-start="880" selection-end="880" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/journal_info.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="24" selection-start="1544" selection-end="1544" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/recipe_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="36" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/yield_spinner_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="37" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/actionBarSherlock/library/res/values-v14/abs__styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="91" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/actionBarSherlock/library/res/values/abs__styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="92" selection-start="13918" selection-end="13918" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="37" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/navigation/TabInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="26" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="27" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1253,8 +1360,127 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/JournalInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="69" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.41239572">
+        <state line="48" column="36" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/recipe_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="36" selection-start="3374" selection-end="3374" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/note_popup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/CheeseInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="258" column="33" selection-start="8250" selection-end="8250" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/MyCheeseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="774" column="21" selection-start="24292" selection-end="24292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/app/Activity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="28" selection-start="3103" selection-end="3103" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/recipe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="42" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/recipe_page.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/opengl/GLSurfaceView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#4482#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-15/android.jar!/android/view/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="822" column="22" selection-start="37344" selection-end="37344" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Curl/CurlActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="30" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cheeseapp/Activity/Recipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="431" column="33" selection-start="18811" selection-end="18811" vertical-scroll-proportion="0.6672598">
+          <folding>
+            <element signature="docComment;class#Recipe#0" expanded="false" />
+            <element signature="method#_getRecipeDirections#0;class#Recipe#0" expanded="false" />
+            <element signature="method#onPause#0;class#Recipe#0" expanded="false" />
+            <element signature="method#onResume#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getTime#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getCheeseName#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getRecipeId#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getCheeseImageResource#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getCheeseCursor#0;class#Recipe#0" expanded="false" />
+            <element signature="method#onSaveInstanceState#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getRecipeViewList#0;class#Recipe#0" expanded="false" />
+            <element signature="e#10805#10851#0" expanded="false" />
+            <element signature="method#_getIngredients#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getClonedArrayListHashMap#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_setupRecipeIngredients#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_setupYieldSpinner#0;class#Recipe#0" expanded="false" />
+            <element signature="class#16776:17317" expanded="false" />
+            <element signature="method#onItemSelected#0;class#16776:17317" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#16776:17317" expanded="false" />
+            <element signature="method#_recalculateIngredientQuantities#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getCheeseYield#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getRecipeCursor#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getDirectionCursor#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_initializeDatabases#0;class#Recipe#0" expanded="false" />
+            <element signature="method#onDestroy#0;class#Recipe#0" expanded="false" />
+            <element signature="method#_getCheeseId#0;class#Recipe#0" expanded="false" />
+            <element signature="docComment;class#PageProvider#0;class#Recipe#0" expanded="false" />
+            <element signature="method#updatePage#0;class#PageProvider#0;class#Recipe#0" expanded="false" />
+            <element signature="e#22059#22127#0" expanded="false" />
+            <element signature="e#22705#22771#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

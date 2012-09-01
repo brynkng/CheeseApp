@@ -2,6 +2,8 @@ package com.cheeseapp.Activity;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.cheeseapp.Curl.CurlPage;
+import com.cheeseapp.Curl.CurlView;
 import com.cheeseapp.DbAdapter.*;
 import com.cheeseapp.R;
 import com.cheeseapp.Util.Util;
@@ -32,7 +36,6 @@ public class Recipe extends MyCheeseActivity {
     private Cursor mDirectionCursor;
 
     private Cursor mCheeseCursor;
-    private ViewFlipper mFlipper;
     private long mRecipeId;
     private Double mOriginalYield;
     private Double mYield;
@@ -43,14 +46,17 @@ public class Recipe extends MyCheeseActivity {
     private String mTime;
     private ArrayList<HashMap> mIngredients = new ArrayList<HashMap>();
     private ArrayList<HashMap> mOriginalIngredients = new ArrayList<HashMap>();
-    private float mLastX;
-    private float mLastY;
+    private CurlView mCurlView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         _initializeDatabases();
         setContentView(R.layout.recipe);
 
+        int index = 0;
+        if (getLastNonConfigurationInstance() != null) {
+            index = (Integer) getLastNonConfigurationInstance();
+        }
 
         mCheeseId = _getCheeseId(savedInstanceState);
         mCheeseImgResource = _getCheeseImageResource(savedInstanceState);
@@ -63,6 +69,12 @@ public class Recipe extends MyCheeseActivity {
 
         mRecipeDirections = _getRecipeDirections(savedInstanceState);
         mRecipeViewList = _getRecipeViewList();
+
+        mCurlView = (CurlView) findViewById(R.id.recipeCurlView);
+        mCurlView.setPageProvider(new PageProvider());
+        mCurlView.setSizeChangedObserver(new SizeChangedObserver());
+        mCurlView.setCurrentIndex(index);
+        mCurlView.setBackgroundColor(Color.WHITE);
     }
 
     private ArrayList<HashMap> _getRecipeDirections(Bundle savedInstanceState) {
@@ -89,12 +101,15 @@ public class Recipe extends MyCheeseActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        mCurlView.onPause();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-
-        if (mFlipper == null) {
-            _initializeFlipper();
-        }
+        mCurlView.onResume();
     }
 
     private String _getTime(Bundle savedInstanceState) {
@@ -161,21 +176,6 @@ public class Recipe extends MyCheeseActivity {
         outState.putSerializable("ingredients", mIngredients);
     }
 
-    private void _initializeFlipper() {
-        mFlipper = (ViewFlipper) findViewById(R.id.recipeViewFlipper);
-
-        View recipeLayoutView = _getHomeRecipeLayoutView();
-
-        recipeLayoutView.setOnTouchListener(flipperViewsOnTouchListener);
-
-        mFlipper.addView(recipeLayoutView);
-
-        for (View recipeView : mRecipeViewList) {
-            recipeView.setOnTouchListener(flipperViewsOnTouchListener);
-            mFlipper.addView(recipeView);
-        }
-    }
-
     private ArrayList<View> _getRecipeViewList() {
         ArrayList<View> recipeViewList = new ArrayList<View>();
 
@@ -205,19 +205,15 @@ public class Recipe extends MyCheeseActivity {
         directionCategoryText.setText("Ripening");
         TextView directionIngredientsText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionIngredients);
         directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
-        float directionCategoryHeight = abs(directionCategoryText.getPaint().getFontMetrics().top);
-        float directionIngredientHeight = abs(directionIngredientsText.getPaint().getFontMetrics().top);
-        int headerHeight = Math.round(directionCategoryHeight + directionIngredientHeight) + 20;
 
-        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        float width = display.getWidth() - 20;
-        int height = display.getHeight() - headerHeight;
+        float width = 375;
+        int height = 500;
 
+        emptyRecipeText.setHeight(500);
         Paint textPaint = emptyRecipeText.getPaint();
         float fontHeight = abs(textPaint.getFontMetrics().top) + abs(textPaint.getFontMetrics().bottom);
         textPaint.getTextSize();
-        int maxNumCharsPerLine = textPaint.breakText(text, 0, text.length(), true, width, null) - 1;
+        int maxNumCharsPerLine = textPaint.breakText(text, true, width, null) - 1;
         int maxLines = (int) abs(height / fontHeight);
 
         while (text.length() > 0) {
@@ -250,72 +246,6 @@ public class Recipe extends MyCheeseActivity {
 
         return recipeViewList;
     }
-
-    /**
-     * This bad boy makes the views flip side to side, or up and down when its a scroll view. It takes in the
-     * x and y coordinates and determines if its going left or right, or up and down and acts accordingly.
-     *
-     * Returning false tells it to continue with the parent functions (like a scroll view going up and down), and
-     * halts the remainder of the touch events.
-     *
-     * Returning true tells it we like what's happening and want to continue to intercept these touch events so we can
-     * keep processing them.
-     */
-    public View.OnTouchListener flipperViewsOnTouchListener = new View.OnTouchListener() {
-
-        @Override
-        public boolean onTouch(View v, MotionEvent touchEvent) {
-
-            switch (touchEvent.getAction()) {
-
-                case MotionEvent.ACTION_DOWN:
-                {
-                    mLastX = touchEvent.getX();
-                    mLastY = touchEvent.getY();
-                    break;
-                }
-
-                case MotionEvent.ACTION_MOVE:
-                {
-                    float currentX = touchEvent.getX();
-                    float currentY = touchEvent.getY();
-
-                    float distanceX = currentX - mLastX;
-                    float distanceY = currentY - mLastY;
-
-                    if (Math.abs(distanceY) > Math.abs(distanceX)) {
-                        return false;
-                    } else {
-                        if (currentX < mLastX) {
-
-                            //If on last page, don't move further right
-                            if (mFlipper.getDisplayedChild() == mRecipeViewList.size()) {
-                                break;
-                            } else {
-                                mFlipper.setInAnimation(v.getContext(), R.anim.in_from_right);
-                                mFlipper.setOutAnimation(v.getContext(), R.anim.out_to_left);
-                                mFlipper.showNext();
-                            }
-                        } else {
-                            //If on start page don't move further left
-                            if (mFlipper.getDisplayedChild() == 0) {
-                                break;
-                            } else {
-                                mFlipper.setInAnimation(v.getContext(), R.anim.in_from_left);
-                                mFlipper.setOutAnimation(v.getContext(), R.anim.out_to_right);
-                                mFlipper.showPrevious();
-                            }
-                        }
-
-                        return true;
-                    }
-                }
-            }
-
-            boolean onStartPage = mFlipper.getDisplayedChild() != 0;
-            return onStartPage;
-        }
-    };
 
     private View _getHomeRecipeLayoutView() {
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -540,5 +470,98 @@ public class Recipe extends MyCheeseActivity {
         }
 
         return cheeseId;
+    }
+
+    /**
+     * Bitmap provider.
+     */
+    private class PageProvider implements CurlView.PageProvider {
+
+        @Override
+        public int getPageCount() {
+            return mRecipeViewList.size();
+        }
+
+        private Bitmap loadBitmap(int width, int height, int index) {
+            Bitmap b = Bitmap.createBitmap(width, height,
+                    Bitmap.Config.ARGB_8888);
+            Canvas c = new Canvas(b);
+            LinearLayout recipeView = (LinearLayout) mRecipeViewList.get(index);
+            recipeView.measure(
+                    View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
+                    View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+            recipeView.layout(0, 0, recipeView.getMeasuredWidth(), recipeView.getMeasuredHeight());
+
+            recipeView.draw(c);
+            return b;
+        }
+
+        @Override
+        public void updatePage(CurlPage page, int width, int height, int index) {
+
+            switch (index) {
+                // First case is image on front side, solid colored back.
+                case 0: {
+                    Bitmap front = loadBitmap(width, height, 0);
+                    page.setTexture(front, CurlPage.SIDE_FRONT);
+                    page.setColor(Color.rgb(180, 180, 180), CurlPage.SIDE_BACK);
+                    break;
+                }
+                // Second case is image on back side, solid colored front.
+                case 1: {
+                    Bitmap back = loadBitmap(width, height, 2);
+                    page.setTexture(back, CurlPage.SIDE_BACK);
+                    page.setColor(Color.rgb(127, 140, 180), CurlPage.SIDE_FRONT);
+                    break;
+                }
+                // Third case is images on both sides.
+                case 2: {
+                    Bitmap front = loadBitmap(width, height, 1);
+                    Bitmap back = loadBitmap(width, height, 3);
+                    page.setTexture(front, CurlPage.SIDE_FRONT);
+                    page.setTexture(back, CurlPage.SIDE_BACK);
+                    break;
+                }
+                // Fourth case is images on both sides - plus they are blend against
+                // separate colors.
+                case 3: {
+                    Bitmap front = loadBitmap(width, height, 2);
+                    Bitmap back = loadBitmap(width, height, 1);
+                    page.setTexture(front, CurlPage.SIDE_FRONT);
+                    page.setTexture(back, CurlPage.SIDE_BACK);
+                    page.setColor(Color.argb(127, 170, 130, 255),
+                            CurlPage.SIDE_FRONT);
+                    page.setColor(Color.rgb(255, 190, 150), CurlPage.SIDE_BACK);
+                    break;
+                }
+                // Fifth case is same image is assigned to front and back. In this
+                // scenario only one texture is used and shared for both sides.
+                case 4:
+                    Bitmap front = loadBitmap(width, height, 0);
+                    page.setTexture(front, CurlPage.SIDE_BOTH);
+                    page.setColor(Color.argb(127, 255, 255, 255),
+                            CurlPage.SIDE_BACK);
+                    break;
+            }
+        }
+
+    }
+
+    private class SizeChangedObserver implements CurlView.SizeChangedObserver {
+        @Override
+        public void onSizeChanged(int w, int h) {
+            if (w > h) {
+                mCurlView.setViewMode(CurlView.SHOW_TWO_PAGES);
+                mCurlView.setMargins(.01f, .05f, .01f, .05f);
+            } else {
+                mCurlView.setViewMode(CurlView.SHOW_ONE_PAGE);
+                mCurlView.setMargins(.01f, .01f, .01f, .01f);
+            }
+        }
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        return mCurlView.getCurrentIndex();
     }
 }

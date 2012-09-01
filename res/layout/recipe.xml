@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/recipeViewFlipper"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF">
-
-</ViewFlipper>
+    <com.cheeseapp.Curl.CurlView
+            android:id="@+id/recipeCurlView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10sp"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            />
+</LinearLayout>
