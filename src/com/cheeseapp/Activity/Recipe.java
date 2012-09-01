@@ -75,6 +75,7 @@ public class Recipe extends MyCheeseActivity {
         mCurlView.setSizeChangedObserver(new SizeChangedObserver());
         mCurlView.setCurrentIndex(index);
         mCurlView.setBackgroundColor(Color.WHITE);
+        mCurlView.setAllowLastPageCurl(false);
     }
 
     private ArrayList<HashMap> _getRecipeDirections(Bundle savedInstanceState) {
@@ -201,10 +202,6 @@ public class Recipe extends MyCheeseActivity {
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
         TextView emptyRecipeText = (TextView) emptyRecipeLayout.findViewById(R.id.recipePageDirectionsText);
-        TextView directionCategoryText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionCategory);
-        directionCategoryText.setText("Ripening");
-        TextView directionIngredientsText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionIngredients);
-        directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
 
         float width = 375;
         int height = 500;
@@ -216,8 +213,17 @@ public class Recipe extends MyCheeseActivity {
         int maxNumCharsPerLine = textPaint.breakText(text, true, width, null) - 1;
         int maxLines = (int) abs(height / fontHeight);
 
+        int pageNum = 1;
+
         while (text.length() > 0) {
+
             View recipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
+
+            TextView directionCategoryText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionCategory);
+            directionCategoryText.setText("Ripening " + pageNum);
+            TextView directionIngredientsText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionIngredients);
+            directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
+
             TextView recipeText = (TextView) recipeLayout.findViewById(R.id.recipePageDirectionsText);
             String finalText = "";
 
@@ -242,6 +248,7 @@ public class Recipe extends MyCheeseActivity {
 
             recipeText.setText(finalText);
             recipeViewList.add(recipeLayout);
+            pageNum++;
         }
 
         return recipeViewList;
@@ -499,50 +506,54 @@ public class Recipe extends MyCheeseActivity {
         @Override
         public void updatePage(CurlPage page, int width, int height, int index) {
 
-            switch (index) {
-                // First case is image on front side, solid colored back.
-                case 0: {
-                    Bitmap front = loadBitmap(width, height, 0);
-                    page.setTexture(front, CurlPage.SIDE_FRONT);
-                    page.setColor(Color.rgb(180, 180, 180), CurlPage.SIDE_BACK);
-                    break;
-                }
-                // Second case is image on back side, solid colored front.
-                case 1: {
-                    Bitmap back = loadBitmap(width, height, 2);
-                    page.setTexture(back, CurlPage.SIDE_BACK);
-                    page.setColor(Color.rgb(127, 140, 180), CurlPage.SIDE_FRONT);
-                    break;
-                }
-                // Third case is images on both sides.
-                case 2: {
-                    Bitmap front = loadBitmap(width, height, 1);
-                    Bitmap back = loadBitmap(width, height, 3);
-                    page.setTexture(front, CurlPage.SIDE_FRONT);
-                    page.setTexture(back, CurlPage.SIDE_BACK);
-                    break;
-                }
-                // Fourth case is images on both sides - plus they are blend against
-                // separate colors.
-                case 3: {
-                    Bitmap front = loadBitmap(width, height, 2);
-                    Bitmap back = loadBitmap(width, height, 1);
-                    page.setTexture(front, CurlPage.SIDE_FRONT);
-                    page.setTexture(back, CurlPage.SIDE_BACK);
-                    page.setColor(Color.argb(127, 170, 130, 255),
-                            CurlPage.SIDE_FRONT);
-                    page.setColor(Color.rgb(255, 190, 150), CurlPage.SIDE_BACK);
-                    break;
-                }
-                // Fifth case is same image is assigned to front and back. In this
-                // scenario only one texture is used and shared for both sides.
-                case 4:
-                    Bitmap front = loadBitmap(width, height, 0);
-                    page.setTexture(front, CurlPage.SIDE_BOTH);
-                    page.setColor(Color.argb(127, 255, 255, 255),
-                            CurlPage.SIDE_BACK);
-                    break;
-            }
+            Bitmap front = loadBitmap(width, height, index);
+            page.setTexture(front, CurlPage.SIDE_FRONT);
+            page.setColor(Color.WHITE, CurlPage.SIDE_BACK);
+
+//            switch (index) {
+//                // First case is image on front side, solid colored back.
+//                case 0: {
+//                    Bitmap front = loadBitmap(width, height, 0);
+//                    page.setTexture(front, CurlPage.SIDE_FRONT);
+//                    page.setColor(Color.rgb(180, 180, 180), CurlPage.SIDE_BACK);
+//                    break;
+//                }
+//                // Second case is image on back side, solid colored front.
+//                case 1: {
+//                    Bitmap back = loadBitmap(width, height, 2);
+//                    page.setTexture(back, CurlPage.SIDE_BACK);
+//                    page.setColor(Color.rgb(127, 140, 180), CurlPage.SIDE_FRONT);
+//                    break;
+//                }
+//                // Third case is images on both sides.
+//                case 2: {
+//                    Bitmap front = loadBitmap(width, height, 1);
+//                    Bitmap back = loadBitmap(width, height, 3);
+//                    page.setTexture(front, CurlPage.SIDE_FRONT);
+//                    page.setTexture(back, CurlPage.SIDE_BACK);
+//                    break;
+//                }
+//                // Fourth case is images on both sides - plus they are blend against
+//                // separate colors.
+//                case 3: {
+//                    Bitmap front = loadBitmap(width, height, 2);
+//                    Bitmap back = loadBitmap(width, height, 1);
+//                    page.setTexture(front, CurlPage.SIDE_FRONT);
+//                    page.setTexture(back, CurlPage.SIDE_BACK);
+//                    page.setColor(Color.argb(127, 170, 130, 255),
+//                            CurlPage.SIDE_FRONT);
+//                    page.setColor(Color.rgb(255, 190, 150), CurlPage.SIDE_BACK);
+//                    break;
+//                }
+//                // Fifth case is same image is assigned to front and back. In this
+//                // scenario only one texture is used and shared for both sides.
+//                case 4:
+//                    Bitmap front = loadBitmap(width, height, 0);
+//                    page.setTexture(front, CurlPage.SIDE_BOTH);
+//                    page.setColor(Color.argb(127, 255, 255, 255),
+//                            CurlPage.SIDE_BACK);
+//                    break;
+//            }
         }
 
     }
@@ -555,7 +566,7 @@ public class Recipe extends MyCheeseActivity {
                 mCurlView.setMargins(.01f, .05f, .01f, .05f);
             } else {
                 mCurlView.setViewMode(CurlView.SHOW_ONE_PAGE);
-                mCurlView.setMargins(.01f, .01f, .01f, .01f);
+                mCurlView.setMargins(0, 0, 0, 0);
             }
         }
     }
