@@ -142,15 +142,12 @@ public class Recipe extends MyCheeseActivity {
         View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
         TextView emptyRecipeText = (TextView) emptyRecipeLayout.findViewById(R.id.recipePageDirectionsText);
         TextView emptyCategoryText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionCategory);
-        TextView emptyIngredientsText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionIngredients);
 
         Paint recipeTextPaint = emptyRecipeText.getPaint();
         Paint categoryTextPaint = emptyCategoryText.getPaint();
-        Paint ingredientTextPaint = emptyIngredientsText.getPaint();
         float fontHeight = abs(recipeTextPaint.getFontMetrics().top) + abs(recipeTextPaint.getFontMetrics().bottom);
         float headerHeight = abs(categoryTextPaint.getFontMetrics().top) + abs(categoryTextPaint.getFontMetrics().bottom);
-        headerHeight += abs(ingredientTextPaint.getFontMetrics().top) + abs(ingredientTextPaint.getFontMetrics().bottom);
-        headerHeight *= 2;
+        headerHeight *= 3;
         int maxLines = (int) abs((height - headerHeight) / fontHeight);
         int maxNumCharsPerLine = (int) (width / (recipeTextPaint.getTextSize() / 2));
 
@@ -164,8 +161,6 @@ public class Recipe extends MyCheeseActivity {
 
                 TextView directionCategoryText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionCategory);
                 directionCategoryText.setText(categoryName);
-                TextView directionIngredientsText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionIngredients);
-                directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
 
                 TextView recipeText = (TextView) recipeLayout.findViewById(R.id.recipePageDirectionsText);
                 String finalPageText = "";
@@ -186,6 +181,14 @@ public class Recipe extends MyCheeseActivity {
                     finalPageText += subText;
 
                     currentLineNum++;
+
+                    //Don't let it break in the middle of a word
+                    if (currentLineNum > maxLines && directions.length() > 0 && directions.charAt(0) != ' ') {
+                        int lastIndex = finalPageText.lastIndexOf(' ');
+                        String lastSubText = finalPageText.substring(lastIndex + 1, finalPageText.length()); // +1 is to skip the space
+                        directions = lastSubText + directions;
+                        finalPageText = finalPageText.substring(0, lastIndex);
+                    }
                 }
 
                 recipeText.setText(finalPageText);
