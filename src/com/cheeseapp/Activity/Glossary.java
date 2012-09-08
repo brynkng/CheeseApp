@@ -3,7 +3,6 @@ package com.cheeseapp.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockListActivity;
 import com.cheeseapp.DbAdapter.GlossaryDbAdapter;
 import com.cheeseapp.R;
 
@@ -11,7 +10,7 @@ import com.cheeseapp.R;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class Glossary extends MyCheeseActivity {
+public class Glossary extends MyCheeseActivityWithTabs {
 
     private GlossaryDbAdapter mGlossaryDb;
 

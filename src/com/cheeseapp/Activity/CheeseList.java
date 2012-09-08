@@ -16,7 +16,7 @@ import com.cheeseapp.Util.Util;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class CheeseList extends MyCheeseActivity {
+public class CheeseList extends MyCheeseActivityWithTabs {
 
     private CheeseDbAdapter mCheeseDb;
     private static final int FAVORITE_NOTE_KEY = 1;

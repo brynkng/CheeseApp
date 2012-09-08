@@ -24,7 +24,7 @@ import com.cheeseapp.navigation.TabInfo;
  * User: Bryan King
  * Date: 7/11/12
  */
-public class JournalHome extends MyCheeseActivity {
+public class JournalHome extends MyCheeseActivityWithTabs {
 
     private ListView mListView;
     private JournalDbAdapter mJournalDb;
