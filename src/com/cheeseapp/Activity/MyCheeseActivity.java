@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.cheeseapp.navigation.TabInfo;
 import com.cheeseapp.R;
 
@@ -32,6 +33,8 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
         _currentTabPosition = getIntent().getIntExtra(TARGET_TAB_POSITION_KEY, 0);
 
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ArrayList<TabInfo> _tabInfoList = new ArrayList<TabInfo>();
 
@@ -53,6 +56,19 @@ public class MyCheeseActivity extends SherlockActivity implements ActionBar.TabL
         }
 
         getSupportActionBar().setSelectedNavigationItem(_currentTabPosition);
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, CheeseList.class);
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        }
+
+        return super.onMenuItemSelected(featureId, item);
     }
 
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
