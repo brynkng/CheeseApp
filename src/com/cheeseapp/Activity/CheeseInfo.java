@@ -65,7 +65,7 @@ public class CheeseInfo extends MyCheeseActivity {
         makeItButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Recipe.class);
+                Intent intent = new Intent(v.getContext(), RecipeStart.class);
                 intent.putExtra(CHEESE_ID_KEY, mCheeseId);
 
                 startActivity(intent);

@@ -21,18 +21,15 @@ public class DirectionDbAdapter extends DbAdapter{
     public void prePopulate() {
         this.mDb.execSQL("delete from " + TABLE);
         this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'Heat the milk. Drumstick jerky chicken filet mignon. Jerky flank pork belly capicola, pancetta cow boudin speck venison fatback kielbasa pork chop t-bone shoulder biltong.', 1)");
-        this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'Add the rennet.', 2)");
-        this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'Cut the curds. Beef shoulder strip steak, tri-tip frankfurter ribeye pork tongue spare ribs capicola jowl turducken pig speck biltong. Filet mignon short ribs speck, kielbasa hamburger turkey pastrami swine pancetta salami. Flank ground round biltong meatball. Jerky beef ribs hamburger, ham hock meatball tenderloin jowl filet mignon drumstick turkey. Capicola chuck shoulder, hamburger swine strip steak ham hock biltong chicken rump.', 2)");
+        this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'Add the rennet.', 1)");
+        this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'COOK the curds. Beef shoulder strip steak, tri-tip frankfurter ribeye pork tongue spare ribs capicola jowl turducken pig speck biltong. Filet mignon short ribs speck, kielbasa hamburger turkey pastrami swine pancetta salami. Flank ground round biltong meatball. Jerky beef ribs hamburger, ham hock meatball tenderloin jowl filet mignon drumstick turkey. Capicola chuck shoulder, hamburger swine strip steak ham hock biltong chicken rump.', 2)");
+        this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'CUT the curds . Beef shoulder strip steak, tri-tip frankfurter ribeye pork tongue spare ribs capicola jowl turducken pig speck biltong. Filet mignon short ribs speck, kielbasa hamburger turkey pastrami swine pancetta salami. Flank ground round biltong meatball. Jerky beef ribs hamburger, ham hock meatball tenderloin jowl filet mignon drumstick turkey. Capicola chuck shoulder, hamburger swine strip steak ham hock biltong chicken rump.', 2)");
         this.mDb.execSQL("INSERT INTO directions (recipe_id, direction, direction_category_id) values (1, 'Press that shit real good. ndouille shankle brisket, pork loin kielbasa tongue filet mignon rump jowl drumstick. Brisket turducken rump strip steak flank. ', 3)");
     }
 
     public DirectionDbAdapter(Context ctx) {
         super(ctx);
     }
-
-//    public Cursor getDirection(long directionId) {
-//
-//    }
 
     public Cursor getDirectionsForRecipe(long recipeId) {
         Cursor cursor = this.mDb.query(

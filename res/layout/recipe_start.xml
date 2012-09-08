@@ -98,12 +98,26 @@
                 android:textColor="#ff0000"
                 />
 
+        <Button
+            android:id="@+id/recipeStartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recipeWarningTextLayout"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:width="200dp"
+            android:text="Start!"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
         <LinearLayout
                 android:id="@+id/recipeIngredientsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_below="@id/recipeWarningTextLayout"
+                android:layout_below="@id/recipeStartButton"
                 android:layout_margin="10sp"
                 android:paddingLeft="10sp"
                 android:paddingTop="5sp"
@@ -127,39 +141,6 @@
                     android:orientation="vertical"
                     android:layout_marginLeft="10sp"
                     />
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="15sp"
-                android:layout_below="@id/recipeIngredientsLayout"
-                android:gravity="center_horizontal|bottom"
-                >
-
-            <ImageView
-                    android:id="@+id/recipeCheeseImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/green_arrow_left"
-                    android:contentDescription="swipe left arrow"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Swipe to start"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    />
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/green_arrow_right"
-                    android:contentDescription="swipe right arrow"/>
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

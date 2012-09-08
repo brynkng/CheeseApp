@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
-import com.actionbarsherlock.app.SherlockActivity;
+import com.cheeseapp.CategoryGroupedDirection;
 import com.cheeseapp.Curl.CurlPage;
 import com.cheeseapp.Curl.CurlView;
 import com.cheeseapp.DbAdapter.*;
@@ -28,25 +28,16 @@ import static java.lang.Math.abs;
 public class Recipe extends MyCheeseActivity {
 
     private long mCheeseId;
-    private CheeseDbAdapter mCheeseDb;
     private RecipeDbAdapter mRecipeDb;
-    private IngredientDbAdapter mIngredientDb;
     private DirectionDbAdapter mDirectionDb;
     private Cursor mRecipeCursor;
     private Cursor mDirectionCursor;
 
-    private Cursor mCheeseCursor;
     private long mRecipeId;
-    private Double mOriginalYield;
-    private Double mYield;
     private ArrayList<View> mRecipeViewList;
-    private ArrayList<HashMap> mRecipeDirections;
-    private int mCheeseImgResource;
-    private String mCheeseName;
-    private String mTime;
-    private ArrayList<HashMap> mIngredients = new ArrayList<HashMap>();
-    private ArrayList<HashMap> mOriginalIngredients = new ArrayList<HashMap>();
+    private ArrayList<CategoryGroupedDirection> mCategoryGroupedDirections;
     private CurlView mCurlView;
+    private DirectionCategoryDbAdapter mDirectionCategoryDb;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,15 +50,11 @@ public class Recipe extends MyCheeseActivity {
         }
 
         mCheeseId = _getCheeseId(savedInstanceState);
-        mCheeseImgResource = _getCheeseImageResource(savedInstanceState);
-        mCheeseName = _getCheeseName(savedInstanceState);
 
         mRecipeId = _getRecipeId(savedInstanceState);
-        mTime = _getTime(savedInstanceState);
-        mYield = _getCheeseYield(savedInstanceState);
-        mIngredients = _getIngredients(savedInstanceState);
 
-        mRecipeDirections = _getRecipeDirections(savedInstanceState);
+
+        mCategoryGroupedDirections = _getCategoryGroupedDirections(savedInstanceState);
 
         mCurlView = (CurlView) findViewById(R.id.recipeCurlView);
         mCurlView.setCurrentIndex(index);
@@ -77,27 +64,44 @@ public class Recipe extends MyCheeseActivity {
         mCurlView.setAllowLastPageCurl(false);
     }
 
-    private ArrayList<HashMap> _getRecipeDirections(Bundle savedInstanceState) {
+    private ArrayList<CategoryGroupedDirection> _getCategoryGroupedDirections(Bundle savedInstanceState) {
         @SuppressWarnings("unchecked")
-        ArrayList<HashMap> recipeDirections = (savedInstanceState == null) ? null :  (ArrayList<HashMap>) savedInstanceState.getSerializable("paged_directions");
+        ArrayList<CategoryGroupedDirection> categoryGroupedDirections = (savedInstanceState == null) ? null :  (ArrayList<CategoryGroupedDirection>) savedInstanceState.getSerializable("paged_directions");
 
-        if (recipeDirections == null) {
-            recipeDirections = new ArrayList<HashMap>();
+        if (categoryGroupedDirections == null) {
+            categoryGroupedDirections = new ArrayList<CategoryGroupedDirection>();
             Cursor directionC = _getDirectionCursor();
 
+            String directions = "";
+            int currentDirectionCategory = 0;
+            int directionNum = 1;
+
             while (!directionC.isAfterLast()) {
-                HashMap<Integer, String> direction = new HashMap<Integer, String>();
                 Integer directionCategoryId = directionC.getInt(directionC.getColumnIndexOrThrow(DirectionDbAdapter.KEY_DIRECTION_CATEGORY_ID));
                 String directionText = directionC.getString(directionC.getColumnIndexOrThrow(DirectionDbAdapter.KEY_DIRECTION));
-                direction.put(directionCategoryId, directionText);
+                directionText = directionNum + ". " + directionText;
+                directionText += "\n\n";
 
-                recipeDirections.add(direction);
+                if(directionC.isFirst()){
+                    currentDirectionCategory = directionCategoryId;
+                } else if (directionCategoryId != currentDirectionCategory) {
+                    categoryGroupedDirections.add(new CategoryGroupedDirection(currentDirectionCategory, directions));
+                    currentDirectionCategory = directionCategoryId;
+                    directions = "";
+                }
+
                 directionC.moveToNext();
-            }
 
+                if (directionC.isAfterLast()) {
+                    categoryGroupedDirections.add(new CategoryGroupedDirection(currentDirectionCategory, directionText));
+                }
+
+                directions += directionText;
+                directionNum++;
+            }
         }
 
-        return recipeDirections;
+        return categoryGroupedDirections;
     }
 
     @Override
@@ -112,28 +116,6 @@ public class Recipe extends MyCheeseActivity {
         mCurlView.onResume();
     }
 
-    private String _getTime(Bundle savedInstanceState) {
-        String time = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("time");
-
-        if (time == null) {
-            Cursor RecipeCursor = _getRecipeCursor();
-            time = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_TIME));
-        }
-
-        return time;
-    }
-
-    private String _getCheeseName(Bundle savedInstanceState) {
-        String cheeseName = (savedInstanceState == null) ? null :  (String) savedInstanceState.getSerializable("cheese_name");
-
-        if (cheeseName == null) {
-            Cursor CheeseCursor = _getCheeseCursor();
-            cheeseName = CheeseCursor.getString(CheeseCursor.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
-        }
-
-        return cheeseName;
-    }
-
     private long _getRecipeId(Bundle savedInstanceState) {
         Long recipeId = (savedInstanceState == null) ? null :  (Long) savedInstanceState.getSerializable("recipe_id");
 
@@ -145,284 +127,73 @@ public class Recipe extends MyCheeseActivity {
         return recipeId;
     }
 
-    private int _getCheeseImageResource(Bundle savedInstanceState) {
-        Integer cheeseImgResource = (savedInstanceState == null) ? null :  (Integer) savedInstanceState.getSerializable("cheese_img_resource");
-
-        if (cheeseImgResource == null) {
-            Cursor CheeseCursor = _getCheeseCursor();
-            cheeseImgResource = Util.getImageResourceFromCursor(this, CheeseCursor, 1);
-        }
-
-        return cheeseImgResource;
-    }
-
-    private Cursor _getCheeseCursor() {
-        if (mCheeseCursor == null) {
-            mCheeseCursor = mCheeseDb.getCheese(mCheeseId);
-        }
-
-        return mCheeseCursor;
-    }
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putLong("cheese_id", mCheeseId);
         outState.putLong("recipe_id", mRecipeId);
-        outState.putString("cheese_name", mCheeseName);
-        outState.putString("time", mTime);
-        outState.putInt("cheese_img_resource", mCheeseImgResource);
-        outState.putDouble("yield", mYield);
-        outState.putSerializable("ingredients", mIngredients);
+
     }
 
     private ArrayList<View> _getRecipeViewList(int width, int height) {
         ArrayList<View> recipeViewList = new ArrayList<View>();
 
-        String text = "1. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
-        + "2. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
-        + "3. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
-        + "4. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. \n\n"
-        + "5. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. "
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean.\n\n"
-        + "6. This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean."
-        + "This is a recipe! Hello Bean. This is a recipe! Hello Bean. This is a recipe! Hello Bean. END END";
-
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
         TextView emptyRecipeText = (TextView) emptyRecipeLayout.findViewById(R.id.recipePageDirectionsText);
+        TextView emptyCategoryText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionCategory);
+        TextView emptyIngredientsText = (TextView) emptyRecipeLayout.findViewById(R.id.recipeDirectionIngredients);
 
-        Paint textPaint = emptyRecipeText.getPaint();
-        float fontHeight = abs(textPaint.getFontMetrics().top) + abs(textPaint.getFontMetrics().bottom);
-        textPaint.getTextSize();
-        int maxNumCharsPerLine = textPaint.breakText(text, true, width, null);
-        int maxLines = (int) abs(height / fontHeight);
+        Paint recipeTextPaint = emptyRecipeText.getPaint();
+        Paint categoryTextPaint = emptyCategoryText.getPaint();
+        Paint ingredientTextPaint = emptyIngredientsText.getPaint();
+        float fontHeight = abs(recipeTextPaint.getFontMetrics().top) + abs(recipeTextPaint.getFontMetrics().bottom);
+        float headerHeight = abs(categoryTextPaint.getFontMetrics().top) + abs(categoryTextPaint.getFontMetrics().bottom);
+        headerHeight += abs(ingredientTextPaint.getFontMetrics().top) + abs(ingredientTextPaint.getFontMetrics().bottom);
+        headerHeight *= 2;
+        int maxLines = (int) abs((height - headerHeight) / fontHeight);
+        int maxNumCharsPerLine = (int) (width / (recipeTextPaint.getTextSize() / 2));
 
-        int pageNum = 1;
+        for (CategoryGroupedDirection RecipeDirection : mCategoryGroupedDirections) {
+            String directions = RecipeDirection.getDirections();
+            String categoryName = mDirectionCategoryDb.getDirectionCategoryName(RecipeDirection.getDirectionCategoryId());
 
-        while (text.length() > 0) {
 
-            View recipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
+            while (directions.length() > 0) {
+                View recipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
 
-            TextView directionCategoryText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionCategory);
-            directionCategoryText.setText("Ripening " + pageNum);
-            TextView directionIngredientsText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionIngredients);
-            directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
+                TextView directionCategoryText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionCategory);
+                directionCategoryText.setText(categoryName);
+                TextView directionIngredientsText = (TextView) recipeLayout.findViewById(R.id.recipeDirectionIngredients);
+                directionIngredientsText.setText("2 Gallons Whole Milk      1 Packet Meso Starter");
 
-            TextView recipeText = (TextView) recipeLayout.findViewById(R.id.recipePageDirectionsText);
-            String finalText = "";
+                TextView recipeText = (TextView) recipeLayout.findViewById(R.id.recipePageDirectionsText);
+                String finalPageText = "";
 
-            int currentLineNum = 1;
-            while (currentLineNum <= maxLines) {
-                int numCharsOnLine = (maxNumCharsPerLine < text.length()) ? maxNumCharsPerLine : text.length();
-                String subText = TextUtils.substring(text, 0, numCharsOnLine);
+                int currentLineNum = 1;
+                while (currentLineNum <= maxLines) {
+                    int numCharsOnLine = (maxNumCharsPerLine < directions.length()) ? maxNumCharsPerLine : directions.length();
+                    String subText = TextUtils.substring(directions, 0, numCharsOnLine);
 
-                //if this is the last line, clear out the text
-                //otherwise remove the portion we added
-                if (numCharsOnLine == text.length()) {
-                    text = "";
-                } else {
-                    text = TextUtils.substring(text, numCharsOnLine, text.length());
+                    //if this is the last line, clear out the directions
+                    //otherwise remove the portion we added
+                    if (numCharsOnLine == directions.length()) {
+                        directions = "";
+                    } else {
+                        directions = TextUtils.substring(directions, numCharsOnLine, directions.length());
+                    }
+
+                    finalPageText += subText;
+
+                    currentLineNum++;
                 }
 
-                finalText += subText;
-
-                currentLineNum++;
+                recipeText.setText(finalPageText);
+                recipeViewList.add(recipeLayout);
             }
-
-            recipeText.setText(finalText);
-            recipeViewList.add(recipeLayout);
-            pageNum++;
         }
 
         return recipeViewList;
-    }
-
-    private View _getHomeRecipeLayoutView() {
-        LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View recipeLayout = inflater.inflate(R.layout.recipe_home, (ViewGroup) findViewById(R.id.recipeScrollLayout));
-
-        //Cheese picture
-        ImageView cheeseImg = (ImageView) recipeLayout.findViewById(R.id.recipeCheeseImg);
-        cheeseImg.setImageResource(mCheeseImgResource);
-
-        //Cheese name
-        TextView cheeseNameView = (TextView) recipeLayout.findViewById(R.id.recipeCheeseName);
-        cheeseNameView.setText(mCheeseName);
-
-        //Recipe time
-        TextView timeView = (TextView) recipeLayout.findViewById(R.id.timeText);
-        timeView.setText(mTime + " hours");
-
-        //Yield
-        _setupYieldSpinner(recipeLayout);
-
-        //Recipe ingredients
-        _setupRecipeIngredients(recipeLayout);
-
-        return recipeLayout;
-    }
-
-    private ArrayList<HashMap> _getIngredients(Bundle savedInstanceState) {
-        @SuppressWarnings("unchecked")
-        ArrayList<HashMap> ingredients = (savedInstanceState == null) ? null :  (ArrayList<HashMap>) savedInstanceState.getSerializable("ingredients");
-        
-        if (ingredients == null) {
-            ingredients = new ArrayList<HashMap>();
-            Cursor ingredientCursor = mIngredientDb.getIngredientsForRecipe(mRecipeId);
-            ingredientCursor.moveToFirst();
-            while (!ingredientCursor.isAfterLast()) {
-                String ingredientName = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_NAME));
-                String quantity = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.LINKER_KEY_QUANTITY));
-                String unit = ingredientCursor.getString(ingredientCursor.getColumnIndexOrThrow(IngredientDbAdapter.KEY_UNIT));
-
-                HashMap<String, String> ingredientParts = new HashMap<String, String>();
-                ingredientParts.put("name", ingredientName);
-                ingredientParts.put("quantity", quantity);
-                ingredientParts.put("unit", unit);
-
-                ingredients.add(ingredientParts);
-
-                ingredientCursor.moveToNext();
-            }
-
-            mOriginalIngredients = _getClonedArrayListHashMap(ingredients);
-        }
-
-        return ingredients;
-    }
-
-    private ArrayList<HashMap> _getClonedArrayListHashMap(ArrayList<HashMap> ingredients) {
-        ArrayList<HashMap> clonedArrayList = new ArrayList<HashMap>();
-
-        for (HashMap ingredient : ingredients) {
-            HashMap<String, String> newIngredient = new HashMap<String, String>();
-            for (Object o : ingredient.entrySet()) {
-                @SuppressWarnings("unchecked")
-                HashMap.Entry<String, String> ingredientPart = (HashMap.Entry<String, String>) o;
-                newIngredient.put(ingredientPart.getKey(), ingredientPart.getValue());
-            }
-            
-            clonedArrayList.add(newIngredient);
-        }
-
-        return clonedArrayList;
-    }
-
-    private void _setupRecipeIngredients(View recipeLayout) {
-        LinearLayout ingredientList = (LinearLayout) recipeLayout.findViewById(R.id.mainIngredientList);
-
-        LinearLayout warningTextLayout = (LinearLayout) recipeLayout.findViewById(R.id.recipeWarningTextLayout);
-        if (!mYield.equals(mOriginalYield)) {
-            warningTextLayout.removeAllViews();
-
-            TextView warningText = new TextView(this);
-            warningText.setTextColor(Color.parseColor("#ff0000"));
-            warningText.setTextSize(16);
-            warningText.setText("Warning - The following recipe is not guaranteed to work for the calculated ingredient quantities");
-
-            warningTextLayout.addView(warningText);
-        } else {
-            warningTextLayout.removeAllViews();
-        }
-
-        if (ingredientList.getChildCount() > 0) {
-            ingredientList.removeAllViews();
-        }
-
-        for (HashMap ingredient : mIngredients) {
-            TextView ingredientView = new TextView(this);
-            Double quantity = Double.parseDouble((String) ingredient.get("quantity"));
-            String unit = (String) ingredient.get("unit");
-            String name = (String) ingredient.get("name");
-
-            if (quantity > 1) {
-                unit = unit + "s";
-            }
-
-            ingredientView.setText("• " + quantity + " " + unit + " " + name);
-            ingredientView.setTextColor(Color.BLACK);
-            ingredientView.setTextSize(18);
-            ingredientList.addView(ingredientView);
-        }
-    }
-
-    private void _setupYieldSpinner(final View recipeLayout) {
-        Spinner YieldSpinner = (Spinner) recipeLayout.findViewById(R.id.recipeYieldSpinner);
-        ArrayAdapter<CharSequence> yieldSpinnerAdapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.yield_amounts,
-                android.R.layout.simple_spinner_dropdown_item
-        );
-        yieldSpinnerAdapter.setDropDownViewResource(R.layout.yield_spinner_layout);
-        YieldSpinner.setAdapter(yieldSpinnerAdapter);
-
-        int yieldPosition;
-        if (mYield == .5) {
-            yieldPosition = 0;
-        } else {
-            yieldPosition = (int) Math.round(mYield);
-        }
-
-        YieldSpinner.setSelection(yieldPosition);
-        YieldSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    mYield = .5;
-                } else {
-                    mYield = Double.parseDouble(Integer.toString(position));
-                }
-
-                _recalculateIngredientQuantities(recipeLayout);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
-
-    private void _recalculateIngredientQuantities(View recipeLayout) {
-
-        for (int i=0; i < mOriginalIngredients.size(); i++) {
-            @SuppressWarnings("unchecked")
-            HashMap<String, String> ingredient = (HashMap<String, String>) mOriginalIngredients.get(i);
-            
-            Double quantity = Double.parseDouble(ingredient.get("quantity"));
-            String newQuantity = String.valueOf((mYield / mOriginalYield) * quantity);
-
-            @SuppressWarnings("unchecked")
-            HashMap<String, String> updatedIngredient = mIngredients.get(i);
-            updatedIngredient.put("quantity", newQuantity);
-        }
-        
-        _setupRecipeIngredients(recipeLayout);
-    }
-
-    private Double _getCheeseYield(Bundle savedInstanceState) {
-        Double yield = (savedInstanceState == null) ? null :  (Double) savedInstanceState.getSerializable("yield");
-        
-        if (yield == null) {
-            Cursor RecipeCursor = _getRecipeCursor();
-            String yieldDouble = RecipeCursor.getString(RecipeCursor.getColumnIndexOrThrow(RecipeDbAdapter.KEY_YIELD));
-            yield = Double.parseDouble(yieldDouble.substring(0, 1));
-            mOriginalYield = yield;
-        }
-        return yield;
     }
 
     private Cursor _getRecipeCursor() {
@@ -442,25 +213,21 @@ public class Recipe extends MyCheeseActivity {
     }
 
     private void _initializeDatabases() {
-        mCheeseDb = new CheeseDbAdapter(this);
-        mCheeseDb.open();
-
         mRecipeDb = new RecipeDbAdapter(this);
         mRecipeDb.open();
 
-        mIngredientDb = new IngredientDbAdapter(this);
-        mIngredientDb.open();
-
         mDirectionDb = new DirectionDbAdapter(this);
         mDirectionDb.open();
+
+        mDirectionCategoryDb = new DirectionCategoryDbAdapter(this);
+        mDirectionCategoryDb.open();
     }
 
     @Override
     protected void onDestroy() {
-        mCheeseDb.close();
         mRecipeDb.close();
-        mIngredientDb.close();
         mDirectionDb.close();
+        mDirectionCategoryDb.close();
 
         super.onDestroy();
     }
