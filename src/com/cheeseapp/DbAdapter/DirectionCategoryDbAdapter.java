@@ -21,7 +21,9 @@ public class DirectionCategoryDbAdapter extends DbAdapter{
         this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
         this.createDirectionCategory("Renneting");
         this.createDirectionCategory("Cooking Curds");
+        this.createDirectionCategory("Cutting Curds");
         this.createDirectionCategory("Pressing");
+        this.createDirectionCategory("Waxing");
         this.createDirectionCategory("Aging");
     }
 

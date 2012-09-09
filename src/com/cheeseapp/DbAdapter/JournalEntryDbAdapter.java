@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.Calendar;
+
 /**
  * User: Bryan King
  * Date: 4/21/12
@@ -30,23 +32,24 @@ public class JournalEntryDbAdapter extends DbAdapter{
     public void prePopulate() {
         this.mDb.execSQL("delete from " + TABLE);
         this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.createJournalEntry(1, 1, "First step go!");
-        this.createJournalEntry(1, 2, "Second step go!");
-        this.createJournalEntry(1, 3, "Third step go!");
+        this.setJournalEntry(1, 1, "First step go!");
+        this.setJournalEntry(1, 2, "Second step go!");
+        this.setJournalEntry(1, 3, "Third step go!");
 
-        this.createJournalEntry(2, 1, "First step!");
-        this.createJournalEntry(2, 2, "Second step yo!");
+        this.setJournalEntry(2, 1, "First step!");
+        this.setJournalEntry(2, 2, "Second step yo!");
 
-        this.createJournalEntry(3, 1, "First step my man!");
+        this.setJournalEntry(3, 1, "First step my man!");
     }
 
-    public long createJournalEntry(long journalId, long directionCategoryId, String text) {
+    public long setJournalEntry(long journalId, long directionCategoryId, String text) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_JOURNAL_ID, journalId);
         initialValues.put(KEY_DIRECTION_CATEGORY_ID, directionCategoryId);
         initialValues.put(KEY_TEXT, text);
+        initialValues.put(KEY_LAST_EDITED_DATE, System.currentTimeMillis());
 
-        return this.mDb.insert(TABLE, null, initialValues);
+        return this.mDb.replace(TABLE, null, initialValues);
     }
 
     /**
@@ -55,14 +58,14 @@ public class JournalEntryDbAdapter extends DbAdapter{
      * @return Cursor over all journal entries
      */
     public Cursor getJournalEntries(long journalId) {
-        String sql = "SELECT je._id, dc.name as category_name, je.text as entry_text "
+        String sql = "SELECT je._id, dc.name as category_name, dc._id as category_id, je.text as entry_text "
                 + "FROM journals j "
                 + "JOIN recipes r  USING(cheese_id) "
                 + "JOIN directions d  ON(r._id = d.recipe_id) "
                 + "JOIN direction_categories dc  ON(dc._id = d.direction_category_id) "
-                + "LEFT JOIN journal_entries je ON (je.direction_category_id = dc._id) "
-                + "WHERE journal_id = ? "
-                + "GROUP BY je._id";
+                + "LEFT JOIN journal_entries je ON (je.direction_category_id = dc._id AND je.journal_id = j._id) "
+                + "WHERE j._id = ? "
+                + "GROUP BY dc._id ";
         Cursor cJournalEntries = mDb.rawQuery(sql, new String[] {Long.toString(journalId)});
         cJournalEntries.moveToFirst();
 

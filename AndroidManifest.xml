@@ -25,7 +25,9 @@
         <activity android:name=".Activity.Recipe"/>
         <activity android:name=".Activity.Glossary"/>
         <activity android:name=".Activity.JournalHome"/>
-        <activity android:name=".Activity.JournalInfo"/>
+        <activity android:name=".Activity.JournalInfo"
+                  android:windowSoftInputMode="adjustPan"
+                />
         <activity android:name=".Activity.RecipeStart"/>
 
     </application>

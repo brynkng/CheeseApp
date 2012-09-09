@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="15sp"
         android:orientation="horizontal"
         >
         <TextView
@@ -59,10 +60,17 @@
             />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/journalInfoList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    <ScrollView
+            android:id="@+id/journalInfoScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:id="@+id/journalEntryLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            />
+    </ScrollView>
 
 </LinearLayout>
