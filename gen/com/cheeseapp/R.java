@@ -807,12 +807,13 @@ containing a value of this type.
         public static final int gouda=0x7f020059;
         public static final int green_arrow_left=0x7f02005a;
         public static final int green_arrow_right=0x7f02005b;
-        public static final int inset_border=0x7f02005c;
-        public static final int popup_background=0x7f02005d;
-        public static final int popup_inset_background=0x7f02005e;
-        public static final int star_off=0x7f02005f;
-        public static final int star_on=0x7f020060;
-        public static final int swiss=0x7f020061;
+        public static final int ic_compose=0x7f02005c;
+        public static final int inset_border=0x7f02005d;
+        public static final int popup_background=0x7f02005e;
+        public static final int popup_inset_background=0x7f02005f;
+        public static final int star_off=0x7f020060;
+        public static final int star_on=0x7f020061;
+        public static final int swiss=0x7f020062;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f050022;

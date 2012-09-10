@@ -1,6 +1,10 @@
 package com.cheeseapp.Activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,6 +14,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.*;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.cheeseapp.CategoryGroupedDirection;
 import com.cheeseapp.Curl.CurlPage;
 import com.cheeseapp.Curl.CurlView;
@@ -27,13 +35,19 @@ import static java.lang.Math.abs;
  */
 public class Recipe extends MyCheeseActivity {
 
+    private static final int START_JOURNAL_KEY = 0;
+    private static final int DIALOG_EDIT_JOURNAL = 0;
+
     private long mCheeseId;
     private RecipeDbAdapter mRecipeDb;
+    private CheeseDbAdapter mCheeseDb;
+    private JournalDbAdapter mJournalDb;
     private DirectionDbAdapter mDirectionDb;
+
     private Cursor mRecipeCursor;
     private Cursor mDirectionCursor;
-
     private long mRecipeId;
+    private Long mJournalId;
     private ArrayList<View> mRecipeViewList;
     private ArrayList<CategoryGroupedDirection> mCategoryGroupedDirections;
     private CurlView mCurlView;
@@ -50,10 +64,13 @@ public class Recipe extends MyCheeseActivity {
         }
 
         mCheeseId = _getCheeseId(savedInstanceState);
+        Cursor cCheese = mCheeseDb.getCheese(mCheeseId);
+        String cheeseName = cCheese.getString(cCheese.getColumnIndexOrThrow(CheeseDbAdapter.KEY_NAME));
+
+        getSupportActionBar().setTitle(cheeseName);
 
         mRecipeId = _getRecipeId(savedInstanceState);
-
-
+        mJournalId = _tryToGetJournalId(savedInstanceState);
         mCategoryGroupedDirections = _getCategoryGroupedDirections(savedInstanceState);
 
         mCurlView = (CurlView) findViewById(R.id.recipeCurlView);
@@ -62,6 +79,84 @@ public class Recipe extends MyCheeseActivity {
         mCurlView.setSizeChangedObserver(new SizeChangedObserver());
         mCurlView.setBackgroundColor(Color.WHITE);
         mCurlView.setAllowLastPageCurl(false);
+    }
+
+    private Long _tryToGetJournalId(Bundle savedInstanceState) {
+        return (savedInstanceState == null) ? null : (Long) savedInstanceState.getSerializable(getString(R.string.key_journal_id));
+    }
+
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        MenuItem journalEdit = menu.add("Save");
+        journalEdit.setIcon(R.drawable.ic_compose)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        journalEdit.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (mJournalId == null) {
+                        showDialog(DIALOG_EDIT_JOURNAL);
+                    } else {
+                        Intent intent = new Intent(Recipe.this, JournalInfo.class);
+                        intent.putExtra(getString(R.string.key_journal_id), mJournalId);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    }
+                    return true;
+                }
+            });
+
+        return true;
+    }
+
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog;
+        switch(id) {
+        case DIALOG_EDIT_JOURNAL:
+
+            Cursor cAllJournals = mJournalDb.getAllJournalsWithCheese(mCheeseId);
+            startManagingCursor(cAllJournals);
+
+            final HashMap<Long, String> journals = new HashMap<Long, String>();
+            journals.put((long)DIALOG_EDIT_JOURNAL, "Create new journal");
+            while (!cAllJournals.isAfterLast()) {
+                long journalId = cAllJournals.getLong(cAllJournals.getColumnIndexOrThrow(JournalDbAdapter.KEY_ID));
+                String date = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("last_edited_date"));
+                String title = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("title"));
+
+                journals.put(journalId, title + " - " + date);
+
+                cAllJournals.moveToNext();
+            }
+
+            String[] items = journals.values().toArray(new String[journals.size()]);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Journal");
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int item) {
+                    long journalId;
+                    switch (item) {
+                        case DIALOG_EDIT_JOURNAL:
+                            journalId = mJournalDb.createJournal(mCheeseId);
+                            break;
+                        default:
+                            journalId = (Long) journals.keySet().toArray()[item];
+                    }
+
+                    mJournalId = journalId;
+                    Intent intent = new Intent(Recipe.this, JournalInfo.class);
+                    intent.putExtra(getString(R.string.key_journal_id), journalId);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    removeDialog(DIALOG_EDIT_JOURNAL); //To circumvent dialog caching
+                }
+            });
+            dialog = builder.create();
+            break;
+        default:
+            dialog = null;
+        }
+
+        return dialog;
     }
 
     private ArrayList<CategoryGroupedDirection> _getCategoryGroupedDirections(Bundle savedInstanceState) {
@@ -132,7 +227,7 @@ public class Recipe extends MyCheeseActivity {
         super.onSaveInstanceState(outState);
         outState.putLong("cheese_id", mCheeseId);
         outState.putLong("recipe_id", mRecipeId);
-
+        outState.putLong(getString(R.string.key_journal_id), mJournalId);
     }
 
     private ArrayList<View> _getRecipeViewList(int width, int height) {
@@ -222,6 +317,12 @@ public class Recipe extends MyCheeseActivity {
         mDirectionDb = new DirectionDbAdapter(this);
         mDirectionDb.open();
 
+        mJournalDb = new JournalDbAdapter(this);
+        mJournalDb.open();
+
+        mCheeseDb = new CheeseDbAdapter(this);
+        mCheeseDb.open();
+
         mDirectionCategoryDb = new DirectionCategoryDbAdapter(this);
         mDirectionCategoryDb.open();
     }
@@ -230,6 +331,8 @@ public class Recipe extends MyCheeseActivity {
     protected void onDestroy() {
         mRecipeDb.close();
         mDirectionDb.close();
+        mCheeseDb.close();
+        mJournalDb.close();
         mDirectionCategoryDb.close();
 
         super.onDestroy();

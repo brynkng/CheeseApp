@@ -1,6 +1,7 @@
 package com.cheeseapp.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -13,6 +14,7 @@ import com.cheeseapp.DbAdapter.JournalEntryDbAdapter;
 import com.cheeseapp.R;
 
 import java.util.HashMap;
+import java.util.IllegalFormatCodePointException;
 
 /**
  * User: Bryan King
@@ -61,20 +63,6 @@ public class JournalInfo extends MyCheeseActivity{
                 scrollView.scrollTo(0, scrollY);
             }
         });
-    }
-
-    private int getRelativeLeft(View myView) {
-    if (myView.getParent() == myView.getRootView())
-        return myView.getLeft();
-    else
-        return myView.getLeft() + getRelativeLeft((View) myView.getParent());
-}
-
-    private int getRelativeTop(View myView) {
-        if (myView.getParent() == myView.getRootView())
-            return myView.getTop();
-        else
-            return myView.getTop() + getRelativeTop((View) myView.getParent());
     }
 
     private void _setupJournalEntries() {

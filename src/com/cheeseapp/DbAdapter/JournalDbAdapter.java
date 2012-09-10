@@ -31,9 +31,9 @@ public class JournalDbAdapter extends DbAdapter{
         this.mDb.execSQL("delete from " + TABLE);
         this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
         this.createJournal(1, "First Cheddar");
-        this.createJournal(1, "");
-        this.createJournal(2, "");
-        this.createJournal(3, "");
+        this.createJournal(1);
+        this.createJournal(2);
+        this.createJournal(3);
     }
 
     /**
@@ -49,6 +49,10 @@ public class JournalDbAdapter extends DbAdapter{
         initialValues.put(KEY_TITLE, title);
 
         return this.mDb.insert(TABLE, null, initialValues);
+    }
+
+    public long createJournal(long cheeseId) {
+        return createJournal(cheeseId, "");
     }
 
     /**
@@ -76,6 +80,23 @@ public class JournalDbAdapter extends DbAdapter{
             + "GROUP BY j._id "
             + "ORDER BY last_edited_date";
         Cursor cJournalCursor = mDb.rawQuery(sql, new String[] {});
+        cJournalCursor.moveToFirst();
+
+        return cJournalCursor;
+    }
+
+    public Cursor getAllJournalsWithCheese(long cheeseId) {
+        String sql =
+            "SELECT j._id, "
+                + "DATE(MAX(je.last_edited_date)) AS last_edited_date, "
+                + "CASE WHEN j.title != '' THEN j.title ELSE c.name END AS title "
+            + "FROM journals j "
+            + "JOIN cheeses c ON(j.cheese_id = c._id) "
+            + "JOIN journal_entries je ON(je.journal_id = j._id) "
+            + "WHERE c._id = ? "
+            + "GROUP BY j._id "
+            + "ORDER BY last_edited_date";
+        Cursor cJournalCursor = mDb.rawQuery(sql, new String[] {Long.toString(cheeseId)});
         cJournalCursor.moveToFirst();
 
         return cJournalCursor;
