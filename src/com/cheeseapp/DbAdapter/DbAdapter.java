@@ -140,7 +140,7 @@ abstract public class DbAdapter {
                 + JournalEntryDbAdapter.KEY_ID + " integer primary key autoincrement,"
                 + JournalEntryDbAdapter.KEY_JOURNAL_ID + " integer,"
                 + JournalEntryDbAdapter.KEY_DIRECTION_CATEGORY_ID + " integer,"
-                + JournalEntryDbAdapter.KEY_LAST_EDITED_DATE + " integer,"
+                + JournalEntryDbAdapter.KEY_LAST_EDITED_DATE + " text,"
                 + JournalEntryDbAdapter.KEY_TEXT + " text,"
                 + " UNIQUE (" + JournalEntryDbAdapter.KEY_JOURNAL_ID + ", " + JournalEntryDbAdapter.KEY_DIRECTION_CATEGORY_ID + ") "
                 + "); "

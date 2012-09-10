@@ -3,8 +3,12 @@ package com.cheeseapp.DbAdapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.text.format.Time;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * User: Bryan King
@@ -43,11 +47,13 @@ public class JournalEntryDbAdapter extends DbAdapter{
     }
 
     public long setJournalEntry(long journalId, long directionCategoryId, String text) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:ss");
+        String currentDateandTime = sdf.format(new Date());
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_JOURNAL_ID, journalId);
         initialValues.put(KEY_DIRECTION_CATEGORY_ID, directionCategoryId);
         initialValues.put(KEY_TEXT, text);
-        initialValues.put(KEY_LAST_EDITED_DATE, System.currentTimeMillis());
+        initialValues.put(KEY_LAST_EDITED_DATE, currentDateandTime);
 
         return this.mDb.replace(TABLE, null, initialValues);
     }
