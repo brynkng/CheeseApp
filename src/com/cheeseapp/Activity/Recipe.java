@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.internal.view.menu.ActionMenuItemView;
 import com.actionbarsherlock.view.*;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -86,9 +87,9 @@ public class Recipe extends MyCheeseActivity {
     }
 
     public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
-        MenuItem journalEdit = menu.add("Save");
+        MenuItem journalEdit = menu.add("Edit Journal");
         journalEdit.setIcon(R.drawable.ic_compose)
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         journalEdit.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
@@ -106,6 +107,18 @@ public class Recipe extends MyCheeseActivity {
             });
 
         return true;
+    }
+
+    private class RecipeView extends ActionMenuItemView{
+        public RecipeView(Context context) {
+            super(context);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            Toast.makeText(Recipe.this, "My own long click!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
     }
 
     protected Dialog onCreateDialog(int id) {
@@ -374,11 +387,12 @@ public class Recipe extends MyCheeseActivity {
         }
 
         @Override
-        public void updatePage(CurlPage page, int width, int height, int index) {
+        public void updatePage(CurlPage page, int width, int height, final int index) {
 
             Bitmap front = loadBitmap(width, height, index);
             page.setTexture(front, CurlPage.SIDE_FRONT);
             page.setColor(Color.WHITE, CurlPage.SIDE_BACK);
+
 
 //            switch (index) {
 //                // First case is image on front side, solid colored back.
