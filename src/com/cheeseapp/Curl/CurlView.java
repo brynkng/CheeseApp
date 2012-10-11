@@ -147,6 +147,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		long currentTime = System.currentTimeMillis();
 		// If animation is done.
 		if (currentTime >= mAnimationStartTime + mAnimationDurationTime) {
+
 			if (mAnimationTargetEvent == SET_CURL_TO_RIGHT) {
 				// Switch curled page to right.
 				CurlMesh right = mPageCurl;
@@ -161,6 +162,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				if (mCurlState == CURL_LEFT) {
 					--mCurrentIndex;
 				}
+                mPageProvider.onPageTurn(getCurrentIndex());
 			} else if (mAnimationTargetEvent == SET_CURL_TO_LEFT) {
 				// Switch curled page to left.
 				CurlMesh left = mPageCurl;
@@ -178,6 +180,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				if (mCurlState == CURL_RIGHT) {
 					++mCurrentIndex;
 				}
+                mPageProvider.onPageTurn(getCurrentIndex());
 			}
 			mCurlState = CURL_NONE;
 			mAnimate = false;
@@ -789,6 +792,8 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		 * Index is a number between 0 and getBitmapCount() - 1.
 		 */
 		public void updatePage(CurlPage page, int width, int height, int index);
+
+        public void onPageTurn(int index);
 	}
 
 	/**

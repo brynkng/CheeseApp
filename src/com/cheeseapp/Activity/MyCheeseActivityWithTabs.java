@@ -37,6 +37,7 @@ public class MyCheeseActivityWithTabs extends MyCheeseActivity implements Action
 
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+
         ArrayList<TabInfo> _tabInfoList = new ArrayList<TabInfo>();
 
         TabInfo cheeses = new TabInfo("CHEESES", CheeseList.class);
@@ -44,9 +45,6 @@ public class MyCheeseActivityWithTabs extends MyCheeseActivity implements Action
 
         TabInfo journal = new TabInfo("JOURNAL", JournalHome.class);
         _tabInfoList.add(journal);
-
-        TabInfo glossary = new TabInfo("GLOSSARY", Glossary.class);
-        _tabInfoList.add(glossary);
 
         for (TabInfo tabInfo : _tabInfoList) {
             ActionBar.Tab tab = getSupportActionBar().newTab();

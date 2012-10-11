@@ -5,6 +5,7 @@
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/libs/actionBarSherlock/library/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/libs/CountdownTimer/gen" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>

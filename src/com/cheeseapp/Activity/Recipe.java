@@ -14,17 +14,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.*;
 import android.widget.*;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.internal.view.menu.ActionMenuItemView;
-import com.actionbarsherlock.view.*;
-import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.cheeseapp.CategoryGroupedDirection;
+import com.cheeseapp.*;
 import com.cheeseapp.Curl.CurlPage;
 import com.cheeseapp.Curl.CurlView;
 import com.cheeseapp.DbAdapter.*;
-import com.cheeseapp.R;
-import com.cheeseapp.Util.Util;
+import net.everythingandroid.timer.TimerActivity;
 
 import java.util.*;
 
@@ -38,21 +33,25 @@ public class Recipe extends MyCheeseActivity {
 
     private static final int START_JOURNAL_KEY = 0;
     private static final int DIALOG_EDIT_JOURNAL = 0;
+    private static final int DIALOG_MULTIPLE_ALARMS = 1;
 
     private long mCheeseId;
     private RecipeDbAdapter mRecipeDb;
     private CheeseDbAdapter mCheeseDb;
     private JournalDbAdapter mJournalDb;
     private DirectionDbAdapter mDirectionDb;
-
+    private DirectionCategoryDbAdapter mDirectionCategoryDb;
     private Cursor mRecipeCursor;
     private Cursor mDirectionCursor;
+
     private long mRecipeId;
     private Long mJournalId;
-    private ArrayList<View> mRecipeViewList;
+    private ArrayList<RecipePage> mRecipePageList;
     private ArrayList<CategoryGroupedDirection> mCategoryGroupedDirections;
     private CurlView mCurlView;
-    private DirectionCategoryDbAdapter mDirectionCategoryDb;
+
+    private boolean mShowTimerIcon = false;
+    private ArrayList<TimerValue> mCurrentTimerValues;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +79,8 @@ public class Recipe extends MyCheeseActivity {
         mCurlView.setSizeChangedObserver(new SizeChangedObserver());
         mCurlView.setBackgroundColor(Color.WHITE);
         mCurlView.setAllowLastPageCurl(false);
+
+
     }
 
     private Long _tryToGetJournalId(Bundle savedInstanceState) {
@@ -87,88 +88,139 @@ public class Recipe extends MyCheeseActivity {
     }
 
     public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        if (mShowTimerIcon) {
+            MenuItem timer = menu.add("Set timer");
+            timer.setIcon(R.drawable.device_access_alarms)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+            timer.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    if (mCurrentTimerValues.size() > 1) {
+                        showDialog(DIALOG_MULTIPLE_ALARMS);
+                    } else {
+                        Intent intent = new Intent(Recipe.this, TimerActivity.class);
+                        Integer time = mCurrentTimerValues.get(0).getTime();
+                        intent.putExtra(mCurrentTimerValues.get(0).getUnit(), time.toString());
+                        startActivityForResult(intent, 1);
+                    }
+                    return true;
+                }
+            });
+        }
+
         MenuItem journalEdit = menu.add("Edit Journal");
-        journalEdit.setIcon(R.drawable.ic_compose)
+        journalEdit.setIcon(R.drawable.content_edit)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         journalEdit.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    if (mJournalId == null) {
-                        showDialog(DIALOG_EDIT_JOURNAL);
-                    } else {
-                        Intent intent = new Intent(Recipe.this, JournalInfo.class);
-                        intent.putExtra(getString(R.string.key_journal_id), mJournalId);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                    }
-                    return true;
+                if (mJournalId == null) {
+                    showDialog(DIALOG_EDIT_JOURNAL);
+                } else {
+                    Intent intent = new Intent(Recipe.this, JournalInfo.class);
+                    intent.putExtra(getString(R.string.key_journal_id), mJournalId);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
-            });
+                return true;
+            }
+        });
 
-        return true;
-    }
-
-    private class RecipeView extends ActionMenuItemView{
-        public RecipeView(Context context) {
-            super(context);
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            Toast.makeText(Recipe.this, "My own long click!", Toast.LENGTH_SHORT).show();
-            return true;
-        }
+        return super.onCreateOptionsMenu(menu);
     }
 
     protected Dialog onCreateDialog(int id) {
         Dialog dialog;
         switch(id) {
         case DIALOG_EDIT_JOURNAL:
-
-            Cursor cAllJournals = mJournalDb.getAllJournalsWithCheese(mCheeseId);
-            startManagingCursor(cAllJournals);
-
-            final HashMap<Long, String> journals = new HashMap<Long, String>();
-            journals.put((long)DIALOG_EDIT_JOURNAL, "Create new journal");
-            while (!cAllJournals.isAfterLast()) {
-                long journalId = cAllJournals.getLong(cAllJournals.getColumnIndexOrThrow(JournalDbAdapter.KEY_ID));
-                String date = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("last_edited_date"));
-                String title = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("title"));
-
-                journals.put(journalId, title + " - " + date);
-
-                cAllJournals.moveToNext();
-            }
-
-            String[] items = journals.values().toArray(new String[journals.size()]);
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Select Journal");
-            builder.setItems(items, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int item) {
-                    long journalId;
-                    switch (item) {
-                        case DIALOG_EDIT_JOURNAL:
-                            journalId = mJournalDb.createJournal(mCheeseId);
-                            break;
-                        default:
-                            journalId = (Long) journals.keySet().toArray()[item];
-                    }
-
-                    mJournalId = journalId;
-                    Intent intent = new Intent(Recipe.this, JournalInfo.class);
-                    intent.putExtra(getString(R.string.key_journal_id), journalId);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                    removeDialog(DIALOG_EDIT_JOURNAL); //To circumvent dialog caching
-                }
-            });
-            dialog = builder.create();
+            dialog = _createEditJournalDialog();
+            break;
+        case DIALOG_MULTIPLE_ALARMS:
+            dialog = _createMultipleAlarmsDialog();
             break;
         default:
             dialog = null;
         }
 
+        return dialog;
+    }
+
+    private Dialog _createEditJournalDialog() {
+        Dialog dialog;
+        Cursor cAllJournals = mJournalDb.getAllJournalsWithCheese(mCheeseId);
+        startManagingCursor(cAllJournals);
+
+        final HashMap<Long, String> journals = new HashMap<Long, String>();
+        journals.put((long)DIALOG_EDIT_JOURNAL, "Create new journal");
+        while (!cAllJournals.isAfterLast()) {
+            long journalId = cAllJournals.getLong(cAllJournals.getColumnIndexOrThrow(JournalDbAdapter.KEY_ID));
+            String date = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("last_edited_date"));
+            String title = cAllJournals.getString(cAllJournals.getColumnIndexOrThrow("title"));
+
+            journals.put(journalId, title + " - " + date);
+
+            cAllJournals.moveToNext();
+        }
+
+        String[] items = journals.values().toArray(new String[journals.size()]);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Journal");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                long journalId;
+                switch (item) {
+                    case DIALOG_EDIT_JOURNAL:
+                        journalId = mJournalDb.createJournal(mCheeseId);
+                        break;
+                    default:
+                        journalId = (Long) journals.keySet().toArray()[item];
+                }
+
+                mJournalId = journalId;
+                Intent intent = new Intent(Recipe.this, JournalInfo.class);
+                intent.putExtra(getString(R.string.key_journal_id), journalId);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                removeDialog(DIALOG_EDIT_JOURNAL); //To circumvent dialog caching
+            }
+        });
+        dialog = builder.create();
+        return dialog;
+    }
+
+    private Dialog _createMultipleAlarmsDialog() {
+        Dialog dialog;
+        final ArrayList<String> times = new ArrayList<String>();
+        for (TimerValue timerValue : mCurrentTimerValues) {
+
+            int time = timerValue.getTime();
+            String pluralizedUnit;
+            if (time > 1) {
+                pluralizedUnit = "s";
+            } else {
+                pluralizedUnit = "";
+            }
+            times.add(time + " " + timerValue.getUnit() + pluralizedUnit);
+        }
+
+        String[] items = times.toArray(new String[times.size()]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Alarm Timer");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                TimerValue timerValue = mCurrentTimerValues.get(item);
+                Intent intent = new Intent(Recipe.this, TimerActivity.class);
+                Integer time = timerValue.getTime();
+                intent.putExtra(timerValue.getUnit(), time.toString());
+                startActivityForResult(intent, 1);
+                removeDialog(DIALOG_MULTIPLE_ALARMS); //To circumvent dialog caching
+            }
+        });
+        dialog = builder.create();
         return dialog;
     }
 
@@ -240,11 +292,13 @@ public class Recipe extends MyCheeseActivity {
         super.onSaveInstanceState(outState);
         outState.putLong("cheese_id", mCheeseId);
         outState.putLong("recipe_id", mRecipeId);
-        outState.putLong(getString(R.string.key_journal_id), mJournalId);
+        if (mJournalId != null) {
+            outState.putLong(getString(R.string.key_journal_id), mJournalId);
+        }
     }
 
-    private ArrayList<View> _getRecipeViewList(int width, int height) {
-        ArrayList<View> recipeViewList = new ArrayList<View>();
+    private ArrayList<RecipePage> _getRecipePageList(int width, int height) {
+        ArrayList<RecipePage> recipeViewList = new ArrayList<RecipePage>();
 
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View emptyRecipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
@@ -261,8 +315,8 @@ public class Recipe extends MyCheeseActivity {
 
         for (CategoryGroupedDirection RecipeDirection : mCategoryGroupedDirections) {
             String directions = RecipeDirection.getDirections();
-            String categoryName = mDirectionCategoryDb.getDirectionCategoryName(RecipeDirection.getDirectionCategoryId());
-
+            int directionCategoryId = RecipeDirection.getDirectionCategoryId();
+            String categoryName = mDirectionCategoryDb.getDirectionCategoryName(directionCategoryId);
 
             while (directions.length() > 0) {
                 View recipeLayout = inflater.inflate(R.layout.recipe_page, (ViewGroup) findViewById(R.id.recipePageLayout));
@@ -299,8 +353,12 @@ public class Recipe extends MyCheeseActivity {
                     }
                 }
 
+                TimerValueRetriever timerValueRetriever = new TimerValueRetriever();
+                ArrayList<TimerValue> timerValues = timerValueRetriever.retrieve(finalPageText);
+                RecipePage recipePage = new RecipePage(directionCategoryId, recipeLayout, timerValues);
+
                 recipeText.setText(finalPageText);
-                recipeViewList.add(recipeLayout);
+                recipeViewList.add(recipePage);
             }
         }
 
@@ -369,14 +427,13 @@ public class Recipe extends MyCheeseActivity {
 
         @Override
         public int getPageCount() {
-            return mRecipeViewList.size();
+            return mRecipePageList.size();
         }
 
         private Bitmap loadBitmap(int width, int height, int index) {
-            Bitmap b = Bitmap.createBitmap(width, height,
-                    Bitmap.Config.ARGB_8888);
+            Bitmap b = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
             Canvas c = new Canvas(b);
-            LinearLayout recipeView = (LinearLayout) mRecipeViewList.get(index);
+            LinearLayout recipeView = (LinearLayout) mRecipePageList.get(index).getRecipeLayout();
             recipeView.measure(
                     View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
                     View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
@@ -384,6 +441,21 @@ public class Recipe extends MyCheeseActivity {
 
             recipeView.draw(c);
             return b;
+        }
+
+        public void onPageTurn(final int index) {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    ArrayList<TimerValue> timerValues = mRecipePageList.get(index).getTimerValues();
+                    if (timerValues.isEmpty()) {
+                        mShowTimerIcon = false;
+                    } else {
+                        mShowTimerIcon = true;
+                        mCurrentTimerValues = timerValues;
+                    }
+                    Recipe.this.invalidateOptionsMenu();
+                }
+            });
         }
 
         @Override
@@ -445,8 +517,10 @@ public class Recipe extends MyCheeseActivity {
     private class SizeChangedObserver implements CurlView.SizeChangedObserver {
         @Override
         public void onSizeChanged(int width, int height) {
-            if (mRecipeViewList == null) {
-                mRecipeViewList = _getRecipeViewList(width, height);
+            if (mRecipePageList == null) {
+                mRecipePageList = _getRecipePageList(width, height);
+                mShowTimerIcon = true;
+                mCurrentTimerValues = mRecipePageList.get(0).getTimerValues();
             }
 
             if (width > height) {

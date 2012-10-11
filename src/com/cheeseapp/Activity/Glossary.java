@@ -10,7 +10,7 @@ import com.cheeseapp.R;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class Glossary extends MyCheeseActivityWithTabs {
+public class Glossary extends MyCheeseActivity {
 
     private GlossaryDbAdapter mGlossaryDb;
 

@@ -25,6 +25,9 @@ public class CheeseList extends MyCheeseActivityWithTabs {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cheese_list);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         mListView =  (ListView)findViewById(R.id.cheeseList);
         mListView.setOnItemClickListener(onListItemClickListener);
 

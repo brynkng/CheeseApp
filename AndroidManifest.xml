@@ -7,6 +7,14 @@
     <uses-sdk android:minSdkVersion="7"
               android:targetSdkVersion="15"
     />
+
+    <uses-permission
+        android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK" />
+    <uses-permission
+        android:name="android.permission.DISABLE_KEYGUARD" />
+
     <application
             android:label="@string/app_name"
             android:icon="@drawable/swiss"
@@ -29,6 +37,25 @@
                   android:windowSoftInputMode="adjustPan"
                 />
         <activity android:name=".Activity.RecipeStart"/>
+
+        <!-- Timer settings -->
+        <activity
+                android:name="net.everythingandroid.timer.TimerActivity"
+                android:theme="@style/Sherlock.__Theme.Dialog"
+                />
+        <activity
+          android:name="net.everythingandroid.timer.Preferences"
+          android:configChanges="orientation|keyboardHidden"
+          android:launchMode="singleTop"/>
+        <activity
+          android:name="net.everythingandroid.timer.TimerAlarmActivity"
+          android:theme="@android:style/Theme.Dialog"
+          android:configChanges="orientation|keyboardHidden"
+          android:screenOrientation="user"
+          android:launchMode="singleInstance"/>
+
+        <receiver android:name="net.everythingandroid.timer.TimerAlarmReceiver"/>
+        <receiver android:name="net.everythingandroid.timer.ClearAllReceiver"/>
 
     </application>
 </manifest> 

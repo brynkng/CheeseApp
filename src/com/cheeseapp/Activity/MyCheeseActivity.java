@@ -36,4 +36,22 @@ public class MyCheeseActivity extends SherlockActivity{
 
         return super.onMenuItemSelected(featureId, item);
     }
+
+        public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        MenuItem help = menu.add("Help | Glossary");
+        help.setIcon(R.drawable.action_help)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        help.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent intent = new Intent(MyCheeseActivity.this, Glossary.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    return true;
+                }
+            });
+
+        return true;
+    }
 }
