@@ -3,6 +3,7 @@ package com.cheeseapp.DbAdapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
  * User: Bryan King
  * Date: 4/21/12
  */
-public class JournalEntryDbAdapter extends DbAdapter{
+public class JournalEntryDbAdapter {
 
     //Journal Entries table
     public static final String TABLE = "journal_entries";
@@ -21,26 +22,13 @@ public class JournalEntryDbAdapter extends DbAdapter{
     public static final String KEY_DIRECTION_CATEGORY_ID = "direction_category_id";
     public static final String KEY_TEXT = "text";
     public static final String KEY_LAST_EDITED_DATE = "last_edited_date";
+    private SQLiteDatabase mDb;
 
     /**
      * @param ctx the Context within which to work
      */
     public JournalEntryDbAdapter(Context ctx) {
-        super(ctx);
-    }
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from " + TABLE);
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.setJournalEntry(1, 1, "First step go!");
-        this.setJournalEntry(1, 2, "Second step go!");
-        this.setJournalEntry(1, 3, "Third step go!");
-
-        this.setJournalEntry(2, 1, "First step!");
-        this.setJournalEntry(2, 2, "Second step yo!");
-
-        this.setJournalEntry(3, 1, "First step my man!");
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     public long setJournalEntry(long journalId, long directionCategoryId, String text) {

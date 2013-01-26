@@ -19,7 +19,6 @@ public class Glossary extends MyCheeseActivity {
         setContentView(R.layout.glossary_list);
 
         this.mGlossaryDb = new GlossaryDbAdapter(this);
-        this.mGlossaryDb.open();
 
         _setupGlossary();
     }
@@ -57,6 +56,5 @@ public class Glossary extends MyCheeseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.mGlossaryDb.close();
     }
 }

@@ -32,66 +32,10 @@ public class CheeseList extends MyCheeseActivityWithTabs {
         mListView.setOnItemClickListener(onListItemClickListener);
 
         this.mCheeseDb = new CheeseDbAdapter(this);
-        this.mCheeseDb.open();
-
-        //TODO REMOVE
-        _prepopulateDbs();
 
         _setupCheeseList();
 
         registerForContextMenu(mListView);
-    }
-
-    private void _prepopulateDbs() {
-        if (mCheeseDb.getAllCheeses().getCount() < 2) {
-
-            mCheeseDb.prePopulate();
-
-            CheeseTypeDbAdapter cheeseTypeDb = new CheeseTypeDbAdapter(this);
-            cheeseTypeDb.open();
-            cheeseTypeDb.prePopulate();
-            cheeseTypeDb.close();
-
-            DirectionCategoryDbAdapter dcAdapter = new DirectionCategoryDbAdapter(this);
-            dcAdapter.open();
-            dcAdapter.prePopulate();
-            dcAdapter.close();
-
-            DirectionDbAdapter dAdapter = new DirectionDbAdapter(this);
-            dAdapter.open();
-            dAdapter.prePopulate();
-            dAdapter.close();
-
-            GlossaryDbAdapter gAdapter = new GlossaryDbAdapter(this);
-            gAdapter.open();
-            gAdapter.prePopulate();
-            gAdapter.close();
-
-            IngredientDbAdapter iAdapter = new IngredientDbAdapter(this);
-            iAdapter.open();
-            iAdapter.prePopulate();
-            iAdapter.close();
-
-            JournalDbAdapter jAdapter = new JournalDbAdapter(this);
-            jAdapter.open();
-            jAdapter.prePopulate();
-            jAdapter.close();
-
-            JournalEntryDbAdapter jeAdapter = new JournalEntryDbAdapter(this);
-            jeAdapter.open();
-            jeAdapter.prePopulate();
-            jeAdapter.close();
-
-            NoteDbAdapter nAdapter = new NoteDbAdapter(this);
-            nAdapter.open();
-            nAdapter.prePopulate();
-            nAdapter.close();
-
-            RecipeDbAdapter rAdapter = new RecipeDbAdapter(this);
-            rAdapter.open();
-            rAdapter.prePopulate();
-            rAdapter.close();
-        }
     }
 
     private void _setupCheeseList() {
@@ -164,7 +108,6 @@ public class CheeseList extends MyCheeseActivityWithTabs {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.mCheeseDb.close();
     }
 
     private final SimpleCursorAdapter.ViewBinder CheeseListViewBinder = new SimpleCursorAdapter.ViewBinder() {

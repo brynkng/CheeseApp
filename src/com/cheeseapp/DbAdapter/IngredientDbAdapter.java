@@ -2,13 +2,14 @@ package com.cheeseapp.DbAdapter;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import database.MySqlLiteBuilder;
 
 /**
  * User: Bryan King
  * Date: 4/27/12
  */
-public class IngredientDbAdapter extends DbAdapter{
+public class IngredientDbAdapter {
 
     public static final String TABLE = "ingredients";
     public static final String KEY_ID = "_id";
@@ -20,32 +21,10 @@ public class IngredientDbAdapter extends DbAdapter{
     public static final String LINKER_KEY_INGREDIENT_ID = "ingredient_id";
     public static final String LINKER_KEY_DIRECTION_ID = "direction_id";
     public static final String LINKER_KEY_RECIPE_ID = "recipe_id";
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from " + TABLE);
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Whole Milk', 'Gallon')");
-        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Mesophilic Starter Culture', 'Packet')");
-        this.mDb.execSQL("INSERT INTO ingredients (name, unit) values ('Rennet', 'teaspoon')");
-
-        this.mDb.execSQL("delete from " + LINKER_TABLE);
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (1, 1, 1, 2)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (2, 1, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-        this.mDb.execSQL("INSERT INTO recipe_ingredients (ingredient_id, direction_id, recipe_id, quantity) values (3, 2, 1, 1)");
-    }
+    private SQLiteDatabase mDb;
 
     public IngredientDbAdapter(Context ctx) {
-        super(ctx);
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     public Cursor getIngredientsForRecipe(long recipeId) {

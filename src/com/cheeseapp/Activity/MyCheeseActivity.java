@@ -1,11 +1,13 @@
 package com.cheeseapp.Activity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.cheeseapp.DbAdapter.DbAdapter;
 import com.cheeseapp.navigation.TabInfo;
 import com.cheeseapp.R;
 
@@ -17,11 +19,23 @@ import java.util.ArrayList;
  */
 public class MyCheeseActivity extends SherlockActivity{
 
+    protected SQLiteDatabase mDb;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDb = DbAdapter.getDbInstance(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mDb.isOpen()) {
+            mDb.close();
+        }
+        super.onDestroy();
     }
 
     @Override

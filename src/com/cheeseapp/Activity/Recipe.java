@@ -383,29 +383,18 @@ public class Recipe extends MyCheeseActivity {
 
     private void _initializeDatabases() {
         mRecipeDb = new RecipeDbAdapter(this);
-        mRecipeDb.open();
 
         mDirectionDb = new DirectionDbAdapter(this);
-        mDirectionDb.open();
 
         mJournalDb = new JournalDbAdapter(this);
-        mJournalDb.open();
 
         mCheeseDb = new CheeseDbAdapter(this);
-        mCheeseDb.open();
 
         mDirectionCategoryDb = new DirectionCategoryDbAdapter(this);
-        mDirectionCategoryDb.open();
     }
 
     @Override
     protected void onDestroy() {
-        mRecipeDb.close();
-        mDirectionDb.close();
-        mCheeseDb.close();
-        mJournalDb.close();
-        mDirectionCategoryDb.close();
-
         super.onDestroy();
     }
 

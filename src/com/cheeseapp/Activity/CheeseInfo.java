@@ -38,7 +38,6 @@ public class CheeseInfo extends MyCheeseActivity {
 
         this.savedInstanceState = savedInstanceState;
 
-
         _initializeDatabases();
 
         mCheeseId = _getCheeseId(savedInstanceState);
@@ -110,13 +109,10 @@ public class CheeseInfo extends MyCheeseActivity {
 
     private void _initializeDatabases() {
         this.mCheeseDb = new CheeseDbAdapter(this);
-        this.mCheeseDb.open();
 
         this.mCheeseTypeDb = new CheeseTypeDbAdapter(this);
-        this.mCheeseTypeDb.open();
 
         this.mNoteDb = new NoteDbAdapter(this);
-        this.mNoteDb.open();
     }
 
     @Override
@@ -133,9 +129,6 @@ public class CheeseInfo extends MyCheeseActivity {
 
     @Override
     protected void onDestroy() {
-        this.mCheeseDb.close();
-        this.mCheeseTypeDb.close();
-        this.mNoteDb.close();
         super.onDestroy();
     }
 

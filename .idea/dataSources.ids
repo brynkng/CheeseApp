@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="a4f7e24a-399f-4941-987e-35a7af6892c6">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:C:\Users\Bryan\Dropbox\development\android\sqlite_databases\cheeseApp</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$PROJECT_DIR$/../sqlite-jdbc-3.7.2.jar</url>
+      </library>
+    </libraries>
+    <table name="android_metadata" schema="" catalog="" type="TABLE">
+      <column name="locale" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+    </table>
+    <table name="cheese_types" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="type" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="cheese_types_to_cheese" schema="" catalog="" type="TABLE">
+      <column name="cheese_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="cheese_type_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+    </table>
+    <table name="cheeses" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="name" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="favorite" sqlType="TINYINT(1)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="description" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="direction_categories" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="name" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="directions" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="recipe_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="direction" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="direction_category_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="glossary_entries" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="word" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="definition" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="ingredients" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="name" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="unit" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="journal_entries" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="journal_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="direction_category_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="last_edited_date" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="text" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="journals" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="cheese_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="start_date" sqlType="TIMESTAMP" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="title" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="notes" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="cheese_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="note" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="notes_to_cheese" schema="" catalog="" type="TABLE">
+      <column name="cheese_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="note_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+    </table>
+    <table name="recipe_ingredients" schema="" catalog="" type="TABLE">
+      <column name="recipe_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="ingredient_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="direction_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="quantity" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+    </table>
+    <table name="recipes" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="time" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="cheese_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="yield" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
+      <column name="name" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="seq" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+    </table>
+  </data-source>
+</component>

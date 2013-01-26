@@ -96,10 +96,8 @@ public class JournalInfo extends MyCheeseActivity{
 
     private void _setupDatabases() {
         mJournalDb = new JournalDbAdapter(this);
-        mJournalDb.open();
 
         mJournalEntryDb = new JournalEntryDbAdapter(this);
-        mJournalEntryDb.open();
     }
 
     private long _getJournalId(Bundle savedInstanceState) {
@@ -139,9 +137,12 @@ public class JournalInfo extends MyCheeseActivity{
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mJournalDb.close();
-        mJournalEntryDb.close();
     }
 }

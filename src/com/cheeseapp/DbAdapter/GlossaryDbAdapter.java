@@ -3,29 +3,23 @@ package com.cheeseapp.DbAdapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * User: Bryan King
  * Date: 4/27/12
  */
-public class GlossaryDbAdapter extends DbAdapter{
+public class GlossaryDbAdapter {
 
     //Cheese Types table
     public static final String TABLE = "glossary_entries";
     public static final String KEY_ID = "_id";
     public static final String KEY_WORD = "word";
     public static final String KEY_DEFINITION = "definition";
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from " + TABLE);
-        this.addGlossaryEntry("Cheese", "It's made from milk!");
-        this.addGlossaryEntry("Rennet", "Enzymes mofo!");
-        this.addGlossaryEntry("Cheese Press", "Press your shit!");
-    }
+    private SQLiteDatabase mDb;
 
     public GlossaryDbAdapter(Context ctx) {
-        super(ctx);
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     /**

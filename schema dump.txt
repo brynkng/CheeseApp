@@ -1,0 +1,16 @@
+CREATE TABLE android_metadata (locale TEXT);
+CREATE TABLE cheeses(_id integer primary key autoincrement,name text,favorite tinyint(1) DEFAULT 0,description text);
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE cheese_types(_id integer primary key autoincrement,type text);
+CREATE TABLE cheese_types_to_cheese(cheese_id integer,cheese_type_id integer);
+CREATE TABLE notes(_id integer primary key autoincrement,cheese_id integer,note text);
+CREATE TABLE notes_to_cheese(cheese_id integer,note_id integer);
+CREATE TABLE directions(_id integer primary key autoincrement,recipe_id integer,direction text,direction_category_id integer);
+CREATE TABLE recipes(_id integer primary key autoincrement,time integer,cheese_id integer,yield integer);
+CREATE TABLE ingredients(_id integer primary key autoincrement,name text,unit text);
+CREATE TABLE recipe_ingredients(recipe_id integer,ingredient_id integer,direction_id integer,quantity integer);
+CREATE TABLE glossary_entries(_id integer primary key autoincrement,word text,definition text);
+CREATE TABLE journals(_id integer primary key autoincrement,cheese_id integer,start_date timestamp DEFAULT CURRENT_TIMESTAMP,title text);
+CREATE TABLE journal_entries(_id integer primary key autoincrement,journal_id integer,direction_category_id integer,last_edited_date integer,text text, UNIQUE (journal_id, direction_category_id) );
+
+CREATE TABLE direction_categories(_id integer primary key autoincrement,name text);

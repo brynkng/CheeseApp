@@ -4,12 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * User: Bryan King
  * Date: 4/21/12
  */
-public class JournalDbAdapter extends DbAdapter{
+public class JournalDbAdapter {
 
     //Journals table
     public static final String TABLE = "journals";
@@ -18,22 +19,13 @@ public class JournalDbAdapter extends DbAdapter{
     public static final String KEY_TITLE = "title";
     public static final String KEY_START_DATE = "start_date";
     public static final String KEY_CHEESE_ID = "cheese_id";
+    private SQLiteDatabase mDb;
 
     /**
      * @param ctx the Context within which to work
      */
     public JournalDbAdapter(Context ctx) {
-        super(ctx);
-    }
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from " + TABLE);
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.createJournal(1, "First Cheddar");
-        this.createJournal(1);
-        this.createJournal(2);
-        this.createJournal(3);
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     /**

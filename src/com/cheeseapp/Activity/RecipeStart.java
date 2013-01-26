@@ -54,7 +54,7 @@ public class RecipeStart extends MyCheeseActivity {
 
         //Recipe time
         TextView timeView = (TextView) findViewById(R.id.timeText);
-        timeView.setText(mTime + " hours");
+        timeView.setText(mTime);
 
         //Yield
         _setupYieldSpinner();
@@ -68,21 +68,15 @@ public class RecipeStart extends MyCheeseActivity {
 
     private void _initializeDatabases() {
         mCheeseDb = new CheeseDbAdapter(this);
-        mCheeseDb.open();
 
         mRecipeDb = new RecipeDbAdapter(this);
-        mRecipeDb.open();
 
         mIngredientDb = new IngredientDbAdapter(this);
-        mIngredientDb.open();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mRecipeDb.close();
-        mIngredientDb.close();
-        mCheeseDb.close();
     }
 
     @Override
@@ -198,8 +192,14 @@ public class RecipeStart extends MyCheeseActivity {
             @SuppressWarnings("unchecked")
             HashMap<String, String> ingredient = (HashMap<String, String>) mOriginalIngredients.get(i);
 
-            Double quantity = Double.parseDouble(ingredient.get("quantity"));
-            String newQuantity = String.valueOf((mYield / mOriginalYield) * quantity);
+            String quantityString = ingredient.get("quantity");
+            String newQuantity;
+            if (quantityString == null || quantityString.equals("")) {
+                newQuantity = "";
+            } else {
+                Double quantity = Double.parseDouble(quantityString);
+                newQuantity = String.valueOf((mYield / mOriginalYield) * quantity);
+            }
 
             @SuppressWarnings("unchecked")
             HashMap<String, String> updatedIngredient = mIngredients.get(i);
@@ -244,15 +244,27 @@ public class RecipeStart extends MyCheeseActivity {
 
         for (HashMap ingredient : mIngredients) {
             TextView ingredientView = new TextView(this);
-            Double quantity = Double.parseDouble((String) ingredient.get("quantity"));
+            String quantityString = (String) ingredient.get("quantity");
             String unit = (String) ingredient.get("unit");
             String name = (String) ingredient.get("name");
 
-            if (quantity > 1) {
-                unit = unit + "s";
+            if (quantityString == null || quantityString.equals("")) {
+                quantityString = "";
+            } else {
+                Double quantity = Double.parseDouble(quantityString);
+                if (quantity > 1) {
+                    unit = unit + "s";
+                }
+                quantityString += " ";
             }
 
-            ingredientView.setText("• " + quantity + " " + unit + " " + name);
+            if (unit == null) {
+                unit = "";
+            } else {
+                 unit += " ";
+            }
+
+            ingredientView.setText("• " + quantityString + unit + name);
             ingredientView.setTextColor(Color.BLACK);
             ingredientView.setTextSize(18);
             ingredientList.addView(ingredientView);

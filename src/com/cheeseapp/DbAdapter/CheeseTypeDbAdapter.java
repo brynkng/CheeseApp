@@ -3,38 +3,23 @@ package com.cheeseapp.DbAdapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import database.MySqlLiteBuilder;
 
 /**
  * User: Bryan King
  * Date: 4/27/12
  */
-public class CheeseTypeDbAdapter extends DbAdapter{
+public class CheeseTypeDbAdapter {
 
     public static final String TABLE = "cheese_types";
 
     public static final String KEY_ID = "_id";
     public static final String KEY_TYPE = "type";
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("DELETE FROM " + "cheese_types");
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + "cheese_types" + "'");
-
-        this.createCheeseType("Hard");
-        this.createCheeseType("Soft");
-        this.createCheeseType("Creamy");
-
-        this.mDb.execSQL("DELETE FROM " + "cheese_types_to_cheese");
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + "cheese_types_to_cheese" + "'");
-        this.addTypeToCheese(1, 1);
-        this.addTypeToCheese(2, 2);
-        this.addTypeToCheese(2, 3);
-        this.addTypeToCheese(3, 1);
-    }
+    private SQLiteDatabase mDb;
 
     public CheeseTypeDbAdapter(Context ctx) {
-        super(ctx);
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     /**

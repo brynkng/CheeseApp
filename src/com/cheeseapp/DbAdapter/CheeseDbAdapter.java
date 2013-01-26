@@ -4,12 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * User: Bryan King
  * Date: 4/21/12
  */
-public class CheeseDbAdapter extends DbAdapter{
+public class CheeseDbAdapter{
 
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
@@ -18,21 +19,13 @@ public class CheeseDbAdapter extends DbAdapter{
 
     public static final String TABLE = "cheeses";
 
+    private SQLiteDatabase mDb;
+
     /**
      * @param ctx the Context within which to work
      */
     public CheeseDbAdapter(Context ctx) {
-        super(ctx);
-    }
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from cheeses");
-        this.mDb.execSQL("delete from sqlite_sequence where name=" + "'" + TABLE + "'");
-        this.createCheese("Cheddar", "Cheddar is awesome! I'm glad you agree!");
-        this.createCheese("Gouda", "I am a gouda cheese suck it!");
-        this.createCheese("Swiss", "I am the holiest of all the cheeses");
-        this.createCheese("Blue", "I am the strongest of all the cheeses");
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     /**

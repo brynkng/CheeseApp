@@ -45,16 +45,12 @@ public class JournalHome extends MyCheeseActivityWithTabs {
         registerForContextMenu(mListView);
 
         mJournalDb = new JournalDbAdapter(this);
-        mJournalDb.open();
 
         mJournalEntryDb = new JournalEntryDbAdapter(this);
-        mJournalEntryDb.open();
 
         mDirectionCategoryDb = new DirectionCategoryDbAdapter(this);
-        mDirectionCategoryDb.open();
 
         mCheeseDb = new CheeseDbAdapter(this);
-        mCheeseDb.open();
 
         _setupJournalList();
     }
@@ -62,10 +58,6 @@ public class JournalHome extends MyCheeseActivityWithTabs {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mCheeseDb.close();
-        mJournalDb.close();
-        mJournalEntryDb.close();
-        mDirectionCategoryDb.close();
     }
 
     private void _setupJournalList() {

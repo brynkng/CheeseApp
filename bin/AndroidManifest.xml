@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.cheeseapp"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="7"
+              android:targetSdkVersion="15"
+    />
+    <application
+            android:label="@string/app_name"
+            android:icon="@drawable/swiss"
+
+            >
+
+        <activity android:name=".Activity.CheeseList">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".Activity.Home">
+
+        </activity>
+        <activity android:name=".Activity.CheeseInfo"/>
+        <activity android:name=".Activity.Recipe"/>
+        <activity android:name=".Activity.Glossary">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest> 

@@ -3,30 +3,23 @@ package com.cheeseapp.DbAdapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import database.MySqlLiteBuilder;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * User: Bryan King
  * Date: 4/27/12
  */
-public class NoteDbAdapter extends DbAdapter{
+public class NoteDbAdapter {
 
     //Cheese Types table
     public static final String TABLE = "notes";
     public static final String KEY_ID = "_id";
     public static final String KEY_CHEESE_ID = "cheese_id";
     public static final String KEY_NOTE = "note";
-
-    @Override
-    public void prePopulate() {
-        this.mDb.execSQL("delete from " + TABLE);
-        this.addNote(1, "Hey this cheese is awesome!");
-        this.addNote(1, "Make this shit again!");
-        this.addNote(2, "Make this shit again!");
-    }
+    private SQLiteDatabase mDb;
 
     public NoteDbAdapter(Context ctx) {
-        super(ctx);
+        mDb = DbAdapter.getDbInstance(ctx);
     }
 
     /**
